@@ -1,0 +1,912 @@
+{
+  "plan": {
+    "grid": {
+      "leftSplit": false,
+      "leftHidden": false,
+      "rightSplit": false,
+      "columnSizes": "0.630923fr 3px 3.44493fr 3px 0.924222fr",
+      "middleSplit": false,
+      "rightHidden": false,
+      "leftRowSizes": "1fr",
+      "rightRowSizes": "1fr",
+      "middleRowSizes": "1fr",
+      "leftComponentTop": "ActivityTypesPanel",
+      "rightComponentTop": "ActivityFormPanel",
+      "leftComponentBottom": "SimulationPanel",
+      "rightComponentBottom": "TimelineEditorPanel",
+      "middleComponentBottom": "ActivityDirectivesTablePanel"
+    },
+    "iFrames": [
+      {
+        "id": 0,
+        "src": "https://eyes.nasa.gov/apps/mars2020/#/home",
+        "title": "Mars-2020-EDL"
+      }
+    ],
+    "timelines": [
+      {
+        "id": 0,
+        "rows": [
+          {
+            "id": 0,
+            "name": "Activities",
+            "yAxes": [],
+            "height": 131.16668701171875,
+            "layers": [
+              {
+                "id": 0,
+                "name": "",
+                "filter": {
+                  "activity": {
+                    "types": [
+                      "AddApoapsis",
+                      "AddOccultations",
+                      "AddPeriapsis",
+                      "AddSpacecraftEclipses",
+                      "Apoapsis",
+                      "EnterOccultation",
+                      "ExitOccultation",
+                      "Periapsis",
+                      "SolarArrayDeployment",
+                      "SpacecraftEnterEclipse",
+                      "SpacecraftExitEclipse",
+                      "ChangeVisarDataMode",
+                      "Downlink",
+                      "VISAR_Off",
+                      "VISAR_On"
+                    ]
+                  }
+                },
+                "yAxisId": null,
+                "chartType": "activity",
+                "activityColor": "#fcdd8f",
+                "activityHeight": 16
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 21,
+            "name": "Sun Range",
+            "yAxes": [
+              {
+                "id": 18,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (18)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 80,
+            "layers": [
+              {
+                "id": 12,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "SpacecraftBodyRange_SUN_AU"
+                    ]
+                  }
+                },
+                "yAxisId": 18,
+                "chartType": "line",
+                "lineColor": "#ff7f0e",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 22,
+            "name": "Spacecraft Altitude",
+            "yAxes": [
+              {
+                "id": 19,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (19)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 80,
+            "layers": [
+              {
+                "id": 13,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "SpacecraftAltitude_VENUS"
+                    ]
+                  }
+                },
+                "yAxisId": 19,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 23,
+            "name": "Solar Phase Angle",
+            "yAxes": [
+              {
+                "id": 20,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (20)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 80,
+            "layers": [
+              {
+                "id": 14,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "IlluminationAnglesByBody_VENUS_phase"
+                    ]
+                  }
+                },
+                "yAxisId": 20,
+                "chartType": "line",
+                "lineColor": "#8d41b0",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 2,
+            "name": "Spacecraft Eclipse",
+            "yAxes": [
+              {
+                "id": 22,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Eclipse Factor"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 80,
+            "layers": [
+              {
+                "id": 2,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "AnySpacecraftEclipse"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 1,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              },
+              {
+                "id": 17,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "FractionOfSunNotInEclipse"
+                    ]
+                  }
+                },
+                "yAxisId": 22,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 6,
+            "name": "Power Prod and Demand",
+            "yAxes": [
+              {
+                "id": 5,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "array.powerProduction"
+                },
+                "tickCount": 5,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 100,
+            "layers": [
+              {
+                "id": 6,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "array.powerProduction"
+                    ]
+                  }
+                },
+                "yAxisId": 5,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 15,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "spacecraft.cbeLoad"
+                    ]
+                  }
+                },
+                "yAxisId": 5,
+                "chartType": "line",
+                "lineColor": "#e31a1c",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 18,
+            "name": "Battery SOC",
+            "yAxes": [
+              {
+                "id": 17,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "cbebattery.batteryCharge"
+                },
+                "tickCount": 5,
+                "scaleDomain": [
+                  0,
+                  100
+                ],
+                "domainFitMode": "manual",
+                "renderTickLines": true
+              }
+            ],
+            "height": 100,
+            "layers": [
+              {
+                "id": 11,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "cbebattery.batterySOC"
+                    ]
+                  }
+                },
+                "yAxisId": 17,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": [
+              {
+                "y": 40,
+                "id": 0,
+                "label": {
+                  "text": "Min SOC Limit",
+                  "color": "#ff2600"
+                },
+                "yAxisId": 17
+              }
+            ]
+          },
+          {
+            "id": 10,
+            "name": "BodyHalfAngleSize_VENUS",
+            "yAxes": [
+              {
+                "id": 9,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "BodyHalfAngleSize_VENUS (deg)"
+                },
+                "tickCount": 5,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 100,
+            "layers": [
+              {
+                "id": 10,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "BodyHalfAngleSize_VENUS"
+                    ]
+                  }
+                },
+                "yAxisId": 9,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 24,
+            "name": "Row",
+            "yAxes": [
+              {
+                "id": 23,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (23)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 80,
+            "layers": [
+              {
+                "id": 18,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "Occultation"
+                    ]
+                  }
+                },
+                "yAxisId": 23,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          }
+        ],
+        "marginLeft": 190,
+        "marginRight": 30,
+        "verticalGuides": [
+          {
+            "id": 0,
+            "label": {
+              "text": "Guide 0",
+              "color": "#969696"
+            },
+            "timestamp": "2033-260T00:56:50.061"
+          }
+        ]
+      }
+    ],
+    "activitySpansTable": {
+      "columnDefs": [
+        {
+          "field": "id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "ID"
+        },
+        {
+          "field": "dataset_id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Dataset ID"
+        },
+        {
+          "field": "parent_id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Parent ID"
+        },
+        {
+          "field": "type",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Type"
+        },
+        {
+          "field": "start_offset",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Start Offset"
+        },
+        {
+          "hide": false,
+          "field": "derived_start_time",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Absolute Start Time (UTC)"
+        },
+        {
+          "hide": false,
+          "field": "derived_end_time",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Absolute End Time (UTC)"
+        },
+        {
+          "field": "duration",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Duration"
+        }
+      ],
+      "columnStates": [],
+      "autoSizeColumns": "fill"
+    },
+    "activityDirectivesTable": {
+      "columnDefs": [
+        {
+          "sort": null,
+          "colId": "arguments",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "id",
+          "width": 80,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "ID"
+        },
+        {
+          "sort": null,
+          "colId": "last_modified_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "metadata",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "name",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Name"
+        },
+        {
+          "field": "type",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Type"
+        },
+        {
+          "sort": null,
+          "colId": "source_scheduling_goal_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "start_offset",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Start Offset"
+        },
+        {
+          "sort": null,
+          "colId": "tags",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "type",
+          "pivot": false,
+          "width": 280,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "anchor_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "applied_preset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "anchored_to_start",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "derived_start_time",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Absolute Start Time (UTC)"
+        },
+        {
+          "sort": null,
+          "colId": "start_offset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "hide": true,
+          "field": "created_at",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Created At (UTC)"
+        }
+      ],
+      "columnStates": [
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "errorCounts",
+          "pivot": false,
+          "width": 70,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "anchor_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "anchored_to_start",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "applied_preset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "arguments",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "created_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "created_by",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "derived_start_time",
+          "pivot": false,
+          "width": 212.23000000000002,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "id",
+          "pivot": false,
+          "width": 84,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "last_modified_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "last_modified_by",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "metadata",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "name",
+          "pivot": false,
+          "width": 211,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "source_scheduling_goal_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "start_offset",
+          "pivot": false,
+          "width": 211,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "tags",
+          "pivot": false,
+          "width": 220,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "type",
+          "pivot": false,
+          "width": 211,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        }
+      ],
+      "autoSizeColumns": "fill"
+    }
+  }
+}
