@@ -3,6 +3,7 @@ package missionmodel.geometry.activities.spawner;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
+import gov.nasa.jpl.time.Time;
 import missionmodel.JPLTimeConvertUtility;
 import missionmodel.Mission;
 import missionmodel.Window;
@@ -52,25 +53,43 @@ public class AddOccultations {
     }
 
     Duration durToSearchEnd = searchDuration;
+
+    // There may be some occultations that are before the start of this activity. Remove them or alter the start time to start
+    // at the start time of the activity
+    Time actStart = JPLTimeConvertUtility.nowJplTime(model.absoluteClock);
+    while (!occultationTimes.isEmpty() && occultationTimes.get(0).getStart().lessThan(actStart)) {
+      if (occultationTimes.get(0).getEnd().lessThanOrEqualTo(actStart)) {
+        occultationTimes.remove(0);
+      } else if (occultationTimes.get(0).getStart().lessThan(actStart)) {
+        occultationTimes.set(0, new Window(actStart, occultationTimes.get(0).getEnd(), occultationTimes.get(0).getType()) );
+      }
+    }
+
     for(Window w : occultationTimes){
+      // Don't spawn any occultations at or after the end of the search duration
+      if (w.getStart().lessThan(actStart.plus(JPLTimeConvertUtility.getJplTimeDur(searchDuration)))) {
+        // Wait until start time of occultation and spawn EnterOccultation
+        Duration delayTime = JPLTimeConvertUtility.getDuration(
+          w.getStart().minus(JPLTimeConvertUtility.nowJplTime(model.absoluteClock)));
+        delay(delayTime);
 
-      // Wait until start time of occultation and spawn EnterOccultation
-      Duration delayTime = JPLTimeConvertUtility.getDuration(
-        w.getStart().minus( JPLTimeConvertUtility.nowJplTime(model.absoluteClock)));
-      delay( delayTime );
+        // Assume 'target' is always the spacecraft
+        spawn(model, new EnterOccultation(occultingBody, observer));
+        durToSearchEnd = durToSearchEnd.minus(delayTime);
 
-      // Assume 'target' is always the spacecraft
-      spawn(model, new EnterOccultation(occultingBody, observer));
-      durToSearchEnd = durToSearchEnd.minus(delayTime);
+        // Wait until end time of occultation and spawn ExitOccultation
+        delayTime = JPLTimeConvertUtility.getDuration(
+          w.getEnd().minus(JPLTimeConvertUtility.nowJplTime(model.absoluteClock)));
 
-      // Wait until end time of occultation and spawn ExitOccultation
-      delayTime = JPLTimeConvertUtility.getDuration(
-        w.getEnd().minus( JPLTimeConvertUtility.nowJplTime(model.absoluteClock)));
-      delay( delayTime );
-
-      // Assume 'target' is always the spacecraft
-      spawn(model, new ExitOccultation(occultingBody, observer));
-      durToSearchEnd = durToSearchEnd.minus(delayTime);
+        // Check to make sure the end of the occultation is not past the end of the search window. If it is, we are done
+        // and do not need to add an exit occultation activity
+        if (durToSearchEnd.minus(delayTime).isPositive()) {
+          delay(delayTime);
+          // Assume 'target' is always the spacecraft
+          spawn(model, new ExitOccultation(occultingBody, observer));
+          durToSearchEnd = durToSearchEnd.minus(delayTime);
+        }
+      }
 
     }
 

@@ -3,6 +3,7 @@ package missionmodel.geometry.activities.spawner;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
+import gov.nasa.jpl.time.Time;
 import missionmodel.JPLTimeConvertUtility;
 import missionmodel.Mission;
 import missionmodel.Window;
@@ -53,36 +54,44 @@ public class AddSpacecraftEclipses {
     }
 
     Duration durToSearchEnd = searchDuration;
-    // Check if the first eclipse begins before the start of this activity. If so, alter the start time to match the
-    // current time.
-    if (!eclipses.isEmpty() &&
-      eclipses.get(0).getStart().lessThan(JPLTimeConvertUtility.nowJplTime(model.absoluteClock))) {
-        eclipses.set(0, new Window(JPLTimeConvertUtility.nowJplTime(model.absoluteClock), eclipses.get(0).getEnd(), eclipses.get(0).getType()) );
+
+    // There may be some eclipses that are before the start of this activity. Remove them or alter the start time to start
+    // at the start time of the activity
+    Time actStart = JPLTimeConvertUtility.nowJplTime(model.absoluteClock);
+    while (!eclipses.isEmpty() && eclipses.get(0).getStart().lessThan(actStart)) {
+      if (eclipses.get(0).getEnd().lessThanOrEqualTo(actStart)) {
+        eclipses.remove(0);
+      } else if (eclipses.get(0).getStart().lessThan(actStart)) {
+        eclipses.set(0, new Window(actStart, eclipses.get(0).getEnd(), eclipses.get(0).getType()) );
+      }
     }
 
     for(int i = 0; i < eclipses.size(); i++){
       // we assume that this is eclipses of the spacecraft - other body eclipses should be in mission-specific code
-      Duration delayTime = JPLTimeConvertUtility.getDuration(
-        eclipses.get(i).getStart().minus( JPLTimeConvertUtility.nowJplTime(model.absoluteClock)));
-      delay( delayTime );
-      spawn(model, new SpacecraftEnterEclipse(occultingBody,
-        EclipseTypes.valueOf(eclipses.get(i).getType()),
-        JPLTimeConvertUtility.getDuration(eclipses.get(i).getDuration())));
-      durToSearchEnd = durToSearchEnd.minus(delayTime);
+      // Don't spawn any eclipses at or after the end of the search duration
+      if (eclipses.get(i).getStart().lessThan(actStart.plus(JPLTimeConvertUtility.getJplTimeDur(searchDuration)))) {
+        Duration delayTime = JPLTimeConvertUtility.getDuration(
+          eclipses.get(i).getStart().minus(JPLTimeConvertUtility.nowJplTime(model.absoluteClock)));
+        delay(delayTime);
+        spawn(model, new SpacecraftEnterEclipse(occultingBody,
+          EclipseTypes.valueOf(eclipses.get(i).getType()),
+          JPLTimeConvertUtility.getDuration(eclipses.get(i).getDuration())));
+        durToSearchEnd = durToSearchEnd.minus(delayTime);
 
-      // while we always enter an eclipse, we don't always exit - we could transition from full to partial eclipse
-      if(i == eclipses.size() - 1 ||
-        eclipses.get(i).getEnd().absoluteDifference(eclipses.get(i+1).getStart()).greaterThan(
-          JPLTimeConvertUtility.getJplTimeDur(Duration.SECOND))){
-        delayTime = JPLTimeConvertUtility.getDuration(
-          eclipses.get(i).getEnd().minus( JPLTimeConvertUtility.nowJplTime(model.absoluteClock)));
+        // while we always enter an eclipse, we don't always exit - we could transition from full to partial eclipse
+        if (i == eclipses.size() - 1 ||
+          eclipses.get(i).getEnd().absoluteDifference(eclipses.get(i + 1).getStart()).greaterThan(
+            JPLTimeConvertUtility.getJplTimeDur(Duration.SECOND))) {
+          delayTime = JPLTimeConvertUtility.getDuration(
+            eclipses.get(i).getEnd().minus(JPLTimeConvertUtility.nowJplTime(model.absoluteClock)));
 
-        // Check to make sure the end of the eclipse is not past the end of the search window. If it is, we are done
-        // and do not need to add an exit eclipse activity
-        if (durToSearchEnd.minus(delayTime).isPositive()) {
-          delay(delayTime);
-          spawn(model, new SpacecraftExitEclipse(occultingBody));
-          durToSearchEnd = durToSearchEnd.minus(delayTime);
+          // Check to make sure the end of the eclipse is not past the end of the search window. If it is, we are done
+          // and do not need to add an exit eclipse activity
+          if (durToSearchEnd.minus(delayTime).isPositive()) {
+            delay(delayTime);
+            spawn(model, new SpacecraftExitEclipse(occultingBody));
+            durToSearchEnd = durToSearchEnd.minus(delayTime);
+          }
         }
       }
     }

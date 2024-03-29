@@ -40,12 +40,27 @@ public class GeometrySpawnersTest {
     // Add Activities to Plan
     final Map<ActivityDirectiveId, ActivityDirective> schedule = new HashMap<>();
 
+    // AddSpacecraftEclipses spawner
     schedule.put(new ActivityDirectiveId(1L), new ActivityDirective(
       Duration.ZERO,
       "AddSpacecraftEclipses",
       Map.of("searchDuration", SerializedValue.of(86400000000L),
         "observer", SerializedValue.of("-660"),
         "target", SerializedValue.of("SUN"),
+        "occultingBody", SerializedValue.of("VENUS"),
+        "stepSize", SerializedValue.of(1800000000L),
+        "useDSK", SerializedValue.of(false)),
+      null,
+      true
+    ));
+
+    // AddOccultations spawner
+    schedule.put(new ActivityDirectiveId(1L), new ActivityDirective(
+      Duration.ZERO,
+      "AddOccultations",
+      Map.of("searchDuration", SerializedValue.of(86400000000L),
+        "observer", SerializedValue.of("DSS-24"),
+        "target", SerializedValue.of("-660"),
         "occultingBody", SerializedValue.of("VENUS"),
         "stepSize", SerializedValue.of(1800000000L),
         "useDSK", SerializedValue.of(false)),

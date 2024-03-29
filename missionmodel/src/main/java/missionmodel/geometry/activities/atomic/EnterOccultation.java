@@ -29,6 +29,5 @@ public class EnterOccultation {
     // setName("EnterOccultation_" + body + "_SeenFrom_" + station);
     DiscreteEffects.increment(model.geometryResources.Occultation, 1);
     DiscreteEffects.turnOn(model.geometryResources.SpacecraftOccultationByBodyAndStation.get(body).get(station));
-    delay(Duration.SECOND);
   }
 }
