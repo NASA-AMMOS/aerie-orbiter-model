@@ -1,2 +1,2 @@
-rootProject.name = 'missionmodel'
-include('src')
+rootProject.name = 'veritas'
+include('missionmodel', 'schedulers')
