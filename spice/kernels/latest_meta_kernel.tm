@@ -22,7 +22,7 @@
               '$KERNELS/naif0012.tls',
               '$KERNELS/pck00011.tpc',
               '$KERNELS/gm_de440.tpc',
-              '$KERNELS/earth_topo_201023.tf',
+              '$KERNELS/earth_070425_370426_predict.bpc',
               '$KERNELS/earthstns_itrf93_201023.bsp',
               '$KERNELS/veritas_science_example.bsp',
               '$KERNELS/veritas_cruise_example.bsp',
