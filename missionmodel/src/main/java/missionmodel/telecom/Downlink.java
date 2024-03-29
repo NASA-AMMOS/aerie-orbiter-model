@@ -20,6 +20,13 @@ public class Downlink {
   @Export.Parameter
   public Double bitRate;
 
+  public Downlink() {}
+
+  public Downlink(Duration duration, double bitRate) {
+    this.duration = duration;
+    this.bitRate = bitRate;
+  }
+
   @ActivityType.ControllableDuration(parameterName = "duration")
   @ActivityType.EffectModel
   public void run(Mission model) {

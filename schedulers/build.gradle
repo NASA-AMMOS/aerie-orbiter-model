@@ -48,4 +48,5 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:+'
     implementation files("../third-party/timeline-all.jar")
     implementation project(":missionmodel")
+    implementation 'org.postgresql:postgresql:42.6.1' // For PGInterval parsing
 }

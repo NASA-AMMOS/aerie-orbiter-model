@@ -22,19 +22,38 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.SECONDS;
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.duration;
 import static gov.nasa.jpl.aerie.timeline.Interval.Inclusivity.Exclusive;
 import static gov.nasa.jpl.aerie.timeline.Interval.Inclusivity.Inclusive;
-import static gov.nasa.jpl.mro.schedulers.Utils.*;
+import static schedulers.Utils.*;
 
-public record PlanImpl(
-    Instant startTime,
-    Interval bounds,
-    Mutable<SimulationResults> latestSimulationResults,
-    ArrayList<Directive<AnyDirective>> directives
-) implements Plan {
+public final class PlanImpl implements Plan {
+    private final Instant startTime;
+    private final Interval bounds;
+    private final Mutable<SimulationResults> latestSimulationResults;
+    private final ArrayList<Directive<AnyDirective>> directives;
+    private final ArrayList<Directive<AnyDirective>> newDirectives;
+
+    public PlanImpl(
+            Instant startTime,
+            Interval bounds,
+            Mutable<SimulationResults> latestSimulationResults,
+            List<Directive<AnyDirective>> directives
+    ) {
+        this.startTime = startTime;
+        this.bounds = bounds;
+        this.latestSimulationResults = latestSimulationResults;
+        this.directives = new ArrayList<>(directives);
+        this.newDirectives = new ArrayList<>();
+    }
+
+    public void addDirective(Directive<AnyDirective> directive) {
+        this.newDirectives.add(directive);
+    }
+
     @Override
     public Interval totalBounds() {
         return bounds;
@@ -104,6 +123,55 @@ public record PlanImpl(
 
     @Override
     public Directives<AnyDirective> allActivityDirectives() {
-        return new Directives<>(new ArrayList<>(directives));
+        ArrayList<Directive<AnyDirective>> temp = new ArrayList<>(directives);
+        temp.addAll(newDirectives);
+        return new Directives<>(temp);
+    }
+
+    public Instant startTime() {
+        return startTime;
+    }
+
+    public Interval bounds() {
+        return bounds;
+    }
+
+    public Mutable<SimulationResults> latestSimulationResults() {
+        return latestSimulationResults;
+    }
+
+    public List<Directive<AnyDirective>> directives() {
+        var temp = new ArrayList<>(directives);
+        temp.addAll(newDirectives);
+        return temp;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+        var that = (PlanImpl) obj;
+        return Objects.equals(this.startTime, that.startTime) &&
+                Objects.equals(this.bounds, that.bounds) &&
+                Objects.equals(this.latestSimulationResults, that.latestSimulationResults) &&
+                Objects.equals(this.directives, that.directives);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startTime, bounds, latestSimulationResults, directives);
+    }
+
+    @Override
+    public String toString() {
+        return "PlanImpl[" +
+                "startTime=" + startTime + ", " +
+                "bounds=" + bounds + ", " +
+                "latestSimulationResults=" + latestSimulationResults + ", " +
+                "directives=" + directives + ']';
+    }
+
+    public List<Directive<AnyDirective>> newDirectives() {
+        return new ArrayList<>(newDirectives);
     }
 }

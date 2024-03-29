@@ -5,6 +5,7 @@ import gov.nasa.jpl.aerie.merlin.driver.ActivityDirectiveId;
 import gov.nasa.jpl.aerie.merlin.driver.SimulationResults;
 import gov.nasa.jpl.aerie.merlin.driver.json.SerializedValueJsonParser;
 import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
+import gov.nasa.jpl.aerie.timeline.Duration;
 import gov.nasa.jpl.aerie.timeline.Interval;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.AnyDirective;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.Directive;
@@ -12,31 +13,26 @@ import missionmodel.generated.telecom.DownlinkMapper;
 import missionmodel.telecom.Downlink;
 import org.apache.commons.lang3.mutable.MutableObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.MICROSECONDS;
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.ZERO;
 import static schedulers.Utils.*;
 
 class SchedulerMain {
-    public static String planId = "2";
+    public static int planId = 1;
 
     public static void main(String[] args) throws Exception {
-        var plan = newPlan(
-                Instant.parse("2033-09-17T00:00:00Z"),
-                Instant.parse("2033-09-18T00:00:00Z"));
+        var plan = getPlan(planId, Instant.parse("2033-09-17T00:00:00Z"), Instant.parse("2033-09-18T00:00:00Z"));
 
         resimulate(plan);
         runScheduler(new ScheduleDownlinks(), plan);
         resimulate(plan);
 
-        System.out.println("=== Plan ===");
-
-        serializePlan(plan);
+        commit(planId, plan);
     }
 
     private static PlanImpl newPlan(Instant planStart, Instant planEnd) {
@@ -49,6 +45,34 @@ class SchedulerMain {
         return plan;
     }
 
+    private static PlanImpl getPlan(int planId, Instant planStart, Instant planEnd) {
+        var service = initializeMerlinService();
+        var directives = service.getPlanActivityDirectives(planId);
+        List<Directive<AnyDirective>> directivesList = new ArrayList<>();
+        for (var directive : directives.getActivitiesById().values()) {
+            directivesList.add(newDirective(directive.serializedActivity().getTypeName(), directive.serializedActivity().getArguments(), $(directive.startOffset())));
+        }
+        return new PlanImpl(
+                planStart,
+                new Interval($(ZERO),
+                        $(durationBetweenInstants(planStart, planEnd)),
+                        Interval.Inclusivity.Inclusive, Interval.Inclusivity.Inclusive),
+                new MutableObject<>(null),
+                directivesList);
+    }
+
+    static Directive<AnyDirective> newDirective(String type, Map<String, SerializedValue> arguments, Duration startTime) {
+        return new Directive<>(new AnyDirective(arguments), type, 0L, type, startTime);
+    }
+
+    private static GraphQLMerlinService initializeMerlinService() {
+        try {
+            return new GraphQLMerlinService(new URI("http://localhost:8080/v1/graphql"), "aerie");
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private static void serializePlan(PlanImpl plan) {
         final var directives = plan.directives();
         directives.sort(Comparator.comparingLong($ -> $($.getStartTime()).in(MICROSECONDS)));
@@ -57,6 +81,11 @@ class SchedulerMain {
             System.out.println("{\"start_offset\": \"" + directive.getStartTime().toISO8601() + "\", \"type\": \"" + directive.getType() + "\", \"arguments\": " + argumentsToJson(directive.getInner().getArguments()) + ", \"plan_id\": " + planId + "},");
 //            System.out.println(instantPlusDuration(plan.startTime(), $(directive.getStartTime())) + ": " + directive.getType() + directive.component1().component1());
         }
+    }
+
+    private static void commit(int planId, PlanImpl plan) {
+        var service = initializeMerlinService();
+        service.createActivityDirectives(planId, plan.newDirectives());
     }
 
     static String argumentsToJson(Map<String, SerializedValue> arguments) {
@@ -96,7 +125,7 @@ class SchedulerMain {
             @Override
             public void addActivity(Instant startTime, Downlink activity) {
                 checkStartTime(startTime);
-                plan.directives().add(new Directive<>(new AnyDirective(new DownlinkMapper().new InputMapper().getArguments(activity)), "Downlink", 0L, "Downlink", $(durationBetweenInstants(plan.startTime(), startTime))));
+                plan.addDirective(newDirective("Downlink", new DownlinkMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
             }
         });
     }
