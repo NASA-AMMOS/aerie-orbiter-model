@@ -1,4 +1,4 @@
-package gov.nasa.jpl.mro.schedulers;
+package schedulers;
 
 import java.time.Instant;
 

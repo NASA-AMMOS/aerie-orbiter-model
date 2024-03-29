@@ -1,4 +1,4 @@
-package gov.nasa.jpl.mro.schedulers;
+package schedulers;
 
 import gov.nasa.jpl.aerie.merlin.driver.ActivityDirectiveId;
 import gov.nasa.jpl.aerie.merlin.driver.SimulationResults;

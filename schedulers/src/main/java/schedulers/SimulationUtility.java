@@ -1,4 +1,4 @@
-package gov.nasa.jpl.mro.schedulers;
+package schedulers;
 
 import gov.nasa.jpl.aerie.merlin.driver.*;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;

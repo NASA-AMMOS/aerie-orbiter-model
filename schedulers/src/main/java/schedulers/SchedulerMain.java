@@ -1,11 +1,10 @@
-package gov.nasa.jpl.mro.schedulers;
+package schedulers;
 
 import gov.nasa.jpl.aerie.merlin.driver.ActivityDirective;
 import gov.nasa.jpl.aerie.merlin.driver.ActivityDirectiveId;
 import gov.nasa.jpl.aerie.merlin.driver.SimulationResults;
 import gov.nasa.jpl.aerie.merlin.driver.json.SerializedValueJsonParser;
 import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
-import gov.nasa.jpl.aerie.scheduling.procedural.SchedulingProcedure;
 import gov.nasa.jpl.aerie.timeline.Interval;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.AnyDirective;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.Directive;
@@ -21,7 +20,7 @@ import java.util.Map;
 
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.MICROSECONDS;
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.ZERO;
-import static gov.nasa.jpl.mro.schedulers.Utils.*;
+import static schedulers.Utils.*;
 
 class SchedulerMain {
     public static String planId = "2";

@@ -1,4 +1,4 @@
-package gov.nasa.jpl.mro.schedulers;
+package schedulers;
 
 import gov.nasa.jpl.aerie.scheduling.procedural.SchedulingProcedure;
 import gov.nasa.jpl.aerie.timeline.collections.profiles.Numbers;

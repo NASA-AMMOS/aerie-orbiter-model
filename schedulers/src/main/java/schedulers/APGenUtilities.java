@@ -1,4 +1,4 @@
-package gov.nasa.jpl.mro.schedulers;
+package schedulers;
 
 import missionmodel.Instants;
 import spice.basic.CSPICE;
