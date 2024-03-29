@@ -2,7 +2,7 @@ import json
 import requests
 
 api_url = 'http://localhost:8080/v1/graphql' # https://aerie-dev.jpl.nasa.gov:8080/v1/graphql
-plan_id = 9
+plan_id = 13
 
 query = '''
   mutation InsertActivities($activities: [activity_directive_insert_input!]!) {
@@ -28,20 +28,20 @@ activities = [
     'plan_id': plan_id,
     'start_offset': '00:00:00',
     'type': 'AddSpacecraftEclipses'
+  },
+  {
+    'arguments': {'searchDuration': 86400000000,
+                  'observer': "DSS-24",
+                  'target': "-660",
+                  'occultingBody': "VENUS",
+                  'stepSize': 1800000000,
+                  'useDSK': False },
+    'metadata': {},
+    'name': 'AddOccultations',
+    'plan_id': plan_id,
+    'start_offset': '00:00:00',
+    'type': 'AddOccultations'
   }
-  # {
-  #   'arguments': {'searchDuration': 24:00:00,
-  #                 'observer': "DSS-24",
-  #                 'target': "-660",
-  #                 'occultingBody': "VENUS",
-  #                 'stepSize': "00:30:00",
-  #                 'useDSK': False },
-  #   'metadata': {},
-  #   'name': 'AddOccultations',
-  #   'plan_id': plan_id,
-  #   'start_offset': '00:00:00',
-  #   'type': 'AddOccultations'
-  # }
 ]
 
 response = requests.post(
