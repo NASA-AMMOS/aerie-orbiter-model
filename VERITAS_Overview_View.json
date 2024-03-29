@@ -29,9 +29,9 @@
         "rows": [
           {
             "id": 0,
-            "name": "Activities",
+            "name": "Geometry Activities",
             "yAxes": [],
-            "height": 131.16668701171875,
+            "height": 99.16668701171875,
             "layers": [
               {
                 "id": 0,
@@ -40,20 +40,15 @@
                   "activity": {
                     "types": [
                       "AddApoapsis",
-                      "AddOccultations",
                       "AddPeriapsis",
-                      "AddSpacecraftEclipses",
                       "Apoapsis",
                       "EnterOccultation",
                       "ExitOccultation",
                       "Periapsis",
-                      "SolarArrayDeployment",
                       "SpacecraftEnterEclipse",
                       "SpacecraftExitEclipse",
-                      "ChangeVisarDataMode",
-                      "Downlink",
-                      "VISAR_Off",
-                      "VISAR_On"
+                      "AddOccultations",
+                      "AddSpacecraftEclipses"
                     ]
                   }
                 },
@@ -78,7 +73,11 @@
                   "text": "Y Axis (18)"
                 },
                 "tickCount": 4,
-                "domainFitMode": "fitTimeWindow",
+                "scaleDomain": [
+                  0.718749086812922,
+                  0.7188356517843155
+                ],
+                "domainFitMode": "manual",
                 "renderTickLines": true
               }
             ],
@@ -236,6 +235,44 @@
             "horizontalGuides": []
           },
           {
+            "id": 24,
+            "name": "Earth Occultations",
+            "yAxes": [
+              {
+                "id": 23,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (23)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 80,
+            "layers": [
+              {
+                "id": 18,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "Occultation"
+                    ]
+                  }
+                },
+                "yAxisId": 23,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
             "id": 6,
             "name": "Power Prod and Demand",
             "yAxes": [
@@ -380,37 +417,145 @@
             "horizontalGuides": []
           },
           {
-            "id": 24,
-            "name": "Row",
+            "id": 28,
+            "name": "Instrument Activities",
+            "yAxes": [],
+            "height": 80,
+            "layers": [
+              {
+                "id": 22,
+                "name": "",
+                "filter": {
+                  "activity": {
+                    "types": [
+                      "VISAR_On",
+                      "VISAR_Off",
+                      "ChangeVisarDataMode"
+                    ]
+                  }
+                },
+                "yAxisId": null,
+                "chartType": "activity",
+                "activityColor": "#fcdd8f",
+                "activityHeight": 16
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 25,
+            "name": "VISAR State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 19,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "visarState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 24,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 26,
+            "name": "VISAR Data Mode",
             "yAxes": [
               {
-                "id": 23,
+                "id": 24,
                 "color": "#1b1d1e",
                 "label": {
-                  "text": "Y Axis (23)"
+                  "text": "Y Axis (24)"
                 },
                 "tickCount": 4,
                 "domainFitMode": "fitTimeWindow",
                 "renderTickLines": true
               }
             ],
-            "height": 80,
+            "height": 160,
             "layers": [
               {
-                "id": 18,
+                "id": 20,
                 "name": "",
                 "filter": {
                   "resource": {
                     "names": [
-                      "Occultation"
+                      "VisarDataMode"
                     ]
                   }
                 },
-                "yAxisId": 23,
-                "chartType": "line",
-                "lineColor": "#283593",
-                "lineWidth": 1,
-                "pointRadius": 2
+                "opacity": 0.8,
+                "yAxisId": 24,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 27,
+            "name": "KA-Band TWTA",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 21,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "ka_twtaState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 29,
+            "name": "Telecom Activities",
+            "yAxes": [],
+            "height": 80,
+            "layers": [
+              {
+                "id": 23,
+                "name": "",
+                "filter": {
+                  "activity": {
+                    "types": [
+                      "Downlink"
+                    ]
+                  }
+                },
+                "yAxisId": null,
+                "chartType": "activity",
+                "activityColor": "#C9E4F5",
+                "activityHeight": 16
               }
             ],
             "expanded": true,
