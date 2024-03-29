@@ -28,8 +28,8 @@ class SchedulerMain {
 
     public static void main(String[] args) throws Exception {
         var plan = newPlan(
-                Instant.parse("2032-01-15T00:00:00Z"),
-                Instant.parse("2032-02-12T00:00:00Z"));
+                Instant.parse("2033-09-17T00:00:00Z"),
+                Instant.parse("2033-09-18T00:00:00Z"));
 
         resimulate(plan);
         runScheduler(new ScheduleDownlinks(), plan);
