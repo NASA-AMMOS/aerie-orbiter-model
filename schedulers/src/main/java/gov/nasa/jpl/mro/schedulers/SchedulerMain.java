@@ -6,36 +6,30 @@ import gov.nasa.jpl.aerie.merlin.driver.SimulationResults;
 import gov.nasa.jpl.aerie.merlin.driver.json.SerializedValueJsonParser;
 import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
 import gov.nasa.jpl.aerie.scheduling.procedural.SchedulingProcedure;
-import gov.nasa.jpl.aerie.spice.SpiceLoader;
 import gov.nasa.jpl.aerie.timeline.Interval;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.AnyDirective;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.Directive;
 import missionmodel.generated.telecom.DownlinkMapper;
 import missionmodel.telecom.Downlink;
 import org.apache.commons.lang3.mutable.MutableObject;
-import spice.basic.CSPICE;
 
-import java.io.File;
-import java.nio.file.Path;
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.*;
+import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.MICROSECONDS;
+import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.ZERO;
 import static gov.nasa.jpl.mro.schedulers.Utils.*;
 
 class SchedulerMain {
     public static String planId = "2";
 
     public static void main(String[] args) throws Exception {
-        Instant planStart = Instant.parse("2032-01-15T00:00:00Z");
-        Instant planEnd = Instant.parse("2032-02-12T00:00:00Z");
-
-        PlanImpl plan = new PlanImpl(
-                planStart,
-                new Interval($(ZERO), $(durationBetweenInstants(planStart, planEnd)), Interval.Inclusivity.Inclusive, Interval.Inclusivity.Inclusive),
-                new MutableObject<>(null),
-                new ArrayList<>()
-        );
+        var plan = newPlan(
+                Instant.parse("2032-01-15T00:00:00Z"),
+                Instant.parse("2032-02-12T00:00:00Z"));
 
         resimulate(plan);
         runScheduler(new ScheduleDownlinks(), plan);
@@ -44,6 +38,16 @@ class SchedulerMain {
         System.out.println("=== Plan ===");
 
         serializePlan(plan);
+    }
+
+    private static PlanImpl newPlan(Instant planStart, Instant planEnd) {
+        PlanImpl plan = new PlanImpl(
+                planStart,
+                new Interval($(ZERO), $(durationBetweenInstants(planStart, planEnd)), Interval.Inclusivity.Inclusive, Interval.Inclusivity.Inclusive),
+                new MutableObject<>(null),
+                new ArrayList<>()
+        );
+        return plan;
     }
 
     private static void serializePlan(PlanImpl plan) {
