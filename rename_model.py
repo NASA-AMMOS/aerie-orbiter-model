@@ -8,13 +8,12 @@ response = requests.post(
     headers={ 'x-hasura-admin-secret': 'aerie' },
     json={
         'query': '''
-        mutation UpdateUploadedJars($name: String!, $path: bytea) {
-          update_uploaded_file_many(updates:{ _set: {name: $name, path: $path}, where: {name: {_like: "%.jar"}}}) {
+        mutation UpdateUploadedJars($path: bytea) {
+          update_uploaded_file_many(updates:{ _set: {path: $path}, where: {name: {_like: "%.jar"}}}) {
             affected_rows
           }
         }''',
         'variables': {
-            "name": jar_name,
             "path": jar_name
         },
     },

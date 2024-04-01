@@ -2,7 +2,7 @@ import json
 import requests
 
 api_url = 'http://localhost:8080/v1/graphql' # https://aerie-dev.jpl.nasa.gov:8080/v1/graphql
-plan_id = 13
+plan_id = 1
 
 query = '''
   mutation InsertActivities($activities: [activity_directive_insert_input!]!) {

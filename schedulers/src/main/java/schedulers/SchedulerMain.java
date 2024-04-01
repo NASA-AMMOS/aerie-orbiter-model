@@ -10,7 +10,13 @@ import gov.nasa.jpl.aerie.timeline.Interval;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.AnyDirective;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.Directive;
 import missionmodel.generated.telecom.DownlinkMapper;
+import missionmodel.generated.visar.ChangeVisarDataModeMapper;
+import missionmodel.generated.visar.VISAR_OffMapper;
+import missionmodel.generated.visar.VISAR_OnMapper;
 import missionmodel.telecom.Downlink;
+import missionmodel.visar.ChangeVisarDataMode;
+import missionmodel.visar.VISAR_Off;
+import missionmodel.visar.VISAR_On;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 import java.net.URI;
@@ -29,8 +35,8 @@ class SchedulerMain {
         var plan = getPlan(planId, Instant.parse("2033-09-17T00:00:00Z"), Instant.parse("2033-09-18T00:00:00Z"));
 
         resimulate(plan);
+        runScheduler(new ScheduleDemObservations(), plan);
         runScheduler(new ScheduleDownlinks(), plan);
-        resimulate(plan);
 
         commit(planId, plan);
     }
@@ -126,6 +132,24 @@ class SchedulerMain {
             public void addActivity(Instant startTime, Downlink activity) {
                 checkStartTime(startTime);
                 plan.addDirective(newDirective("Downlink", new DownlinkMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
+            }
+
+            @Override
+            public void addActivity(Instant startTime, VISAR_On activity) {
+              checkStartTime(startTime);
+              plan.addDirective(newDirective("VISAR_On", new VISAR_OnMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
+            }
+
+            @Override
+            public void addActivity(Instant startTime, VISAR_Off activity) {
+              checkStartTime(startTime);
+              plan.addDirective(newDirective("VISAR_Off", new VISAR_OffMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
+            }
+
+            @Override
+            public void addActivity(Instant startTime, ChangeVisarDataMode activity) {
+              checkStartTime(startTime);
+              plan.addDirective(newDirective("ChangeVisarDataMode", new ChangeVisarDataModeMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
             }
         });
     }

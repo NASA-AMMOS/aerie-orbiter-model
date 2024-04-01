@@ -1,37 +1,69 @@
 package schedulers;
 
+import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
+import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
+import gov.nasa.jpl.aerie.timeline.collections.profiles.Constants;
 import gov.nasa.jpl.aerie.timeline.collections.profiles.Numbers;
 import gov.nasa.jpl.aerie.timeline.payloads.Segment;
 import gov.nasa.jpl.aerie.timeline.plan.Plan;
 import missionmodel.telecom.Downlink;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.*;
+import static schedulers.Constants.NUM_DL_ORBITS;
+import static schedulers.Constants.NUM_SCI_ORBITS;
+import static schedulers.Utils.durationBetweenInstants;
 import static schedulers.Utils.instantPlusDuration;
 
 public class ScheduleDownlinks implements SchedulingProcedure {
     @Override
     public void procedure(Instant begint, Instant cutofft, Plan plan, PlanManipulator planManipulator) {
-//        plan.isStale("/geometric")
+      //        plan.isStale("/geometric")
+      // Find intervals where there are NOT occultations
+      Numbers<Number> resource = plan.resource("Occultation", Numbers::deserialize);
+      ArrayList<Pair<Instant,Instant>> windows= new ArrayList<>();
+      for (final var segment : resource.greaterThanOrEqualTo(new Numbers<>(1.0)).collect(plan.totalBounds())) {
+        if (segment.getValue().equals(false)) {
+          var start = plan.toAbsolute(segment.getInterval().getStart());
+          var end = plan.toAbsolute(segment.getInterval().getEnd());
+          windows.add(Pair.of(start, end));
+        }
+      }
 
-        // Reconcile the current state of the plan/simulation with what this goal
-        // would like to assume
+      // Find Periapsis Times
+      ArrayList<Pair<Instant,Instant>> periapsisWindows= new ArrayList<>();
+      for (final var segment : plan.resource("Periapsis_VENUS", Constants::deserialize).collect(plan.totalBounds())) {
+        if (segment.getValue().equals(SerializedValue.of(true))) {
+          var start = plan.toAbsolute(segment.getInterval().getStart());
+          var end = plan.toAbsolute(segment.getInterval().getEnd());
+          periapsisWindows.add(Pair.of(start, end));
+        }
+      }
 
-//        Numbers<Number> resource = plan.resource("/geometric", Numbers::deserialize);
-//        final var windows = resource.greaterThan(new Numbers<>(2.0)).and(resource.lessThan(new Numbers<>(10.0))).collect(plan.totalBounds());
-
-//        List<Segment<Boolean>> segments = windows;
-//        for (final Segment<Boolean> window : windows) {
-//            if (window.getValue().booleanValue() == false) continue;
-//
-//            window.getInterval().getStart();
-//            window.getInterval().getEnd();
-//        }
-
-        planManipulator.addActivity(instantPlusDuration(begint, duration(3, HOURS)), new Downlink(duration(1, HOUR), 12));
-
+      // Only schedule downlinks on DL orbits
+      for(int i = 0; i < periapsisWindows.size(); i++){
+        Integer SciOrDl =  i % (NUM_SCI_ORBITS + NUM_DL_ORBITS);
+        if (SciOrDl >= NUM_SCI_ORBITS) {
+          Instant orbStartTime = periapsisWindows.get(i).getLeft();
+          // Search through all non-occultation windows and find ones that are within this orbit
+          for (Pair<Instant,Instant> window: windows) {
+            Instant nexOrbStartTime = cutofft;
+            if (i + 1 != periapsisWindows.size()) {
+              nexOrbStartTime = periapsisWindows.get(i + 1).getLeft();
+            }
+            // Schedule downlinks for those within this orbit
+            if (window.getLeft().isAfter(orbStartTime) && window.getLeft().isBefore(nexOrbStartTime)) {
+              planManipulator.addActivity(
+                instantPlusDuration(begint, durationBetweenInstants(begint, window.getLeft())),
+                new Downlink(durationBetweenInstants(window.getLeft(), window.getRight()), 1000));
+            }
+          }
+        }
+      }
 //        plan.markStale("/geometric")
     }
 }

@@ -12,9 +12,9 @@ import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.delay;
 public class EnterOccultation {
 
   @Parameter
-  public String body;
+  public String body = "";
   @Parameter
-  public String station;
+  public String station = "DSS-24";
 
   public EnterOccultation() {};
 

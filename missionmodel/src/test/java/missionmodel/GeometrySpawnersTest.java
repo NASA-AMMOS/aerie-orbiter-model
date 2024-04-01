@@ -68,6 +68,19 @@ public class GeometrySpawnersTest {
       true
     ));
 
+    // AddPeriapsis spawner
+    schedule.put(new ActivityDirectiveId(1L), new ActivityDirective(
+      Duration.ZERO,
+      "AddPeriapsis",
+      Map.of("searchDuration", SerializedValue.of(86400000000L),
+        "body", SerializedValue.of("-660"),
+        "target", SerializedValue.of("VENUS"),
+        "stepSize", SerializedValue.of(1800000000L),
+        "maxDistanceFilter", SerializedValue.of(10000.0)),
+      null,
+      true
+    ));
+
     final var results = simulate(geomConfig, simulationStartTime, simulationDuration, schedule);
   }
 

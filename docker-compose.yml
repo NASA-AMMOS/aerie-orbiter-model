@@ -188,6 +188,6 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ./missionmodel/build/libs/
+      device: ${PWD}/missionmodel/build/libs/
 
   postgres_data:
