@@ -1,7 +1,7 @@
 import requests
 
 api_url = 'http://localhost:8080/v1/graphql' # https://aerie-dev.jpl.nasa.gov:8080/v1/graphql
-model_id = 1
+model_id = 2
 
 def post(query, **variables):
     return requests.post(

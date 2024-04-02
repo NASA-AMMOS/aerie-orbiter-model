@@ -29,13 +29,13 @@ import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.ZERO;
 import static schedulers.Utils.*;
 
 class SchedulerMain {
-    public static int planId = 1;
+    public static int planId = 5;
 
     public static void main(String[] args) throws Exception {
         var plan = getPlan(planId, Instant.parse("2033-09-17T00:00:00Z"), Instant.parse("2033-09-18T00:00:00Z"));
 
         resimulate(plan);
-        runScheduler(new ScheduleDemObservations(), plan);
+        runScheduler(new ScheduleVisarObservations(), plan);
         runScheduler(new ScheduleDownlinks(), plan);
 
         commit(planId, plan);

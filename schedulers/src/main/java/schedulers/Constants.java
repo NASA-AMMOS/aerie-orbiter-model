@@ -9,5 +9,6 @@ public class Constants {
     public static final Integer NUM_SCI_ORBITS = 11;
     public static final Integer NUM_DL_ORBITS = 5;
     public static final Duration VISAR_WARMUP_DUR = Duration.of(1, Duration.HOUR);
+    public static final Duration DL_BUFFER_DUR = Duration.of(1, Duration.MINUTE);
 
 }

@@ -14,10 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.*;
-import static schedulers.Constants.NUM_DL_ORBITS;
-import static schedulers.Constants.NUM_SCI_ORBITS;
-import static schedulers.Utils.durationBetweenInstants;
-import static schedulers.Utils.instantPlusDuration;
+import static schedulers.Constants.*;
+import static schedulers.Utils.*;
 
 public class ScheduleDownlinks implements SchedulingProcedure {
     @Override
@@ -57,9 +55,10 @@ public class ScheduleDownlinks implements SchedulingProcedure {
             }
             // Schedule downlinks for those within this orbit
             if (window.getLeft().isAfter(orbStartTime) && window.getLeft().isBefore(nexOrbStartTime)) {
-              planManipulator.addActivity(
-                instantPlusDuration(begint, durationBetweenInstants(begint, window.getLeft())),
-                new Downlink(durationBetweenInstants(window.getLeft(), window.getRight()), 1000));
+              Instant dlStart = instantPlusDuration( window.getLeft(), DL_BUFFER_DUR);
+              Instant dlEnd = instantMinusDuration( window.getRight(), DL_BUFFER_DUR);
+              planManipulator.addActivity( dlStart,
+                new Downlink(durationBetweenInstants(dlStart, dlEnd), 1000));
             }
           }
         }

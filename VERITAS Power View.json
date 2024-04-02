@@ -2,16 +2,16 @@
   "plan": {
     "grid": {
       "leftSplit": false,
-      "leftHidden": false,
+      "leftHidden": true,
       "rightSplit": false,
-      "columnSizes": "0.630923fr 3px 3.58783fr 3px 0.781446fr",
+      "columnSizes": "2.95315fr 3px 1.41612fr",
       "middleSplit": false,
       "rightHidden": false,
       "leftRowSizes": "1fr",
       "rightRowSizes": "1fr",
       "middleRowSizes": "1fr",
       "leftComponentTop": "ActivityTypesPanel",
-      "rightComponentTop": "ActivityFormPanel",
+      "rightComponentTop": "IFramePanel",
       "leftComponentBottom": "SimulationPanel",
       "rightComponentBottom": "TimelineEditorPanel",
       "middleComponentBottom": "ActivityDirectivesTablePanel"
@@ -19,7 +19,7 @@
     "iFrames": [
       {
         "id": 0,
-        "src": "https://eyes.nasa.gov/apps/mars2020/#/home",
+        "src": "https://eyes.nasa.gov/apps/solar-system/#/venus",
         "title": "Mars-2020-EDL"
       }
     ],
@@ -28,19 +28,20 @@
         "id": 0,
         "rows": [
           {
-            "id": 0,
-            "name": "Periapsis",
+            "id": 28,
+            "name": "Instrument Activities",
             "yAxes": [],
             "height": 80,
             "layers": [
               {
-                "id": 0,
+                "id": 22,
                 "name": "",
                 "filter": {
                   "activity": {
                     "types": [
-                      "AddPeriapsis",
-                      "Periapsis"
+                      "VISAR_On",
+                      "VISAR_Off",
+                      "ChangeVisarDataMode"
                     ]
                   }
                 },
@@ -50,179 +51,33 @@
                 "activityHeight": 16
               }
             ],
-            "expanded": true,
+            "expanded": false,
             "autoAdjustHeight": false,
             "horizontalGuides": []
           },
           {
-            "id": 21,
-            "name": "Sun Range",
-            "yAxes": [
-              {
-                "id": 18,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "Y Axis (18)"
-                },
-                "tickCount": 4,
-                "scaleDomain": [
-                  0.718749086812922,
-                  0.7188356517843155
-                ],
-                "domainFitMode": "manual",
-                "renderTickLines": true
-              }
-            ],
+            "id": 29,
+            "name": "Telecom Activities",
+            "yAxes": [],
             "height": 80,
             "layers": [
               {
-                "id": 12,
+                "id": 23,
                 "name": "",
                 "filter": {
-                  "resource": {
-                    "names": [
-                      "SpacecraftBodyRange_SUN_AU"
+                  "activity": {
+                    "types": [
+                      "Downlink"
                     ]
                   }
                 },
-                "yAxisId": 18,
-                "chartType": "line",
-                "lineColor": "#ff7f0e",
-                "lineWidth": 1,
-                "pointRadius": 2
+                "yAxisId": null,
+                "chartType": "activity",
+                "activityColor": "#C9E4F5",
+                "activityHeight": 16
               }
             ],
-            "expanded": true,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
-            "id": 22,
-            "name": "Spacecraft Altitude",
-            "yAxes": [
-              {
-                "id": 19,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "Y Axis (19)"
-                },
-                "tickCount": 4,
-                "domainFitMode": "fitTimeWindow",
-                "renderTickLines": true
-              }
-            ],
-            "height": 80,
-            "layers": [
-              {
-                "id": 13,
-                "name": "",
-                "filter": {
-                  "resource": {
-                    "names": [
-                      "SpacecraftAltitude_VENUS"
-                    ]
-                  }
-                },
-                "yAxisId": 19,
-                "chartType": "line",
-                "lineColor": "#283593",
-                "lineWidth": 1,
-                "pointRadius": 2
-              }
-            ],
-            "expanded": true,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
-            "id": 23,
-            "name": "Solar Phase Angle",
-            "yAxes": [
-              {
-                "id": 20,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "Y Axis (20)"
-                },
-                "tickCount": 4,
-                "domainFitMode": "fitTimeWindow",
-                "renderTickLines": true
-              }
-            ],
-            "height": 80,
-            "layers": [
-              {
-                "id": 14,
-                "name": "",
-                "filter": {
-                  "resource": {
-                    "names": [
-                      "IlluminationAnglesByBody_VENUS_phase"
-                    ]
-                  }
-                },
-                "yAxisId": 20,
-                "chartType": "line",
-                "lineColor": "#8d41b0",
-                "lineWidth": 1,
-                "pointRadius": 2
-              }
-            ],
-            "expanded": true,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
-            "id": 2,
-            "name": "Spacecraft Eclipse",
-            "yAxes": [
-              {
-                "id": 22,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "Eclipse Factor"
-                },
-                "tickCount": 4,
-                "domainFitMode": "fitTimeWindow",
-                "renderTickLines": true
-              }
-            ],
-            "height": 80,
-            "layers": [
-              {
-                "id": 2,
-                "name": "",
-                "filter": {
-                  "resource": {
-                    "names": [
-                      "AnySpacecraftEclipse"
-                    ]
-                  }
-                },
-                "opacity": 0.8,
-                "yAxisId": 1,
-                "chartType": "x-range",
-                "colorScheme": "schemeTableau10",
-                "showAsLinePlot": false
-              },
-              {
-                "id": 17,
-                "name": "",
-                "filter": {
-                  "resource": {
-                    "names": [
-                      "FractionOfSunNotInEclipse"
-                    ]
-                  }
-                },
-                "yAxisId": 22,
-                "chartType": "line",
-                "lineColor": "#283593",
-                "lineWidth": 1,
-                "pointRadius": 2
-              }
-            ],
-            "expanded": true,
+            "expanded": false,
             "autoAdjustHeight": false,
             "horizontalGuides": []
           },
@@ -333,72 +188,6 @@
             ]
           },
           {
-            "id": 10,
-            "name": "BodyHalfAngleSize_VENUS",
-            "yAxes": [
-              {
-                "id": 9,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "BodyHalfAngleSize_VENUS (deg)"
-                },
-                "tickCount": 5,
-                "domainFitMode": "fitTimeWindow",
-                "renderTickLines": true
-              }
-            ],
-            "height": 100,
-            "layers": [
-              {
-                "id": 10,
-                "name": "",
-                "filter": {
-                  "resource": {
-                    "names": [
-                      "BodyHalfAngleSize_VENUS"
-                    ]
-                  }
-                },
-                "yAxisId": 9,
-                "chartType": "line",
-                "lineColor": "#283593",
-                "lineWidth": 1,
-                "pointRadius": 2
-              }
-            ],
-            "expanded": true,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
-            "id": 28,
-            "name": "Instrument Activities",
-            "yAxes": [],
-            "height": 80,
-            "layers": [
-              {
-                "id": 22,
-                "name": "",
-                "filter": {
-                  "activity": {
-                    "types": [
-                      "VISAR_On",
-                      "VISAR_Off",
-                      "ChangeVisarDataMode"
-                    ]
-                  }
-                },
-                "yAxisId": null,
-                "chartType": "activity",
-                "activityColor": "#fcdd8f",
-                "activityHeight": 16
-              }
-            ],
-            "expanded": true,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
             "id": 25,
             "name": "VISAR State",
             "yAxes": [],
@@ -426,84 +215,35 @@
             "horizontalGuides": []
           },
           {
-            "id": 26,
-            "name": "VISAR Data Mode",
-            "yAxes": [
-              {
-                "id": 24,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "Y Axis (24)"
-                },
-                "tickCount": 4,
-                "domainFitMode": "fitTimeWindow",
-                "renderTickLines": true
-              }
-            ],
+            "autoAdjustHeight": false,
+            "expanded": false,
             "height": 160,
+            "horizontalGuides": [],
+            "id": 39,
             "layers": [
               {
-                "id": 20,
-                "name": "",
-                "filter": {
-                  "resource": {
-                    "names": [
-                      "VisarDataMode"
-                    ]
-                  }
-                },
-                "opacity": 0.8,
-                "yAxisId": 24,
                 "chartType": "x-range",
                 "colorScheme": "schemeTableau10",
-                "showAsLinePlot": false
-              }
-            ],
-            "expanded": false,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
-            "id": 24,
-            "name": "Earth Occultations",
-            "yAxes": [
-              {
-                "id": 23,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "Y Axis (23)"
-                },
-                "tickCount": 4,
-                "domainFitMode": "fitTimeWindow",
-                "renderTickLines": true
-              }
-            ],
-            "height": 80,
-            "layers": [
-              {
-                "id": 18,
-                "name": "",
                 "filter": {
                   "resource": {
                     "names": [
-                      "Occultation"
+                      "visar_heatersState"
                     ]
                   }
                 },
-                "yAxisId": 23,
-                "chartType": "line",
-                "lineColor": "#283593",
-                "lineWidth": 1,
-                "pointRadius": 2
+                "id": 33,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
               }
             ],
-            "expanded": false,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
+            "name": "VISAR Heaters",
+            "yAxes": []
           },
           {
             "id": 27,
-            "name": "KA-Band TWTA",
+            "name": "KA-Band TWTA State",
             "yAxes": [],
             "height": 160,
             "layers": [
@@ -529,30 +269,274 @@
             "horizontalGuides": []
           },
           {
-            "id": 29,
-            "name": "Telecom Activities",
+            "id": 30,
+            "name": "EPS State",
             "yAxes": [],
             "height": 80,
             "layers": [
               {
-                "id": 23,
+                "id": 24,
                 "name": "",
                 "filter": {
-                  "activity": {
-                    "types": [
-                      "Downlink"
+                  "resource": {
+                    "names": [
+                      "epsState"
                     ]
                   }
                 },
-                "yAxisId": null,
-                "chartType": "activity",
-                "activityColor": "#C9E4F5",
-                "activityHeight": 16
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
               }
             ],
-            "expanded": true,
+            "expanded": false,
             "autoAdjustHeight": false,
             "horizontalGuides": []
+          },
+          {
+            "id": 31,
+            "name": "CDH State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 25,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "cdhState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 32,
+            "name": "SSR State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 26,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "ssrState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 33,
+            "name": "Heaters State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 27,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "heatersState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 34,
+            "name": "ADCS State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 28,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "adcsState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 35,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "harnesslossState"
+                    ]
+                  }
+                },
+                "id": 29,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "Harness Loss",
+            "yAxes": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 36,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "propState"
+                    ]
+                  }
+                },
+                "id": 30,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "Prop State",
+            "yAxes": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 37,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "idstState"
+                    ]
+                  }
+                },
+                "id": 31,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "IDST State",
+            "yAxes": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 38,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "vemState"
+                    ]
+                  }
+                },
+                "id": 32,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "VEM State",
+            "yAxes": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 40,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "vem_heatersState"
+                    ]
+                  }
+                },
+                "id": 34,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "VEM Heaters",
+            "yAxes": []
           }
         ],
         "marginLeft": 190,
@@ -1012,7 +996,7 @@
           "sort": null,
           "colId": "id",
           "pivot": false,
-          "width": 93.93000000000006,
+          "width": 40.58299999999997,
           "pinned": null,
           "aggFunc": null,
           "rowGroup": false,
@@ -1068,7 +1052,7 @@
           "sort": null,
           "colId": "name",
           "pivot": false,
-          "width": 235,
+          "width": 97,
           "pinned": null,
           "aggFunc": null,
           "rowGroup": false,
@@ -1096,7 +1080,7 @@
           "sort": null,
           "colId": "start_offset",
           "pivot": false,
-          "width": 235,
+          "width": 97,
           "pinned": null,
           "aggFunc": null,
           "rowGroup": false,
@@ -1124,7 +1108,7 @@
           "sort": null,
           "colId": "type",
           "pivot": false,
-          "width": 235,
+          "width": 97,
           "pinned": null,
           "aggFunc": null,
           "rowGroup": false,
@@ -1138,7 +1122,7 @@
           "sort": null,
           "colId": "arguments_1",
           "pivot": false,
-          "width": 235,
+          "width": 97,
           "pinned": null,
           "aggFunc": null,
           "rowGroup": false,

@@ -2,7 +2,7 @@ import json
 import requests
 
 api_url = 'http://localhost:8080/v1/graphql' # https://aerie-dev.jpl.nasa.gov:8080/v1/graphql
-plan_id = 1
+plan_id = 5
 
 query = '''
   mutation InsertActivities($activities: [activity_directive_insert_input!]!) {
@@ -41,6 +41,18 @@ activities = [
     'plan_id': plan_id,
     'start_offset': '00:00:00',
     'type': 'AddOccultations'
+  },
+  {
+    'arguments': {'searchDuration': 86400000000,
+                  'body': "-660",
+                  'target': "VENUS",
+                  'stepSize': 1800000000,
+                  'maxDistanceFilter': 10000 },
+    'metadata': {},
+    'name': 'AddPeriapsis',
+    'plan_id': plan_id,
+    'start_offset': '00:00:00',
+    'type': 'AddPeriapsis'
   }
 ]
 

@@ -2,6 +2,7 @@ package missionmodel.telecom;
 
 import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
+import gov.nasa.jpl.aerie.merlin.framework.annotations.Export.Validation;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
 import missionmodel.Mission;
 import missionmodel.geometry.resources.EclipseTypes;
@@ -15,16 +16,22 @@ import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.delay;
 public class Downlink {
 
   @Export.Parameter
-  public Duration duration;
+  public Duration duration = Duration.HOUR;
 
   @Export.Parameter
-  public Double bitRate;
+  public Double bitRate = 1000.0;
 
   public Downlink() {}
 
   public Downlink(Duration duration, double bitRate) {
     this.duration = duration;
     this.bitRate = bitRate;
+  }
+
+  @Validation("Collection rate is beyond buffer limit of 2000 kbps")
+  @Validation.Subject("bitRate")
+  public boolean validateBitRate() {
+    return bitRate <= 2000.0;
   }
 
   @ActivityType.ControllableDuration(parameterName = "duration")

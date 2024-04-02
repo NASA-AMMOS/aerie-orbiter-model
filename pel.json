@@ -1,0 +1,636 @@
+{
+    "name": "Demo System PEL",
+    "version": "1.0",
+    "power_loads": [
+        {
+            "name": "EPS",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 29.8,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 29.8,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Safe",
+                    "CBE_power_usage": {
+                        "value": 32.8,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 32.8,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "CDH",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 30.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 30.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SSR",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 19.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 19.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Downlink",
+                    "CBE_power_usage": {
+                        "value": 21.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 21.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Heaters",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Survival",
+                    "CBE_power_usage": {
+                        "value": 114.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 114.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Downlink",
+                    "CBE_power_usage": {
+                        "value": 173.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 173.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Visar_On",
+                    "CBE_power_usage": {
+                        "value": 137.6,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 137.6,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ADCS",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 79.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 79.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Turning",
+                    "CBE_power_usage": {
+                        "value": 187.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 187.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "HarnessLoss",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Downlink",
+                    "CBE_power_usage": {
+                        "value": 38.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 38.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Visar_On",
+                    "CBE_power_usage": {
+                        "value": 38.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 38.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Visar_Off",
+                    "CBE_power_usage": {
+                        "value": 16.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 16.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "TCM",
+                    "CBE_power_usage": {
+                        "value": 61.9,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 61.9,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Prop",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Downlink",
+                    "CBE_power_usage": {
+                        "value": 67.7,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 67.7,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "TCM",
+                    "CBE_power_usage": {
+                        "value": 249.6,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 249.6,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "IDST",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 16.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 16.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Downlink",
+                    "CBE_power_usage": {
+                        "value": 22.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 22.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "X_TWTA",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 173.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 173.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Ka_TWTA",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 135.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 135.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "VISAR",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Downlink",
+                    "CBE_power_usage": {
+                        "value": 198.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 198.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 543.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 543.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "VEM",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "On",
+                    "CBE_power_usage": {
+                        "value": 13.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 13.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "VISAR_Heaters",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Cruise_Survival",
+                    "CBE_power_usage": {
+                        "value": 164.8,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 164.8,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Science_Survival",
+                    "CBE_power_usage": {
+                        "value": 9.5,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 9.5,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "VEM_Heaters",
+            "load_type": "states",
+            "power_states": [
+                {
+                    "state": "Off",
+                    "CBE_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 0.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Cruise_Survival",
+                    "CBE_power_usage": {
+                        "value": 123.1,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 123.1,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "VEM_On",
+                    "CBE_power_usage": {
+                        "value": 92.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 92.4,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Downlink",
+                    "CBE_power_usage": {
+                        "value": 14.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 14.0,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                },
+                {
+                    "state": "Science_Survival",
+                    "CBE_power_usage": {
+                        "value": 105.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    },
+                    "MEV_power_usage": {
+                        "value": 105.2,
+                        "units": "W",
+                        "quantity_type": "electrical power"
+                    }
+                }
+            ]
+        }
+    ]
+}

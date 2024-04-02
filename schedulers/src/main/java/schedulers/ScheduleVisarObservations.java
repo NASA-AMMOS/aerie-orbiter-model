@@ -2,11 +2,8 @@ package schedulers;
 
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
 import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
-import gov.nasa.jpl.aerie.timeline.collections.profiles.Numbers;
 import gov.nasa.jpl.aerie.timeline.collections.profiles.Constants;
-import gov.nasa.jpl.aerie.timeline.payloads.Segment;
 import gov.nasa.jpl.aerie.timeline.plan.Plan;
-import missionmodel.telecom.Downlink;
 import missionmodel.visar.ChangeVisarDataMode;
 import missionmodel.visar.VISAR_Off;
 import missionmodel.visar.VISAR_On;
@@ -15,14 +12,12 @@ import org.apache.commons.lang3.tuple.Pair;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.List;
 
-import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.*;
 import static schedulers.Constants.*;
 import static schedulers.Utils.*;
 import static schedulers.Utils.durationBetweenInstants;
 
-public class ScheduleDemObservations implements SchedulingProcedure {
+public class ScheduleVisarObservations implements SchedulingProcedure {
   @Override
   public void procedure(Instant begint, Instant cutofft, Plan plan, PlanManipulator planManipulator) {
 
