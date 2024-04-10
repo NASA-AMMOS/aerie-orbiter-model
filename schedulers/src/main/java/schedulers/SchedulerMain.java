@@ -32,7 +32,7 @@ class SchedulerMain {
     public static int planId = 1;
 
     public static void main(String[] args) throws Exception {
-        var plan = getPlan(planId, Instant.parse("2024-04-09T00:00:00Z"), Instant.parse("2033-04-10T00:00:00Z"));
+        var plan = getPlan(planId, Instant.parse("2024-04-09T00:00:00Z"), Instant.parse("2024-04-10T00:00:00Z"));
 
         resimulate(plan);
         runScheduler(new ScheduleRadarObservations(), plan);
