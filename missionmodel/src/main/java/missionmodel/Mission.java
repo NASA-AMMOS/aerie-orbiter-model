@@ -5,16 +5,11 @@ package missionmodel;
 import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
 import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
 import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
-import gov.nasa.jpl.aerie.contrib.streamline.core.Resources;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteResources;
-import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.PolynomialResources;
 import gov.nasa.jpl.time.Duration;
-import missionmodel.geometry.interfaces.GeometryInformationNotAvailableException;
 import missionmodel.geometry.resources.GenericGeometryResources;
-import missionmodel.geometry.spiceinterpolation.Body;
-import missionmodel.geometry.spiceinterpolation.BodyGeometryGenerator;
 import missionmodel.geometry.spiceinterpolation.GenericGeometryCalculator;
 import missionmodel.geometry.spiceinterpolation.SpiceResourcePopulater;
 import missionmodel.power.BatteryModel;
@@ -22,16 +17,11 @@ import missionmodel.power.GenericSolarArray;
 import missionmodel.power.pel.PELModel;
 import missionmodel.spice.Spice;
 import missionmodel.telecom.TelecomModel;
-import missionmodel.visar.VisarModel;
+import missionmodel.radar.RadarModel;
 import spice.basic.SpiceErrorException;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.time.Instant;
-import java.util.HashMap;
 
 import static gov.nasa.jpl.aerie.contrib.metadata.UnitRegistrar.withUnit;
 import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.resource;
@@ -78,7 +68,7 @@ public final class Mission {
   public final TelecomModel telecomModel;
 
   // VISAR Member Variables
-  public final VisarModel visarModel;
+  public final RadarModel radarModel;
 
   public Mission(final gov.nasa.jpl.aerie.merlin.framework.Registrar registrar, final Instant planStart, final Configuration config) {
     this.errorRegistrar = new Registrar(registrar, Registrar.ErrorBehavior.Log);
@@ -133,8 +123,8 @@ public final class Mission {
     telecomModel.registerResources(errorRegistrar);
 
     //
-    // Initialize VISAR Model
+    // Initialize Radar Model
     //
-    this.visarModel = new VisarModel(errorRegistrar, config);
+    this.radarModel = new RadarModel(errorRegistrar, config);
   }
 }

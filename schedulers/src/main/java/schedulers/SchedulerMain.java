@@ -9,14 +9,14 @@ import gov.nasa.jpl.aerie.timeline.Duration;
 import gov.nasa.jpl.aerie.timeline.Interval;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.AnyDirective;
 import gov.nasa.jpl.aerie.timeline.payloads.activities.Directive;
+import missionmodel.generated.radar.ChangeRadarDataModeMapper;
+import missionmodel.generated.radar.Radar_OffMapper;
+import missionmodel.generated.radar.Radar_OnMapper;
 import missionmodel.generated.telecom.DownlinkMapper;
-import missionmodel.generated.visar.ChangeVisarDataModeMapper;
-import missionmodel.generated.visar.VISAR_OffMapper;
-import missionmodel.generated.visar.VISAR_OnMapper;
+import missionmodel.radar.ChangeRadarDataMode;
 import missionmodel.telecom.Downlink;
-import missionmodel.visar.ChangeVisarDataMode;
-import missionmodel.visar.VISAR_Off;
-import missionmodel.visar.VISAR_On;
+import missionmodel.radar.Radar_Off;
+import missionmodel.radar.Radar_On;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 import java.net.URI;
@@ -29,13 +29,13 @@ import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.ZERO;
 import static schedulers.Utils.*;
 
 class SchedulerMain {
-    public static int planId = 5;
+    public static int planId = 1;
 
     public static void main(String[] args) throws Exception {
-        var plan = getPlan(planId, Instant.parse("2033-09-17T00:00:00Z"), Instant.parse("2033-09-18T00:00:00Z"));
+        var plan = getPlan(planId, Instant.parse("2024-04-09T00:00:00Z"), Instant.parse("2033-04-10T00:00:00Z"));
 
         resimulate(plan);
-        runScheduler(new ScheduleVisarObservations(), plan);
+        runScheduler(new ScheduleRadarObservations(), plan);
         runScheduler(new ScheduleDownlinks(), plan);
 
         commit(planId, plan);
@@ -135,21 +135,21 @@ class SchedulerMain {
             }
 
             @Override
-            public void addActivity(Instant startTime, VISAR_On activity) {
+            public void addActivity(Instant startTime, Radar_On activity) {
               checkStartTime(startTime);
-              plan.addDirective(newDirective("VISAR_On", new VISAR_OnMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
+              plan.addDirective(newDirective("Radar_On", new Radar_OnMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
             }
 
             @Override
-            public void addActivity(Instant startTime, VISAR_Off activity) {
+            public void addActivity(Instant startTime, Radar_Off activity) {
               checkStartTime(startTime);
-              plan.addDirective(newDirective("VISAR_Off", new VISAR_OffMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
+              plan.addDirective(newDirective("Radar_Off", new Radar_OffMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
             }
 
             @Override
-            public void addActivity(Instant startTime, ChangeVisarDataMode activity) {
+            public void addActivity(Instant startTime, ChangeRadarDataMode activity) {
               checkStartTime(startTime);
-              plan.addDirective(newDirective("ChangeVisarDataMode", new ChangeVisarDataModeMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
+              plan.addDirective(newDirective("ChangeRadarDataMode", new ChangeRadarDataModeMapper().new InputMapper().getArguments(activity), $(durationBetweenInstants(plan.startTime(), startTime))));
             }
         });
     }

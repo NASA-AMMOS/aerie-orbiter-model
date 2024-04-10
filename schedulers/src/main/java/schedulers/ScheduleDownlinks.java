@@ -34,7 +34,7 @@ public class ScheduleDownlinks implements SchedulingProcedure {
 
       // Find Periapsis Times
       ArrayList<Pair<Instant,Instant>> periapsisWindows= new ArrayList<>();
-      for (final var segment : plan.resource("Periapsis_VENUS", Constants::deserialize).collect(plan.totalBounds())) {
+      for (final var segment : plan.resource("Periapsis_MARS", Constants::deserialize).collect(plan.totalBounds())) {
         if (segment.getValue().equals(SerializedValue.of(true))) {
           var start = plan.toAbsolute(segment.getInterval().getStart());
           var end = plan.toAbsolute(segment.getInterval().getEnd());

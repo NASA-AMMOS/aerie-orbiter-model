@@ -17,8 +17,8 @@
         "useDSK": false,
         "calculationPeriods": [
           {
-            "begin": "2031-05-28T12:00:00.000",
-            "end": "2033-09-19T00:00:00.000",
+            "begin": "2024-01-02T00:00:00.000",
+            "end": "2024-05-06T00:00:00.000",
             "minTimeStep": "01:00:00",
             "maxTimeStep": "01:00:00",
             "threshold": 0.1
@@ -55,8 +55,8 @@
         "useDSK": false,
         "calculationPeriods": [
           {
-            "begin": "2031-05-28T12:00:00.000",
-            "end": "2033-09-19T00:00:00.000",
+            "begin": "2024-01-02T00:00:00.000",
+            "end": "2024-05-06T00:00:00.000",
             "minTimeStep": "01:00:00",
             "maxTimeStep": "01:00:00",
             "threshold": 0.1
@@ -76,10 +76,10 @@
         "calculationPeriods": []
       }
     },
-    "VENUS": {
-      "NaifID": 299,
-      "NaifFrame": "IAU_VENUS",
-      "Albedo": 0.689,
+    "MARS": {
+      "NaifID": 499,
+      "NaifFrame": "IAU_MARS",
+      "Albedo": 0.17,
       "Trajectory": {
         "calculateAltitude": true,
         "calculateEarthSpacecraftBodyAngle": true,
@@ -93,11 +93,11 @@
         "useDSK": false,
         "calculationPeriods": [
           {
-          "begin": "2031-05-28T12:00:00.000",
-          "end": "2033-09-19T00:00:00.000",
-          "minTimeStep": "00:00:30",
-          "maxTimeStep": "00:00:30",
-          "threshold": 0.1
+            "begin": "2024-01-02T00:00:00.000",
+            "end": "2024-05-06T00:00:00.000",
+            "minTimeStep": "00:00:30",
+            "maxTimeStep": "00:00:30",
+            "threshold": 0.1
           }
         ]
       },

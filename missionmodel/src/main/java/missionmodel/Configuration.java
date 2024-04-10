@@ -10,7 +10,7 @@ import static gov.nasa.jpl.aerie.merlin.framework.annotations.Export.Template;
 
 public record Configuration(Integer spiceSpacecraftId, PowerModelSimConfig powerConfig, Double offPointAngle) {
 
-  public static final Integer DEFAULT_SPICE_SCID = -660; // VERITAS
+  public static final Integer DEFAULT_SPICE_SCID = -74; // MRO
 
   public static final PowerModelSimConfig POWER_CONFIG = PowerModelSimConfig.defaultConfiguration();
 

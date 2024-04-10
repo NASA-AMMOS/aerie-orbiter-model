@@ -2,7 +2,7 @@ import json
 import requests
 
 api_url = 'http://localhost:8080/v1/graphql' # https://aerie-dev.jpl.nasa.gov:8080/v1/graphql
-plan_id = 5
+plan_id = 1
 
 query = '''
   mutation InsertActivities($activities: [activity_directive_insert_input!]!) {
@@ -18,9 +18,9 @@ query = '''
 activities = [
   {
     'arguments': {'searchDuration': 86400000000,
-                  'observer': "-660",
+                  'observer': "-74",
                   'target': "SUN",
-                  'occultingBody': "VENUS",
+                  'occultingBody': "MARS",
                   'stepSize': 1800000000,
                   'useDSK': False },
     'metadata': {},
@@ -32,8 +32,8 @@ activities = [
   {
     'arguments': {'searchDuration': 86400000000,
                   'observer': "DSS-24",
-                  'target': "-660",
-                  'occultingBody': "VENUS",
+                  'target': "-74",
+                  'occultingBody': "MARS",
                   'stepSize': 1800000000,
                   'useDSK': False },
     'metadata': {},
@@ -44,8 +44,8 @@ activities = [
   },
   {
     'arguments': {'searchDuration': 86400000000,
-                  'body': "-660",
-                  'target': "VENUS",
+                  'body': "-74",
+                  'target': "MARS",
                   'stepSize': 1800000000,
                   'maxDistanceFilter': 10000 },
     'metadata': {},

@@ -1,2 +1,2 @@
-rootProject.name = 'veritas'
+rootProject.name = 'mars-sat'
 include('missionmodel', 'schedulers')
