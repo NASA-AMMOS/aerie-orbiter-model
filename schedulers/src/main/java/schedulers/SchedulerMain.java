@@ -80,11 +80,11 @@ class SchedulerMain {
     }
 
     private static void serializePlan(PlanImpl plan) {
-        final var directives = plan.directives();
+        final var directives = plan.directivesList();
         directives.sort(Comparator.comparingLong($ -> $($.getStartTime()).in(MICROSECONDS)));
         for (final var directive : directives) {
 
-            System.out.println("{\"start_offset\": \"" + directive.getStartTime().toISO8601() + "\", \"type\": \"" + directive.getType() + "\", \"arguments\": " + argumentsToJson(directive.getInner().getArguments()) + ", \"plan_id\": " + planId + "},");
+            System.out.println("{\"start_offset\": \"" + directive.getStartTime().toISO8601() + "\", \"type\": \"" + directive.getType() + "\", \"arguments\": " + argumentsToJson(directive.inner.arguments) + ", \"plan_id\": " + planId + "},");
 //            System.out.println(instantPlusDuration(plan.startTime(), $(directive.getStartTime())) + ": " + directive.getType() + directive.component1().component1());
         }
     }
@@ -99,7 +99,7 @@ class SchedulerMain {
     }
 
     private static void printPlan(PlanImpl plan) {
-        final var directives = plan.directives();
+        final var directives = plan.directivesList();
         directives.sort(Comparator.comparingLong($ -> $($.getStartTime()).in(MICROSECONDS)));
         for (final var directive : directives) {
             System.out.println(instantPlusDuration(plan.startTime(), $(directive.getStartTime())) + ": " + directive.getType() + directive.component1().component1());
@@ -110,12 +110,12 @@ class SchedulerMain {
         System.out.println("Resimulating...");
         final var schedule = new LinkedHashMap<ActivityDirectiveId, ActivityDirective>();
         var count = 0L;
-        for (final var directive : planImpl.directives()) {
+        for (final var directive : planImpl.directivesList()) {
             schedule.put(
                     new ActivityDirectiveId(count++),
                     new ActivityDirective($(directive.getStartTime()), directive.getType(), directive.component1().component1(), null, true));
         }
-        SimulationResults newResults = SimulationUtility.simulate(schedule, planImpl.toAbsolute(planImpl.bounds().getStart()), $(planImpl.bounds().getEnd()).minus($(planImpl.bounds().getStart())));
+        SimulationResults newResults = SimulationUtility.simulate(schedule, planImpl.toAbsolute(planImpl.bounds().start), $(planImpl.bounds().end).minus($(planImpl.bounds().start)));
         planImpl.latestSimulationResults().setValue(newResults);
     }
 
@@ -124,7 +124,7 @@ class SchedulerMain {
     }
 
     private static void runScheduler(SchedulingProcedure scheduler, PlanImpl plan, Instant scheduleStartTime) throws Exception {
-        scheduler.procedure(plan.startTime(), instantPlusDuration(plan.startTime(), $(plan.bounds().getEnd())), plan, new SchedulingProcedure.PlanManipulator() {
+        scheduler.procedure(plan.startTime(), instantPlusDuration(plan.startTime(), $(plan.bounds().end)), plan, new SchedulingProcedure.PlanManipulator() {
             void checkStartTime(Instant startTime) {
                 if (startTime.isBefore(plan.startTime())) throw new IllegalArgumentException("Cannot schedule activities outside the plan");
             }

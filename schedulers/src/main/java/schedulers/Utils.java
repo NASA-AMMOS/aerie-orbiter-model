@@ -56,9 +56,9 @@ public class Utils {
         for (final var segment : plan.resource(resourceName, gov.nasa.jpl.aerie.timeline.collections.profiles.Constants::deserialize)
                 .filterByDuration(new Interval($(minDuration), $(maxDuration), Inclusive, Inclusive))
                 .collect(plan.totalBounds())) {
-            if (segment.getValue().equals(value)) {
-                var start = plan.toAbsolute(segment.getInterval().getStart());
-                var end = plan.toAbsolute(segment.getInterval().getEnd());
+            if (segment.component2().equals(value)) {
+                var start = plan.toAbsolute(segment.getInterval().start);
+                var end = plan.toAbsolute(segment.getInterval().end);
                 if (result == null) result = start;
                 mywindows.add(start);
                 mywindows.add(end);
@@ -80,6 +80,6 @@ public class Utils {
             throw new IllegalArgumentException("Requested time is out of bounds: " + instant);
         final var resource = plan.resource(resourceName, gov.nasa.jpl.aerie.timeline.collections.profiles.Constants::deserialize);
         final var collected = resource.collect(new Interval(plan.toRelative(instant), plan.toRelative(instant), Inclusive, Inclusive));
-        return collected.get(0).getValue();
+        return collected.get(0).component2();
     }
 }

@@ -25,9 +25,9 @@ public class ScheduleDownlinks implements SchedulingProcedure {
       Numbers<Number> resource = plan.resource("Occultation", Numbers::deserialize);
       ArrayList<Pair<Instant,Instant>> windows= new ArrayList<>();
       for (final var segment : resource.greaterThanOrEqualTo(new Numbers<>(1.0)).collect(plan.totalBounds())) {
-        if (segment.getValue().equals(false)) {
-          var start = plan.toAbsolute(segment.getInterval().getStart());
-          var end = plan.toAbsolute(segment.getInterval().getEnd());
+        if (segment.component2().equals(false)) {
+          var start = plan.toAbsolute(segment.getInterval().start);
+          var end = plan.toAbsolute(segment.getInterval().end);
           windows.add(Pair.of(start, end));
         }
       }
@@ -35,9 +35,9 @@ public class ScheduleDownlinks implements SchedulingProcedure {
       // Find Periapsis Times
       ArrayList<Pair<Instant,Instant>> periapsisWindows= new ArrayList<>();
       for (final var segment : plan.resource("Periapsis_MARS", Constants::deserialize).collect(plan.totalBounds())) {
-        if (segment.getValue().equals(SerializedValue.of(true))) {
-          var start = plan.toAbsolute(segment.getInterval().getStart());
-          var end = plan.toAbsolute(segment.getInterval().getEnd());
+        if (segment.component2().equals(SerializedValue.of(true))) {
+          var start = plan.toAbsolute(segment.getInterval().start);
+          var end = plan.toAbsolute(segment.getInterval().end);
           periapsisWindows.add(Pair.of(start, end));
         }
       }

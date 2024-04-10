@@ -17,6 +17,8 @@ import gov.nasa.jpl.aerie.timeline.payloads.activities.Instance;
 import gov.nasa.jpl.aerie.timeline.plan.Plan;
 import kotlin.jvm.functions.Function1;
 import org.apache.commons.lang3.mutable.Mutable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -94,7 +96,7 @@ public final class PlanImpl implements Plan {
     }
 
     @Override
-    public Instances<AnyInstance> allActivityInstances() {
+    public Instances<AnyInstance> instances() {
         final var result = new ArrayList<Instance<AnyInstance>>();
         for (final var entry : latestSimulationResults.getValue().simulatedActivities.entrySet()) {
             final var simulatedActivity = entry.getValue();
@@ -115,17 +117,40 @@ public final class PlanImpl implements Plan {
                     unfinishedActivity.type(),
                     entry.getKey().id(),
                     entry.getValue().directiveId().map(ActivityDirectiveId::id).orElse(-1L),
-                    new Interval($(activityStart), bounds.getEnd(), Inclusive, Inclusive)
+                    new Interval($(activityStart), bounds.end, Inclusive, Inclusive)
             ));
         }
         return new Instances<>(result);
     }
 
     @Override
-    public Directives<AnyDirective> allActivityDirectives() {
+    public Directives<AnyDirective> directives() {
         ArrayList<Directive<AnyDirective>> temp = new ArrayList<>(directives);
         temp.addAll(newDirectives);
         return new Directives<>(temp);
+    }
+
+    @Override
+    public Directives<AnyDirective> directives(String string) {
+        return this.directives();
+    }
+
+    @NotNull
+    @Override
+    public <A> Instances<A> instances(@Nullable String s, @NotNull Function1<? super SerializedValue, ? extends A> function1) {
+        throw new UnsupportedOperationException();
+    }
+
+    @NotNull
+    @Override
+    public <A> Directives<A> directives(@Nullable String s, @NotNull Function1<? super SerializedValue, ? extends A> function1) {
+        throw new UnsupportedOperationException();
+    }
+
+    @NotNull
+    @Override
+    public Instances<AnyInstance> instances(@NotNull String s) {
+        throw new UnsupportedOperationException();
     }
 
     public Instant startTime() {
@@ -140,7 +165,7 @@ public final class PlanImpl implements Plan {
         return latestSimulationResults;
     }
 
-    public List<Directive<AnyDirective>> directives() {
+    public List<Directive<AnyDirective>> directivesList() {
         var temp = new ArrayList<>(directives);
         temp.addAll(newDirectives);
         return temp;

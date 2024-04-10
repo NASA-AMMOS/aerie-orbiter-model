@@ -155,7 +155,7 @@ public record GraphQLMerlinService(URI merlinGraphqlURI, String hasuraGraphQlAdm
 
 
             var arguments = Json.createObjectBuilder();
-            for (final var arg : act.getInner().getArguments().entrySet()) {
+            for (final var arg : act.inner.arguments.entrySet()) {
                 arguments.add(arg.getKey(), serializedValueP.unparse(arg.getValue()));
             }
             insertionObject.add("arguments", arguments);

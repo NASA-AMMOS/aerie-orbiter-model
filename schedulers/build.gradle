@@ -1,5 +1,6 @@
 plugins {
     id 'application'
+    id "org.jetbrains.kotlin.jvm" version "1.9.22"
 }
 
 java {
@@ -10,7 +11,7 @@ java {
 
 
 application {
-    mainClass = 'gov.nasa.jpl.mro.schedulers.SchedulerMain'
+    mainClass = 'schedulers.SchedulerMain'
 }
 
 // The runtime environment this JAR will be deployed to doesn't know what this model depends on.
@@ -42,11 +43,13 @@ tasks.named('test') {
 }
 
 dependencies {
-    implementation 'gov.nasa.jpl.aerie:contrib:+'
+    implementation 'gov.nasa.jpl.aerie:contrib:2.7.0'
+    implementation 'gov.nasa.jpl.aerie:merlin-driver:2.7.0'
+    implementation 'gov.nasa.jpl.aerie:parsing-utilities:2.7.0'
 
     testImplementation 'gov.nasa.jpl.aerie:merlin-framework-junit:+'
     testImplementation 'org.junit.jupiter:junit-jupiter:+'
-    implementation files("../third-party/timeline-all.jar")
+    implementation files("../third-party/timeline.jar")
     implementation project(":missionmodel")
     implementation 'org.postgresql:postgresql:42.6.1' // For PGInterval parsing
 }
