@@ -155,7 +155,7 @@
                     }
                 },
                 {
-                    "state": "Visar_On",
+                    "state": "Radar_On",
                     "CBE_power_usage": {
                         "value": 137.6,
                         "units": "W",
@@ -245,7 +245,7 @@
                     }
                 },
                 {
-                    "state": "Visar_On",
+                    "state": "Radar_On",
                     "CBE_power_usage": {
                         "value": 38.2,
                         "units": "W",
@@ -258,7 +258,7 @@
                     }
                 },
                 {
-                    "state": "Visar_Off",
+                    "state": "Radar_Off",
                     "CBE_power_usage": {
                         "value": 16.2,
                         "units": "W",
@@ -440,7 +440,7 @@
             ]
         },
         {
-            "name": "VISAR",
+            "name": "Radar",
             "load_type": "states",
             "power_states": [
                 {
@@ -485,7 +485,7 @@
             ]
         },
         {
-            "name": "VEM",
+            "name": "Imager",
             "load_type": "states",
             "power_states": [
                 {
@@ -517,7 +517,7 @@
             ]
         },
         {
-            "name": "VISAR_Heaters",
+            "name": "Radar_Heaters",
             "load_type": "states",
             "power_states": [
                 {
@@ -562,7 +562,7 @@
             ]
         },
         {
-            "name": "VEM_Heaters",
+            "name": "Imager_Heaters",
             "load_type": "states",
             "power_states": [
                 {
@@ -592,7 +592,7 @@
                     }
                 },
                 {
-                    "state": "VEM_On",
+                    "state": "Imager_On",
                     "CBE_power_usage": {
                         "value": 92.4,
                         "units": "W",

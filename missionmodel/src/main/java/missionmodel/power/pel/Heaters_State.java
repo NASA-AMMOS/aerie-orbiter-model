@@ -6,7 +6,7 @@ package missionmodel.power.pel;
 public enum Heaters_State {
 	SURVIVAL(114.4, 114.4),
 	DOWNLINK(173.4, 173.4),
-	VISAR_ON(137.6, 137.6);
+	RADAR_ON(137.6, 137.6);
     private final double cbeload;
     private final double mevload;
     Heaters_State(double cbeload, double mevload) {

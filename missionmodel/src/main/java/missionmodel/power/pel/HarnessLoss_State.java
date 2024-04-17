@@ -6,8 +6,8 @@ package missionmodel.power.pel;
 public enum HarnessLoss_State {
 	OFF(0.0, 0.0),
 	DOWNLINK(38.4, 38.4),
-	VISAR_ON(38.2, 38.2),
-	VISAR_OFF(16.2, 16.2),
+	RADAR_ON(38.2, 38.2),
+	RADAR_OFF(16.2, 16.2),
 	TCM(61.9, 61.9);
     private final double cbeload;
     private final double mevload;

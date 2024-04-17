@@ -1,15 +1,14 @@
 package missionmodel.power.pel;
 /**
-* This class was created by the pel_java_generator.py script and represents the state(s) of the VISAR as an enum and associates
+* This class was created by the pel_java_generator.py script and represents the state(s) of the Imager as an enum and associates
 * a power load amount to each state.
 */
-public enum VISAR_State {
+public enum Imager_State {
 	OFF(0.0, 0.0),
-	DOWNLINK(198.2, 198.2),
-	ON(543.2, 543.2);
+	ON(13.0, 13.0);
     private final double cbeload;
     private final double mevload;
-    VISAR_State(double cbeload, double mevload) {
+    Imager_State(double cbeload, double mevload) {
         this.cbeload = cbeload;  //in Watts
         this.mevload = mevload; //in Watts
     }

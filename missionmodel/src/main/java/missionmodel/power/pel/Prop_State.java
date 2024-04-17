@@ -4,7 +4,7 @@ package missionmodel.power.pel;
 * a power load amount to each state.
 */
 public enum Prop_State {
-	OFF(0.9, 0.9),
+	OFF(0.0, 0.0),
 	DOWNLINK(67.7, 67.7),
 	TCM(249.6, 249.6);
     private final double cbeload;

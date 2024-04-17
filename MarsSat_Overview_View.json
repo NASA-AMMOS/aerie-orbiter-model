@@ -382,9 +382,9 @@
                 "filter": {
                   "activity": {
                     "types": [
-                      "VISAR_On",
-                      "VISAR_Off",
-                      "ChangeVisarDataMode"
+                      "Radar_On",
+                      "Radar_Off",
+                      "ChangeRadarDataMode"
                     ]
                   }
                 },
@@ -400,7 +400,7 @@
           },
           {
             "id": 25,
-            "name": "VISAR State",
+            "name": "Radar State",
             "yAxes": [],
             "height": 160,
             "layers": [
@@ -410,7 +410,7 @@
                 "filter": {
                   "resource": {
                     "names": [
-                      "visarState"
+                      "radarState"
                     ]
                   }
                 },
@@ -427,7 +427,7 @@
           },
           {
             "id": 26,
-            "name": "VISAR Data Mode",
+            "name": "Radar Data Mode",
             "yAxes": [
               {
                 "id": 24,
@@ -448,7 +448,7 @@
                 "filter": {
                   "resource": {
                     "names": [
-                      "VisarDataMode"
+                      "RadarDataMode"
                     ]
                   }
                 },

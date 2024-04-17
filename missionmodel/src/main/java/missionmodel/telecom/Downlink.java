@@ -46,11 +46,11 @@ public class Downlink {
     set(model.pel.ssrState, SSR_State.DOWNLINK);
     set(model.pel.idstState, IDST_State.DOWNLINK);
     set(model.pel.propState, Prop_State.DOWNLINK);
-    VISAR_State prevVisarState = currentValue(model.pel.visarState);
-    set(model.pel.visarState, VISAR_State.DOWNLINK);
-    set(model.pel.visar_heatersState, VISAR_Heaters_State.OFF);
-    VEM_State prevVemState = currentValue(model.pel.vemState);
-    set(model.pel.vem_heatersState, VEM_Heaters_State.DOWNLINK);
+    Radar_State prevVisarState = currentValue(model.pel.radarState);
+    set(model.pel.radarState, Radar_State.DOWNLINK);
+    set(model.pel.radar_heatersState, Radar_Heaters_State.OFF);
+    Imager_State prevVemState = currentValue(model.pel.imagerState);
+    set(model.pel.imager_heatersState, Imager_Heaters_State.DOWNLINK);
     set(model.pel.heatersState, Heaters_State.DOWNLINK);
     set(model.pel.harnesslossState, HarnessLoss_State.DOWNLINK);
 
@@ -63,24 +63,24 @@ public class Downlink {
     set(model.pel.idstState, IDST_State.ON);
     set(model.pel.propState, Prop_State.OFF);
 
-    if(prevVisarState.equals(VISAR_State.OFF)) {
-      set(model.pel.visarState, VISAR_State.OFF);
-      set(model.pel.visar_heatersState, VISAR_Heaters_State.SCIENCE_SURVIVAL);
+    if(prevVisarState.equals(Radar_State.OFF)) {
+      set(model.pel.radarState, Radar_State.OFF);
+      set(model.pel.radar_heatersState, Radar_Heaters_State.SCIENCE_SURVIVAL);
       set(model.pel.heatersState, Heaters_State.SURVIVAL);
-      set(model.pel.harnesslossState, HarnessLoss_State.VISAR_OFF);
+      set(model.pel.harnesslossState, HarnessLoss_State.RADAR_OFF);
     } else {
-      set(model.pel.visarState, VISAR_State.ON);
-      set(model.pel.visar_heatersState, VISAR_Heaters_State.OFF);
-      set(model.pel.heatersState, Heaters_State.VISAR_ON);
-      set(model.pel.harnesslossState, HarnessLoss_State.VISAR_ON);
+      set(model.pel.radarState, Radar_State.ON);
+      set(model.pel.radar_heatersState, Radar_Heaters_State.OFF);
+      set(model.pel.heatersState, Heaters_State.RADAR_ON);
+      set(model.pel.harnesslossState, HarnessLoss_State.RADAR_ON);
     }
 
-    if(prevVemState.equals(VEM_State.OFF)) {
-      set(model.pel.vemState, VEM_State.OFF);
-      set(model.pel.vem_heatersState, VEM_Heaters_State.SCIENCE_SURVIVAL);
+    if(prevVemState.equals(Imager_State.OFF)) {
+      set(model.pel.imagerState, Imager_State.OFF);
+      set(model.pel.imager_heatersState, Imager_Heaters_State.SCIENCE_SURVIVAL);
     } else {
-      set(model.pel.vemState, VEM_State.ON);
-      set(model.pel.vem_heatersState, VEM_Heaters_State.VEM_ON);
+      set(model.pel.imagerState, Imager_State.ON);
+      set(model.pel.imager_heatersState, Imager_Heaters_State.IMAGER_ON);
     }
 
     // Send data from s/c to ground

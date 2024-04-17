@@ -1,15 +1,17 @@
 package missionmodel.power.pel;
 /**
-* This class was created by the pel_java_generator.py script and represents the state(s) of the VISAR_Heaters as an enum and associates
+* This class was created by the pel_java_generator.py script and represents the state(s) of the Imager_Heaters as an enum and associates
 * a power load amount to each state.
 */
-public enum VISAR_Heaters_State {
+public enum Imager_Heaters_State {
 	OFF(0.0, 0.0),
-	CRUISE_SURVIVAL(164.8, 164.8),
-	SCIENCE_SURVIVAL(9.5, 9.5);
+	CRUISE_SURVIVAL(123.1, 123.1),
+	IMAGER_ON(92.4, 92.4),
+	DOWNLINK(14.0, 14.0),
+	SCIENCE_SURVIVAL(105.2, 105.2);
     private final double cbeload;
     private final double mevload;
-    VISAR_Heaters_State(double cbeload, double mevload) {
+    Imager_Heaters_State(double cbeload, double mevload) {
         this.cbeload = cbeload;  //in Watts
         this.mevload = mevload; //in Watts
     }

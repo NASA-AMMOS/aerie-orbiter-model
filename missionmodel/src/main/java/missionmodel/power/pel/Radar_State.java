@@ -1,14 +1,15 @@
 package missionmodel.power.pel;
 /**
-* This class was created by the pel_java_generator.py script and represents the state(s) of the VEM as an enum and associates
+* This class was created by the pel_java_generator.py script and represents the state(s) of the Radar as an enum and associates
 * a power load amount to each state.
 */
-public enum VEM_State {
+public enum Radar_State {
 	OFF(0.0, 0.0),
-	ON(13.0, 13.0);
+	DOWNLINK(198.2, 198.2),
+	ON(543.2, 543.2);
     private final double cbeload;
     private final double mevload;
-    VEM_State(double cbeload, double mevload) {
+    Radar_State(double cbeload, double mevload) {
         this.cbeload = cbeload;  //in Watts
         this.mevload = mevload; //in Watts
     }

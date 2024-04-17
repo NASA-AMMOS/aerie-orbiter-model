@@ -14,7 +14,7 @@ public record SolarArraySimConfig(ArrayDeploymentStates deploymentState,
 
     // Mechanical area of the arrays (m^2)
     // See VERITAS CSR Table F.2-9
-    public static final Double DEFAULT_ARRAY_MECH_AREA = 14.0;
+    public static final Double DEFAULT_ARRAY_MECH_AREA = 16.0;
 
     // Ratio between active cell and mechanical area on the
     // arrays (how dense are the arrays packed)
@@ -30,7 +30,7 @@ public record SolarArraySimConfig(ArrayDeploymentStates deploymentState,
 
     // Loss factor for other phenomenon/inefficiencies (e.g. shadowing,
     // cell mismatch, cover glass)
-    public static final Double DEFAULT_OTHER_LOSSES = 0.5866; // Currently fudge factor to get to ~5743 W default
+    public static final Double DEFAULT_OTHER_LOSSES = 0.9;
 
     // Loss factor for other phenomenon/inefficiencies (e.g. shadowing,
     // cell mismatch, cover glass)

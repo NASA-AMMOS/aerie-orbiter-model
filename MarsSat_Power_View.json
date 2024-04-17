@@ -19,7 +19,7 @@
     "iFrames": [
       {
         "id": 0,
-        "src": "https://eyes.nasa.gov/apps/solar-system/#/venus",
+        "src": "https://eyes.nasa.gov/apps/solar-system/#/mars",
         "title": "Mars-2020-EDL"
       }
     ],
@@ -39,9 +39,9 @@
                 "filter": {
                   "activity": {
                     "types": [
-                      "VISAR_On",
-                      "VISAR_Off",
-                      "ChangeVisarDataMode"
+                      "Radar_On",
+                      "Radar_Off",
+                      "ChangeRadarDataMode"
                     ]
                   }
                 },
@@ -189,7 +189,7 @@
           },
           {
             "id": 25,
-            "name": "VISAR State",
+            "name": "Radar State",
             "yAxes": [],
             "height": 160,
             "layers": [
@@ -199,7 +199,7 @@
                 "filter": {
                   "resource": {
                     "names": [
-                      "visarState"
+                      "radarState"
                     ]
                   }
                 },
@@ -227,7 +227,7 @@
                 "filter": {
                   "resource": {
                     "names": [
-                      "visar_heatersState"
+                      "radar_heatersState"
                     ]
                   }
                 },
@@ -238,7 +238,7 @@
                 "yAxisId": 18
               }
             ],
-            "name": "VISAR Heaters",
+            "name": "Radar Heaters",
             "yAxes": []
           },
           {
@@ -497,7 +497,7 @@
                 "filter": {
                   "resource": {
                     "names": [
-                      "vemState"
+                      "imagerState"
                     ]
                   }
                 },
@@ -508,7 +508,7 @@
                 "yAxisId": 18
               }
             ],
-            "name": "VEM State",
+            "name": "Imager State",
             "yAxes": []
           },
           {
@@ -524,7 +524,7 @@
                 "filter": {
                   "resource": {
                     "names": [
-                      "vem_heatersState"
+                      "imager_heatersState"
                     ]
                   }
                 },
@@ -535,7 +535,7 @@
                 "yAxisId": 18
               }
             ],
-            "name": "VEM Heaters",
+            "name": "Imager Heaters",
             "yAxes": []
           }
         ],

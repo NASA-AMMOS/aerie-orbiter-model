@@ -1,10 +1,11 @@
 package missionmodel.power.pel;
 
-import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
-import gov.nasa.jpl.aerie.contrib.serialization.mappers.EnumValueMapper;
-import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
-import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
+import gov.nasa.jpl.aerie.contrib.serialization.mappers.EnumValueMapper;
+import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
+
+import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
+import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
 
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteResources.add;
@@ -49,41 +50,41 @@ public class PELModel {
 	public MutableResource<Discrete<Ka_TWTA_State>> ka_twtaState;
 	public Resource<Discrete<Double>> ka_twtaLoad_CBE;
 	public Resource<Discrete<Double>> ka_twtaLoad_MEV;
-	public MutableResource<Discrete<VISAR_State>> visarState;
-	public Resource<Discrete<Double>> visarLoad_CBE;
-	public Resource<Discrete<Double>> visarLoad_MEV;
-	public MutableResource<Discrete<VEM_State>> vemState;
-	public Resource<Discrete<Double>> vemLoad_CBE;
-	public Resource<Discrete<Double>> vemLoad_MEV;
-	public MutableResource<Discrete<VISAR_Heaters_State>> visar_heatersState;
-	public Resource<Discrete<Double>> visar_heatersLoad_CBE;
-	public Resource<Discrete<Double>> visar_heatersLoad_MEV;
-	public MutableResource<Discrete<VEM_Heaters_State>> vem_heatersState;
-	public Resource<Discrete<Double>> vem_heatersLoad_CBE;
-	public Resource<Discrete<Double>> vem_heatersLoad_MEV;
+	public MutableResource<Discrete<Radar_State>> radarState;
+	public Resource<Discrete<Double>> radarLoad_CBE;
+	public Resource<Discrete<Double>> radarLoad_MEV;
+	public MutableResource<Discrete<Imager_State>> imagerState;
+	public Resource<Discrete<Double>> imagerLoad_CBE;
+	public Resource<Discrete<Double>> imagerLoad_MEV;
+	public MutableResource<Discrete<Radar_Heaters_State>> radar_heatersState;
+	public Resource<Discrete<Double>> radar_heatersLoad_CBE;
+	public Resource<Discrete<Double>> radar_heatersLoad_MEV;
+	public MutableResource<Discrete<Imager_Heaters_State>> imager_heatersState;
+	public Resource<Discrete<Double>> imager_heatersLoad_CBE;
+	public Resource<Discrete<Double>> imager_heatersLoad_MEV;
     public PELModel() {
-		this.epsState = MutableResource.resource( Discrete.discrete(EPS_State.ON));
+		this.epsState = MutableResource.resource( Discrete.discrete(EPS_State.OFF));
 		this.epsLoad_CBE = map( epsState, EPS_State::getCBELoad);
 		this.epsLoad_MEV = map( epsState, EPS_State::getMEVLoad);
-		this.cdhState = MutableResource.resource( Discrete.discrete(CDH_State.ON));
+		this.cdhState = MutableResource.resource( Discrete.discrete(CDH_State.OFF));
 		this.cdhLoad_CBE = map( cdhState, CDH_State::getCBELoad);
 		this.cdhLoad_MEV = map( cdhState, CDH_State::getMEVLoad);
-		this.ssrState = MutableResource.resource( Discrete.discrete(SSR_State.ON));
+		this.ssrState = MutableResource.resource( Discrete.discrete(SSR_State.OFF));
 		this.ssrLoad_CBE = map( ssrState, SSR_State::getCBELoad);
 		this.ssrLoad_MEV = map( ssrState, SSR_State::getMEVLoad);
 		this.heatersState = MutableResource.resource( Discrete.discrete(Heaters_State.SURVIVAL));
 		this.heatersLoad_CBE = map( heatersState, Heaters_State::getCBELoad);
 		this.heatersLoad_MEV = map( heatersState, Heaters_State::getMEVLoad);
-		this.adcsState = MutableResource.resource( Discrete.discrete(ADCS_State.ON));
+		this.adcsState = MutableResource.resource( Discrete.discrete(ADCS_State.OFF));
 		this.adcsLoad_CBE = map( adcsState, ADCS_State::getCBELoad);
 		this.adcsLoad_MEV = map( adcsState, ADCS_State::getMEVLoad);
-		this.harnesslossState = MutableResource.resource( Discrete.discrete(HarnessLoss_State.VISAR_OFF));
+		this.harnesslossState = MutableResource.resource( Discrete.discrete(HarnessLoss_State.OFF));
 		this.harnesslossLoad_CBE = map( harnesslossState, HarnessLoss_State::getCBELoad);
 		this.harnesslossLoad_MEV = map( harnesslossState, HarnessLoss_State::getMEVLoad);
 		this.propState = MutableResource.resource( Discrete.discrete(Prop_State.OFF));
 		this.propLoad_CBE = map( propState, Prop_State::getCBELoad);
 		this.propLoad_MEV = map( propState, Prop_State::getMEVLoad);
-		this.idstState = MutableResource.resource( Discrete.discrete(IDST_State.ON));
+		this.idstState = MutableResource.resource( Discrete.discrete(IDST_State.OFF));
 		this.idstLoad_CBE = map( idstState, IDST_State::getCBELoad);
 		this.idstLoad_MEV = map( idstState, IDST_State::getMEVLoad);
 		this.x_twtaState = MutableResource.resource( Discrete.discrete(X_TWTA_State.OFF));
@@ -92,20 +93,20 @@ public class PELModel {
 		this.ka_twtaState = MutableResource.resource( Discrete.discrete(Ka_TWTA_State.OFF));
 		this.ka_twtaLoad_CBE = map( ka_twtaState, Ka_TWTA_State::getCBELoad);
 		this.ka_twtaLoad_MEV = map( ka_twtaState, Ka_TWTA_State::getMEVLoad);
-		this.visarState = MutableResource.resource( Discrete.discrete(VISAR_State.OFF));
-		this.visarLoad_CBE = map( visarState, VISAR_State::getCBELoad);
-		this.visarLoad_MEV = map( visarState, VISAR_State::getMEVLoad);
-		this.vemState = MutableResource.resource( Discrete.discrete(VEM_State.OFF));
-		this.vemLoad_CBE = map( vemState, VEM_State::getCBELoad);
-		this.vemLoad_MEV = map( vemState, VEM_State::getMEVLoad);
-		this.visar_heatersState = MutableResource.resource( Discrete.discrete(VISAR_Heaters_State.SCIENCE_SURVIVAL));
-		this.visar_heatersLoad_CBE = map( visar_heatersState, VISAR_Heaters_State::getCBELoad);
-		this.visar_heatersLoad_MEV = map( visar_heatersState, VISAR_Heaters_State::getMEVLoad);
-		this.vem_heatersState = MutableResource.resource( Discrete.discrete(VEM_Heaters_State.SCIENCE_SURVIVAL));
-		this.vem_heatersLoad_CBE = map( vem_heatersState, VEM_Heaters_State::getCBELoad);
-		this.vem_heatersLoad_MEV = map( vem_heatersState, VEM_Heaters_State::getMEVLoad);
-        this.cbeTotalLoad = add(epsLoad_CBE,cdhLoad_CBE,ssrLoad_CBE,heatersLoad_CBE,adcsLoad_CBE,harnesslossLoad_CBE,propLoad_CBE,idstLoad_CBE,x_twtaLoad_CBE,ka_twtaLoad_CBE,visarLoad_CBE,vemLoad_CBE,visar_heatersLoad_CBE,vem_heatersLoad_CBE);
-        this.mevTotalLoad = add(epsLoad_MEV,cdhLoad_MEV,ssrLoad_MEV,heatersLoad_MEV,adcsLoad_MEV,harnesslossLoad_MEV,propLoad_MEV,idstLoad_MEV,x_twtaLoad_MEV,ka_twtaLoad_MEV,visarLoad_MEV,vemLoad_MEV,visar_heatersLoad_MEV,vem_heatersLoad_MEV);
+		this.radarState = MutableResource.resource( Discrete.discrete(Radar_State.OFF));
+		this.radarLoad_CBE = map( radarState, Radar_State::getCBELoad);
+		this.radarLoad_MEV = map( radarState, Radar_State::getMEVLoad);
+		this.imagerState = MutableResource.resource( Discrete.discrete(Imager_State.OFF));
+		this.imagerLoad_CBE = map( imagerState, Imager_State::getCBELoad);
+		this.imagerLoad_MEV = map( imagerState, Imager_State::getMEVLoad);
+		this.radar_heatersState = MutableResource.resource( Discrete.discrete(Radar_Heaters_State.OFF));
+		this.radar_heatersLoad_CBE = map( radar_heatersState, Radar_Heaters_State::getCBELoad);
+		this.radar_heatersLoad_MEV = map( radar_heatersState, Radar_Heaters_State::getMEVLoad);
+		this.imager_heatersState = MutableResource.resource( Discrete.discrete(Imager_Heaters_State.OFF));
+		this.imager_heatersLoad_CBE = map( imager_heatersState, Imager_Heaters_State::getCBELoad);
+		this.imager_heatersLoad_MEV = map( imager_heatersState, Imager_Heaters_State::getMEVLoad);
+        this.cbeTotalLoad = add(epsLoad_CBE,cdhLoad_CBE,ssrLoad_CBE,heatersLoad_CBE,adcsLoad_CBE,harnesslossLoad_CBE,propLoad_CBE,idstLoad_CBE,x_twtaLoad_CBE,ka_twtaLoad_CBE,radarLoad_CBE,imagerLoad_CBE,radar_heatersLoad_CBE,imager_heatersLoad_CBE);
+        this.mevTotalLoad = add(epsLoad_MEV,cdhLoad_MEV,ssrLoad_MEV,heatersLoad_MEV,adcsLoad_MEV,harnesslossLoad_MEV,propLoad_MEV,idstLoad_MEV,x_twtaLoad_MEV,ka_twtaLoad_MEV,radarLoad_MEV,imagerLoad_MEV,radar_heatersLoad_MEV,imager_heatersLoad_MEV);
 
 	}
     public void registerStates(Registrar registrar) {
@@ -119,10 +120,10 @@ public class PELModel {
 		registrar.discrete("idstState",idstState, new EnumValueMapper<>(IDST_State.class));
 		registrar.discrete("x_twtaState",x_twtaState, new EnumValueMapper<>(X_TWTA_State.class));
 		registrar.discrete("ka_twtaState",ka_twtaState, new EnumValueMapper<>(Ka_TWTA_State.class));
-		registrar.discrete("visarState",visarState, new EnumValueMapper<>(VISAR_State.class));
-		registrar.discrete("vemState",vemState, new EnumValueMapper<>(VEM_State.class));
-		registrar.discrete("visar_heatersState",visar_heatersState, new EnumValueMapper<>(VISAR_Heaters_State.class));
-		registrar.discrete("vem_heatersState",vem_heatersState, new EnumValueMapper<>(VEM_Heaters_State.class));
+		registrar.discrete("radarState",radarState, new EnumValueMapper<>(Radar_State.class));
+		registrar.discrete("imagerState",imagerState, new EnumValueMapper<>(Imager_State.class));
+		registrar.discrete("radar_heatersState",radar_heatersState, new EnumValueMapper<>(Radar_Heaters_State.class));
+		registrar.discrete("imager_heatersState",imager_heatersState, new EnumValueMapper<>(Imager_Heaters_State.class));
 		registrar.discrete("spacecraft.cbeLoad", cbeTotalLoad, new DoubleValueMapper());
 		registrar.discrete("spacecraft.mevLoad", mevTotalLoad, new DoubleValueMapper());
 	}

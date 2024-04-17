@@ -21,10 +21,10 @@ public class RadarModel {
 
   public RadarModel(Registrar registrar, Configuration config) {
     RadarDataMode = resource(discrete(RadarDataCollectionMode.OFF));
-    registrar.discrete("VisarDataMode",RadarDataMode, new EnumValueMapper<>(RadarDataCollectionMode.class));
+    registrar.discrete("RadarDataMode",RadarDataMode, new EnumValueMapper<>(RadarDataCollectionMode.class));
 
     RadarDataRate = map(RadarDataMode, RadarDataCollectionMode::getDataRate);
-    registrar.discrete("MagDataRate", RadarDataRate, withUnit("Mbps", new DoubleValueMapper()));
+    registrar.discrete("RadarDataRate", RadarDataRate, withUnit("Mbps", new DoubleValueMapper()));
   }
 
 }
