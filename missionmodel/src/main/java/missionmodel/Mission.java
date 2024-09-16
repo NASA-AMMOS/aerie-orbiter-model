@@ -9,6 +9,8 @@ import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteResources;
 import gov.nasa.jpl.time.Duration;
+import missionmodel.data.Data;
+import missionmodel.data.DataMissionModel;
 import missionmodel.geometry.resources.GenericGeometryResources;
 import missionmodel.geometry.spiceinterpolation.GenericGeometryCalculator;
 import missionmodel.geometry.spiceinterpolation.SpiceResourcePopulater;
@@ -22,11 +24,14 @@ import spice.basic.SpiceErrorException;
 
 import java.nio.file.Path;
 import java.time.Instant;
+import java.util.Optional;
 
 import static gov.nasa.jpl.aerie.contrib.metadata.UnitRegistrar.withUnit;
 import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.resource;
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete.discrete;
+import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteResources.discreteResource;
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteResources.divide;
+import static gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.PolynomialResources.asPolynomial;
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.PolynomialResources.multiply;
 import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.spawn;
 // import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
@@ -40,7 +45,7 @@ import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.spawn;
  * Declare, define, and register resources within this class or its delegates
  * Spawn daemon tasks using spawn(objectName::nameOfMethod) within the class constructor
  */
-public final class Mission {
+public final class Mission implements DataMissionModel {
 
   // Special registrar class that handles simulation errors via auto-generated resources
   public final Registrar errorRegistrar;
@@ -63,6 +68,22 @@ public final class Mission {
   public GenericSolarArray array;
   public final BatteryModel cbebattery;
   public final BatteryModel mevbattery;
+
+  // Data Member Variables
+  /**
+   * A resource specifying the spacecraft's data rate for playback to ground in bits per second.
+   */
+  public final MutableResource<Discrete<Double>> dataRate; // bps
+
+  /**
+   * This is a cap on the spacecraft's data storage.
+   */
+  public final MutableResource<Discrete<Double>> maxVolune; // bits
+
+  /**
+   * This is the interface to data Buckets and corresponding resources from the model package.
+   */
+  public Data data;
 
   // Telecom Member Variables
   public final TelecomModel telecomModel;
@@ -117,6 +138,19 @@ public final class Mission {
     mevbattery.registerStates(this.errorRegistrar);
 
     //
+    // Initialize Data Model
+    //
+    // Two buckets/bins for the spacecraft and two for ground are created here by passing in 2 below.
+    // The ground bins track how much data has been played back/downloaded from the spacecraft.
+    // bin0 is higher priority than bin 1.
+    // The parent bucket has a limit of 10Gb (by default from the Configuration).
+    this.dataRate = discreteResource(config.dataConfig().initialDatarate()); // bps
+    this.maxVolune = discreteResource(config.dataConfig().initialMaxVolume()); // bits
+
+    this.data = new Data(Optional.of(asPolynomial(dataRate)), 2, asPolynomial(maxVolune));
+    data.registerStates(errorRegistrar);
+
+    //
     // Initialize Telecom Model
     //
     this.telecomModel = new TelecomModel();
@@ -127,4 +161,10 @@ public final class Mission {
     //
     this.radarModel = new RadarModel(errorRegistrar, config);
   }
+
+  @Override
+  public Data getData() {
+    return data;
+  }
+
 }

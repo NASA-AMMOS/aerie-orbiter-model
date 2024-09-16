@@ -1,5 +1,6 @@
 @MissionModel(model = Mission.class)
 @WithMappers(BasicValueMappers.class)
+@WithMappers(CommonValueMappers.class)
 @WithConfiguration(Configuration.class)
 //
 // Activity Types
@@ -17,6 +18,12 @@
 @WithActivityType(AddSpacecraftEclipses.class)
 // Power
 @WithActivityType(SolarArrayDeployment.class)
+// Data
+@MissionModel.WithActivityType(ChangeDataGenerationRate.class)
+@MissionModel.WithActivityType(DeleteData.class)
+@MissionModel.WithActivityType(GenerateData.class)
+@MissionModel.WithActivityType(PlaybackData.class)
+@MissionModel.WithActivityType(ReprioritizeData.class)
 // Downlink
 @WithActivityType(Downlink.class)
 // Radar
@@ -32,6 +39,8 @@ import gov.nasa.jpl.aerie.merlin.framework.annotations.MissionModel;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.MissionModel.WithActivityType;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.MissionModel.WithConfiguration;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.MissionModel.WithMappers;
+import missionmodel.data.activities.*;
+import missionmodel.data.mappers.CommonValueMappers;
 import missionmodel.geometry.activities.atomic.*;
 import missionmodel.geometry.activities.spawner.AddApoapsis;
 import missionmodel.geometry.activities.spawner.AddOccultations;

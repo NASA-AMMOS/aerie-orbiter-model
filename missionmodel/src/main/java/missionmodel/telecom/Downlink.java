@@ -5,12 +5,15 @@ import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.Export.Validation;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
 import missionmodel.Mission;
+import missionmodel.data.activities.DeleteData;
+import missionmodel.data.activities.PlaybackData;
 import missionmodel.geometry.resources.EclipseTypes;
 import missionmodel.power.pel.*;
 
 import static gov.nasa.jpl.aerie.contrib.streamline.core.Resources.currentValue;
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteEffects.set;
 import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.delay;
+import static missionmodel.generated.ActivityActions.spawn;
 
 @ActivityType("Downlink")
 public class Downlink {
@@ -38,7 +41,11 @@ public class Downlink {
   @ActivityType.EffectModel
   public void run(Mission model) {
     // Get bit rate from parameter for now
-    set(model.telecomModel.downlinkBitRate, bitRate);
+    // set(model.telecomModel.downlinkBitRate, bitRate);
+    set(model.dataRate, bitRate*1000.0);
+    // Spawn an activity to playback
+    spawn(model, new PlaybackData(duration));
+
     // Set spacecraft hardware associated with downlink
     // Check current state for VISAR
     set(model.pel.x_twtaState, X_TWTA_State.ON);
@@ -56,7 +63,10 @@ public class Downlink {
 
     delay(duration);
 
-    set(model.telecomModel.downlinkBitRate, 0.0);
+    // Spawn an activity to delete data
+    spawn(model, new DeleteData(Double.MAX_VALUE, true, 0));
+
+    //set(model.telecomModel.downlinkBitRate, 0.0);
     set(model.pel.x_twtaState, X_TWTA_State.OFF);
     set(model.pel.ka_twtaState, Ka_TWTA_State.OFF);
     set(model.pel.ssrState, SSR_State.ON);
