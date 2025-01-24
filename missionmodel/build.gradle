@@ -15,22 +15,8 @@ jar {
   from {
     configurations.runtimeClasspath.filter{ it.exists() }.collect{ it.isDirectory() ? it : zipTree(it) }
   } {
-    exclude 'META-INF/LICENSE.txt', 'META-INF/LICENSE', 'META-INF/NOTICE.txt', 'META-INF/NOTICE', 'META-INF/versions/11/module-info.class'
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
   }
-}
-
-repositories {
-  flatDir { dirs "$rootDir/third-party" }
-  mavenCentral()
-  maven {
-      name = "GitHubPackages"
-      url = "https://maven.pkg.github.com/nasa-ammos/aerie"
-        credentials {
-          username = System.getenv('GITHUB_USER')
-          password = System.getenv('GITHUB_TOKEN')
-        }
-    }
 }
 
 tasks.named('test') {
@@ -38,15 +24,16 @@ tasks.named('test') {
 }
 
 dependencies {
-  annotationProcessor 'gov.nasa.jpl.aerie:merlin-framework-processor:2.7.0'
-  implementation 'gov.nasa.jpl.aerie:contrib:2.7.0'
-  implementation 'gov.nasa.jpl.aerie:merlin-framework:2.7.0'
-  implementation 'gov.nasa.jpl.aerie:merlin-sdk:2.7.0'
-  implementation 'gov.nasa.jpl.aerie:merlin-driver:2.7.0'
-  implementation 'gov.nasa.jpl.aerie:parsing-utilities:2.7.0'
+  annotationProcessor 'gov.nasa.jpl.aerie:merlin-framework-processor:' + project.aerieVersion
+  implementation 'gov.nasa.jpl.aerie:contrib:' + project.aerieVersion
+  implementation 'gov.nasa.jpl.aerie:merlin-framework:' + project.aerieVersion
+  implementation 'gov.nasa.jpl.aerie:merlin-sdk:' + project.aerieVersion
+  implementation 'gov.nasa.jpl.aerie:merlin-driver:' + project.aerieVersion
+  implementation 'gov.nasa.jpl.aerie:parsing-utilities:' + project.aerieVersion
+  implementation 'gov.nasa.jpl.aerie:type-utils:' + project.aerieVersion
   implementation 'com.google.code.gson:gson:+'
 
-  testImplementation 'gov.nasa.jpl.aerie:merlin-framework-junit:+'
+  testImplementation 'gov.nasa.jpl.aerie:merlin-framework-junit:' + project.aerieVersion
   testImplementation 'org.junit.jupiter:junit-jupiter:+'
 
   implementation files("src/main/resources/jplTime-2022-08.jar")
