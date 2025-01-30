@@ -26,7 +26,7 @@ public class SimulateResourcesTest {
 
   @Test
   void testSimulation() {
-    final var simulationStartTime = Instant.parse("2033-09-15T00:00:00Z");;
+    final var simulationStartTime = Instant.parse("2024-02-15T00:00:00Z");;
     final var simulationDuration = Duration.of(24, HOURS);
 
     // Input configuration

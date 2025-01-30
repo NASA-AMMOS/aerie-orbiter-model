@@ -4,6 +4,7 @@ import java.util.*;
 
 import gov.nasa.jpl.time.Duration;
 import gov.nasa.jpl.time.Time;
+import missionmodel.geometry.resources.EclipseTypes;
 
 public class Window implements Comparable<Window>{
   private Time begin;

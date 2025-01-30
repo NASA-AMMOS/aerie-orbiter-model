@@ -92,6 +92,7 @@ public final class Mission implements DataMissionModel {
   public final RadarModel radarModel;
 
   public Mission(final gov.nasa.jpl.aerie.merlin.framework.Registrar registrar, final Instant planStart, final Configuration config) {
+    //gov.nasa.jpl.aerie.contrib.streamline.debugging.Logging.LOGGER = null;
     this.errorRegistrar = new Registrar(registrar, Registrar.ErrorBehavior.Log);
     this.absoluteClock = new AbsoluteClock(planStart);
 
