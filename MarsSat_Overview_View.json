@@ -2,16 +2,16 @@
   "plan": {
     "grid": {
       "leftSplit": false,
-      "leftHidden": true,
+      "leftHidden": false,
       "rightSplit": false,
-      "columnSizes": "3fr",
+      "columnSizes": "0.874616fr 3px 3.20342fr 3px 0.9221fr",
       "middleSplit": false,
-      "rightHidden": true,
+      "rightHidden": false,
       "leftRowSizes": "1fr",
       "rightRowSizes": "1fr",
       "middleRowSizes": "1fr",
-      "leftComponentTop": "ActivityTypesPanel",
-      "rightComponentTop": "TimelineEditorPanel",
+      "leftComponentTop": "SimulationPanel",
+      "rightComponentTop": "ActivityFormPanel",
       "leftComponentBottom": "SimulationPanel",
       "rightComponentBottom": "TimelineEditorPanel",
       "middleComponentBottom": "ActivityDirectivesTablePanel"
@@ -31,7 +31,7 @@
             "id": 0,
             "name": "Periapsis",
             "yAxes": [],
-            "height": 80,
+            "height": 33.08335876464844,
             "layers": [
               {
                 "id": 0,
@@ -46,50 +46,7 @@
                 },
                 "yAxisId": null,
                 "chartType": "activity",
-                "activityColor": "#fcdd8f",
-                "activityHeight": 16
-              }
-            ],
-            "expanded": true,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
-            "id": 21,
-            "name": "Sun Range",
-            "yAxes": [
-              {
-                "id": 18,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "Y Axis (18)"
-                },
-                "tickCount": 4,
-                "scaleDomain": [
-                  1.3865,
-                  1.388
-                ],
-                "domainFitMode": "manual",
-                "renderTickLines": true
-              }
-            ],
-            "height": 80,
-            "layers": [
-              {
-                "id": 12,
-                "name": "",
-                "filter": {
-                  "resource": {
-                    "names": [
-                      "SpacecraftBodyRange_SUN_AU"
-                    ]
-                  }
-                },
-                "yAxisId": 18,
-                "chartType": "line",
-                "lineColor": "#ff7f0e",
-                "lineWidth": 1,
-                "pointRadius": 2
+                "activityColor": "#fcdd8f"
               }
             ],
             "expanded": true,
@@ -101,21 +58,30 @@
             "name": "Spacecraft Altitude",
             "yAxes": [
               {
-                "id": 19,
                 "color": "#1b1d1e",
-                "label": {
-                  "text": "Y Axis (19)"
-                },
-                "tickCount": 4,
                 "domainFitMode": "fitTimeWindow",
-                "renderTickLines": true
+                "id": 28,
+                "label": {
+                  "text": "Y Axis (28)"
+                },
+                "renderTickLines": true,
+                "tickCount": 4
+              },
+              {
+                "color": "#1b1d1e",
+                "domainFitMode": "fitTimeWindow",
+                "id": 29,
+                "label": {
+                  "text": "Y Axis (29)"
+                },
+                "renderTickLines": true,
+                "tickCount": 4
               }
             ],
-            "height": 80,
+            "height": 97,
             "layers": [
               {
-                "id": 13,
-                "name": "",
+                "chartType": "line",
                 "filter": {
                   "resource": {
                     "names": [
@@ -123,37 +89,15 @@
                     ]
                   }
                 },
-                "yAxisId": 19,
-                "chartType": "line",
+                "id": 28,
                 "lineColor": "#283593",
                 "lineWidth": 1,
-                "pointRadius": 2
-              }
-            ],
-            "expanded": true,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
-            "id": 23,
-            "name": "Solar Phase Angle",
-            "yAxes": [
-              {
-                "id": 20,
-                "color": "#1b1d1e",
-                "label": {
-                  "text": "Y Axis (20)"
-                },
-                "tickCount": 4,
-                "domainFitMode": "fitTimeWindow",
-                "renderTickLines": true
-              }
-            ],
-            "height": 80,
-            "layers": [
-              {
-                "id": 14,
                 "name": "",
+                "pointRadius": 2,
+                "yAxisId": 28
+              },
+              {
+                "chartType": "line",
                 "filter": {
                   "resource": {
                     "names": [
@@ -161,16 +105,29 @@
                     ]
                   }
                 },
-                "yAxisId": 20,
-                "chartType": "line",
+                "id": 29,
                 "lineColor": "#8d41b0",
                 "lineWidth": 1,
-                "pointRadius": 2
+                "name": "",
+                "pointRadius": 2,
+                "yAxisId": 29
               }
             ],
             "expanded": true,
             "autoAdjustHeight": false,
-            "horizontalGuides": []
+            "horizontalGuides": [],
+            "discreteOptions": {
+              "activityOptions": {
+                "composition": "both",
+                "hierarchyMode": "flat"
+              },
+              "displayMode": "compact",
+              "externalEventOptions": {
+                "groupBy": "event_type_name"
+              },
+              "height": 16,
+              "labelVisibility": "auto"
+            }
           },
           {
             "id": 2,
@@ -222,7 +179,7 @@
                 "pointRadius": 2
               }
             ],
-            "expanded": true,
+            "expanded": false,
             "autoAdjustHeight": false,
             "horizontalGuides": []
           },
@@ -241,7 +198,7 @@
                 "renderTickLines": true
               }
             ],
-            "height": 100,
+            "height": 63.33331298828125,
             "layers": [
               {
                 "id": 6,
@@ -299,7 +256,7 @@
                 "renderTickLines": true
               }
             ],
-            "height": 100,
+            "height": 61,
             "layers": [
               {
                 "id": 11,
@@ -333,33 +290,49 @@
             ]
           },
           {
-            "id": 10,
-            "name": "BodyHalfAngleSize_MARS",
+            "id": 30,
+            "name": "On-Board Data (bps)",
             "yAxes": [
               {
-                "id": 9,
+                "id": 25,
                 "color": "#1b1d1e",
                 "label": {
-                  "text": "BodyHalfAngleSize_MARS (deg)"
+                  "text": "Y Axis (25)"
                 },
-                "tickCount": 5,
+                "tickCount": 4,
                 "domainFitMode": "fitTimeWindow",
                 "renderTickLines": true
               }
             ],
-            "height": 100,
+            "height": 80,
             "layers": [
               {
-                "id": 10,
+                "id": 24,
                 "name": "",
                 "filter": {
                   "resource": {
                     "names": [
-                      "BodyHalfAngleSize_MARS"
+                      "onboard.maxVolume"
                     ]
                   }
                 },
-                "yAxisId": 9,
+                "yAxisId": 25,
+                "chartType": "line",
+                "lineColor": "#e31a1c",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 25,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "onboard.volume"
+                    ]
+                  }
+                },
+                "yAxisId": 25,
                 "chartType": "line",
                 "lineColor": "#283593",
                 "lineWidth": 1,
@@ -371,10 +344,73 @@
             "horizontalGuides": []
           },
           {
+            "id": 32,
+            "name": "Sent Data (bps)",
+            "yAxes": [
+              {
+                "id": 27,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (27)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 42.8333740234375,
+            "layers": [
+              {
+                "id": 27,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "ground.volume"
+                    ]
+                  }
+                },
+                "yAxisId": 27,
+                "chartType": "line",
+                "lineColor": "#75b53b",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 29,
+            "name": "Telecom Activities",
+            "yAxes": [],
+            "height": 85.5,
+            "layers": [
+              {
+                "id": 23,
+                "name": "",
+                "filter": {
+                  "activity": {
+                    "types": [
+                      "Downlink"
+                    ]
+                  }
+                },
+                "yAxisId": null,
+                "chartType": "activity",
+                "activityColor": "#C9E4F5"
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
             "id": 28,
             "name": "Instrument Activities",
             "yAxes": [],
-            "height": 80,
+            "height": 65.9166259765625,
             "layers": [
               {
                 "id": 22,
@@ -390,38 +426,10 @@
                 },
                 "yAxisId": null,
                 "chartType": "activity",
-                "activityColor": "#fcdd8f",
-                "activityHeight": 16
+                "activityColor": "#fcdd8f"
               }
             ],
             "expanded": true,
-            "autoAdjustHeight": false,
-            "horizontalGuides": []
-          },
-          {
-            "id": 25,
-            "name": "Radar State",
-            "yAxes": [],
-            "height": 160,
-            "layers": [
-              {
-                "id": 19,
-                "name": "",
-                "filter": {
-                  "resource": {
-                    "names": [
-                      "radarState"
-                    ]
-                  }
-                },
-                "opacity": 0.8,
-                "yAxisId": 24,
-                "chartType": "x-range",
-                "colorScheme": "schemeTableau10",
-                "showAsLinePlot": false
-              }
-            ],
-            "expanded": false,
             "autoAdjustHeight": false,
             "horizontalGuides": []
           },
@@ -460,6 +468,147 @@
               }
             ],
             "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 31,
+            "name": "Radar Data Rate",
+            "yAxes": [
+              {
+                "id": 26,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (26)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 62.58331298828125,
+            "layers": [
+              {
+                "id": 26,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "RadarDataRate"
+                    ]
+                  }
+                },
+                "yAxisId": 26,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 10,
+            "name": "BodyHalfAngleSize_MARS",
+            "yAxes": [
+              {
+                "id": 9,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "BodyHalfAngleSize_MARS (deg)"
+                },
+                "tickCount": 5,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 100,
+            "layers": [
+              {
+                "id": 10,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "BodyHalfAngleSize_MARS"
+                    ]
+                  }
+                },
+                "yAxisId": 9,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 25,
+            "name": "Radar State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 19,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "radarState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 24,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 23,
+            "name": "Solar Phase Angle",
+            "yAxes": [
+              {
+                "id": 20,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (20)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 80,
+            "layers": [
+              {
+                "id": 14,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "IlluminationAnglesByBody_MARS_phase"
+                    ]
+                  }
+                },
+                "yAxisId": 20,
+                "chartType": "line",
+                "lineColor": "#8d41b0",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
             "autoAdjustHeight": false,
             "horizontalGuides": []
           },
@@ -529,33 +678,45 @@
             "horizontalGuides": []
           },
           {
-            "id": 29,
-            "name": "Telecom Activities",
-            "yAxes": [],
+            "id": 21,
+            "name": "Sun Range",
+            "yAxes": [
+              {
+                "id": 18,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (18)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
             "height": 80,
             "layers": [
               {
-                "id": 23,
+                "id": 12,
                 "name": "",
                 "filter": {
-                  "activity": {
-                    "types": [
-                      "Downlink"
+                  "resource": {
+                    "names": [
+                      "SpacecraftBodyRange_SUN_AU"
                     ]
                   }
                 },
-                "yAxisId": null,
-                "chartType": "activity",
-                "activityColor": "#C9E4F5",
-                "activityHeight": 16
+                "yAxisId": 18,
+                "chartType": "line",
+                "lineColor": "#ff7f0e",
+                "lineWidth": 1,
+                "pointRadius": 2
               }
             ],
             "expanded": true,
-            "autoAdjustHeight": false,
+            "autoAdjustHeight": true,
             "horizontalGuides": []
           }
         ],
-        "marginLeft": 190,
+        "marginLeft": 322.76666259765625,
         "marginRight": 30,
         "verticalGuides": []
       }
@@ -909,245 +1070,246 @@
       ],
       "columnStates": [
         {
-          "flex": null,
-          "hide": false,
-          "sort": null,
           "colId": "errorCounts",
-          "pivot": false,
           "width": 70,
+          "hide": false,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "anchor_id",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "anchored_to_start",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "applied_preset",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "arguments",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "created_at",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "created_by",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": false,
-          "sort": null,
           "colId": "id",
-          "pivot": false,
-          "width": 93.93000000000006,
+          "width": 32,
+          "hide": false,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "last_modified_at",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "last_modified_by",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "metadata",
-          "pivot": false,
           "width": 200,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": false,
-          "sort": null,
           "colId": "name",
-          "pivot": false,
-          "width": 235,
+          "width": 42.69999999999999,
+          "hide": false,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": true,
-          "sort": null,
           "colId": "source_scheduling_goal_id",
-          "pivot": false,
           "width": 200,
-          "pinned": null,
-          "aggFunc": null,
-          "rowGroup": false,
-          "sortIndex": null,
-          "pivotIndex": null,
-          "rowGroupIndex": null
-        },
-        {
-          "flex": null,
-          "hide": false,
-          "sort": null,
-          "colId": "start_offset",
-          "pivot": false,
-          "width": 235,
-          "pinned": null,
-          "aggFunc": null,
-          "rowGroup": false,
-          "sortIndex": null,
-          "pivotIndex": null,
-          "rowGroupIndex": null
-        },
-        {
-          "flex": null,
           "hide": true,
+          "pinned": null,
           "sort": null,
+          "sortIndex": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "rowGroupIndex": null,
+          "pivot": false,
+          "pivotIndex": null,
+          "flex": null
+        },
+        {
+          "colId": "start_offset",
+          "width": 42,
+          "hide": false,
+          "pinned": null,
+          "sort": null,
+          "sortIndex": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "rowGroupIndex": null,
+          "pivot": false,
+          "pivotIndex": null,
+          "flex": null
+        },
+        {
           "colId": "tags",
-          "pivot": false,
           "width": 220,
+          "hide": true,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
-          "hide": false,
-          "sort": null,
           "colId": "type",
-          "pivot": false,
-          "width": 235,
+          "width": 42,
+          "hide": false,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         },
         {
-          "flex": null,
+          "colId": "start_time_ms",
+          "width": 42,
           "hide": false,
-          "sort": null,
-          "colId": "arguments_1",
-          "pivot": false,
-          "width": 235,
           "pinned": null,
+          "sort": null,
+          "sortIndex": null,
           "aggFunc": null,
           "rowGroup": false,
-          "sortIndex": null,
+          "rowGroupIndex": null,
+          "pivot": false,
           "pivotIndex": null,
-          "rowGroupIndex": null
+          "flex": null
         }
       ],
       "autoSizeColumns": "fill"
     }
-  }
+  },
+  "version": 1
 }
