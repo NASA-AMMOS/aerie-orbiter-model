@@ -25,6 +25,11 @@ public class SpiceDirectEventGenerator implements GeometricEventGenerator {
     this.bodiesMap = this.stateCalculator.getBodiesMap();
   }
 
+  public SpiceDirectEventGenerator(Map<String, Body> bodies) {
+    this.stateCalculator = new SpiceDirectTimeDependentStateCalculator(bodies, false);
+    this.bodiesMap = bodies;
+  }
+
   //<editor-fold desc="Methods to fulfill interface">
   @Override
   public List<Window> getOccultations(Time start, Time endTime, Duration stepSize, String observer, String target, String occultingBody, String abcorr, boolean mergePartials, boolean isTargetAPoint, boolean useDSK) throws GeometryInformationNotAvailableException {

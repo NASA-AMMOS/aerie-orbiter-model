@@ -1,2 +1,3 @@
 rootProject.name = 'mars-sat'
-include('missionmodel', 'schedulers')
+include('missionmodel')
+include('scheduling')
