@@ -43,6 +43,7 @@ services:
     restart: always
     volumes:
       - aerie_file_store:/usr/src/app/merlin_file_store
+      - $PWD/spice/kernels:/usr/src/app/spice/kernels
     networks:
       - aerie_net
   aerie_merlin_worker_1:
@@ -66,6 +67,7 @@ services:
     restart: always
     volumes:
       - aerie_file_store:/usr/src/app/merlin_file_store:ro
+      - $PWD/spice/kernels:/usr/src/app/spice/kernels
     networks:
       - aerie_net
   aerie_scheduler:
@@ -88,6 +90,7 @@ services:
     restart: always
     volumes:
       - aerie_file_store:/usr/src/app/merlin_file_store
+      - $PWD/spice/kernels:/usr/src/app/spice/kernels
     networks:
       - aerie_net
   aerie_scheduler_worker_1:
@@ -112,6 +115,7 @@ services:
     restart: always
     volumes:
       - aerie_file_store:/usr/src/app/merlin_file_store:ro
+      - $PWD/spice/kernels:/usr/src/app/spice/kernels
     networks:
       - aerie_net
   aerie_sequencing:
