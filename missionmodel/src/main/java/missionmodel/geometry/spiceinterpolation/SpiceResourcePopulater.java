@@ -45,16 +45,9 @@ public class SpiceResourcePopulater {
 
   //public SpiceResourcePopulater(String filename, int sc_id, GeometryCalculator geoCalc, Window[] dataGaps, Duration paddingAroundDataGaps) {
   public SpiceResourcePopulater(GenericGeometryCalculator geoCalc, AbsoluteClock absoluteClock, Window[] dataGaps, Duration paddingAroundDataGaps) {
-    try (
-      var in = Objects.requireNonNull(Mission.class.getResourceAsStream("default_geometry_config.json"), "default_geometry_config.json not found");
-      var reader = new InputStreamReader(in)
-    ) {
-      bodiesJsonObject = JsonParser.parseReader(reader).getAsJsonObject();
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    }
-
-    this.bodies = initializeAllBodiesFromJson();
+    Bodies bodiesObj = new Bodies();
+    this.bodiesJsonObject = bodiesObj.getBodiesJson();
+    this.bodies = bodiesObj.getBodiesMap();
     //this.sc_id = sc_id;
     this.geoCalc = geoCalc;
     this.absClock = absoluteClock;
@@ -127,46 +120,6 @@ public class SpiceResourcePopulater {
 //      }
 //    }
 //  }
-
-  public HashMap<String, Body> initializeAllBodiesFromJson(){
-    HashMap<String, Body> toReturn = new HashMap<>();
-    JsonObject jsonObject = bodiesJsonObject.get("bodies").getAsJsonObject();
-
-    Set<Map.Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
-    for(Map.Entry<String, JsonElement> entry : entrySet){
-      JsonObject body = entry.getValue().getAsJsonObject();
-      if(jsonObjHasKey(body, "Trajectory")) {
-        JsonObject trajectory = body.get("Trajectory").getAsJsonObject();
-        toReturn.put(entry.getKey(), new Body(entry.getKey(),
-          body.get("NaifID").getAsInt(),
-          body.get("NaifFrame").getAsString(),
-          body.get("Albedo").getAsDouble(),
-          getIfNonNull(trajectory, "calculateAltitude"),
-          getIfNonNull(trajectory, "calculateEarthSpacecraftBodyAngle"),
-          getIfNonNull(trajectory, "calculateSubSCInformation"),
-          getIfNonNull(trajectory, "calculateRaDec"),
-          getIfNonNull(trajectory, "calculateIlluminationAngles"),
-          getIfNonNull(trajectory, "calculateSubSolarInformation"),
-          getIfNonNull(trajectory, "calculateLST"),
-          getIfNonNull(trajectory, "calculateBetaAngle"),
-          getIfNonNull(trajectory, "calculateOrbitParameters"),
-          getIfNonNull(trajectory, "useDSK")));
-      }
-      else{
-        toReturn.put(entry.getKey(), new Body(entry.getKey(),
-          body.get("NaifID").getAsInt(),
-          body.get("NaifFrame").getAsString(),
-          body.get("Albedo").getAsDouble()
-        ));
-      }
-    }
-
-   return toReturn;
-  }
-
-  private boolean getIfNonNull(JsonObject obj, String key){
-    return obj.get(key) != null && !obj.get(key).isJsonNull() ? obj.get(key).getAsBoolean() : false;
-  }
 
   public HashMap<String, Body> getBodies(){
     return bodies;
