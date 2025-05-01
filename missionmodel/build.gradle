@@ -35,6 +35,7 @@ dependencies {
 
   testImplementation 'gov.nasa.jpl.aerie:merlin-framework-junit:' + project.aerieVersion
   testImplementation 'org.junit.jupiter:junit-jupiter:+'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
   implementation files("src/main/resources/jplTime-2022-08.jar")
   testImplementation files("src/main/resources/jplTime-2022-08.jar")

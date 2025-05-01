@@ -1,3 +1,4 @@
 rootProject.name = 'mars-sat'
 include('missionmodel')
 include('scheduling')
+include('constraints')
