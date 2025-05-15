@@ -24,8 +24,9 @@
               '$KERNELS/gm_de440.tpc',
               '$KERNELS/earth_070425_370426_predict.bpc',
               '$KERNELS/earthstns_itrf93_201023.bsp',
-              '$KERNELS/mar097_2020_2040.bsp',
-              '$KERNELS/mro_psp.bsp'
+              '$KERNELS/veritas_science_example.bsp',
+              '$KERNELS/veritas_cruise_example.bsp',
+              '$KERNELS/veritas_aerobraking_example.bsp'
 
            )
 

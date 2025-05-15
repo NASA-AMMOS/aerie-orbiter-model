@@ -14,7 +14,7 @@ public record Configuration(Integer spiceSpacecraftId,
                             DataModelSimConfig dataConfig,
                             Double offPointAngle) {
 
-  public static final Integer DEFAULT_SPICE_SCID = -74; // MRO
+  public static final Integer DEFAULT_SPICE_SCID = -660; // Veritas
 
   public static final PowerModelSimConfig POWER_CONFIG = PowerModelSimConfig.defaultConfiguration();
 

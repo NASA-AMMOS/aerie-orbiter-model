@@ -1,0 +1,2065 @@
+{
+  "activities": [
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 497,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "13:23:48.626949",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13367785
+      },
+      "id": 498,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "09:44:40.984141",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 499,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "02:22:25.871112",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2175237797
+      },
+      "id": 500,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "08:13:42.472847",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13432724
+      },
+      "id": 501,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "03:39:53.412939",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13306271
+      },
+      "id": 502,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "17:57:12.827992",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 503,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "12:59:28.739345",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 504,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "12:13:58.445016",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 505,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "06:55:26.791657",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 506,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "05:13:03.911948",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 507,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "08:15:04.634657",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 508,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "16:01:30.150056",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 509,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "14:19:06.82122",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "OFF"
+      },
+      "id": 510,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "14:30:29.404345",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 511,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "04:16:33.577338",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 512,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "08:26:27.183569",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 513,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "24:00:00",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13382384
+      },
+      "id": 514,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "10:21:10.233586",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 515,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "07:18:58.599584",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 516,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "18:11:27.201832",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 517,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "06:55:11.612952",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 518,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "09:57:27.634314",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13288423
+      },
+      "id": 519,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "17:20:40.485955",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 520,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "05:23:59.312161",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13367009
+      },
+      "id": 521,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "11:52:22.755098",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 522,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "01:14:08.548772",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 523,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "17:57:26.134263",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 524,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "00:51:25.60985",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 525,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "01:28:12.548592",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 526,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "10:21:23.61597",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 527,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "15:09:02.717072",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 528,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "03:07:56.008612",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 529,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "06:44:04.248898",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 530,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "13:00:00.801129",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bitRate": 1000,
+        "duration": 3082820000
+      },
+      "id": 531,
+      "metadata": {},
+      "name": "Downlink",
+      "start_offset": "18:12:27.201832",
+      "tags": [],
+      "type": "Downlink"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 532,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "10:42:57.892814",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13383898
+      },
+      "id": 533,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "08:13:29.088948",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13351752
+      },
+      "id": 534,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "11:15:52.881",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 535,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "09:04:13.772778",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 536,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "22:05:34.064922",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 537,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "06:09:56.620648",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2177794247
+      },
+      "id": 538,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "14:18:29.999817",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13272791
+      },
+      "id": 539,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "18:51:52.391782",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 540,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "00:50:22.393727",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 541,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "21:13:51.699102",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 542,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "23:36:35.315896",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 543,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "12:48:06.165516",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 544,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "17:33:37.710376",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 545,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "14:55:01.130553",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 546,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "09:57:27.634314",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2176522346
+      },
+      "id": 547,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "11:16:06.232752",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 548,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "02:11:03.3391",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13276357
+      },
+      "id": 549,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "20:59:37.857319",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bitRate": 1000,
+        "duration": 3082753000
+      },
+      "id": 550,
+      "metadata": {},
+      "name": "Downlink",
+      "start_offset": "16:41:14.95777",
+      "tags": [],
+      "type": "Downlink"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13291278
+      },
+      "id": 551,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "19:28:25.343202",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13444661
+      },
+      "id": 552,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "04:16:20.132676",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 553,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "11:28:28.151016",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {},
+      "id": 554,
+      "metadata": {},
+      "name": "Radar_On",
+      "start_offset": "00:36:25.60985",
+      "tags": [],
+      "type": "Radar_On"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 555,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "02:45:21.063874",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 556,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "04:30:37.049389",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 557,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "08:26:27.183569",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2179678628
+      },
+      "id": 558,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "18:52:05.664574",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 559,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "16:02:25.403391",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2174590745
+      },
+      "id": 560,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "06:42:30.595472",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 561,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "02:59:24.800748",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 562,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "03:42:03.611737",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2173287012
+      },
+      "id": 563,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "03:40:06.845663",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13413366
+      },
+      "id": 564,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "07:18:45.186218",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2180919394
+      },
+      "id": 565,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "21:54:29.450998",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 566,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "12:06:38.243532",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 567,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "02:22:25.871112",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bitRate": 1000,
+        "duration": 3082686000
+      },
+      "id": 568,
+      "metadata": {},
+      "name": "Downlink",
+      "start_offset": "15:10:02.717072",
+      "tags": [],
+      "type": "Downlink"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 569,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "19:03:31.907105",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2058652695
+      },
+      "id": 570,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "23:25:41.347305",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13428976
+      },
+      "id": 571,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "05:47:32.660247",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13351709
+      },
+      "id": 572,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "13:23:35.27524",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2180300551
+      },
+      "id": 573,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "20:23:17.556768",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 574,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "16:26:13.632972",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13460426
+      },
+      "id": 575,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "02:45:07.603447",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 576,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "09:11:57.409069",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 577,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "08:50:11.108482",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13400092
+      },
+      "id": 578,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "06:42:17.195379",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 579,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "01:36:55.74085",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13336487
+      },
+      "id": 580,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "14:54:47.794065",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13226376
+      },
+      "id": 581,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "23:25:28.120928",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 582,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "11:28:28.151016",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 583,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "14:31:13.100548",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 584,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "07:33:01.535009",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 585,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "23:38:26.976202",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 586,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "11:28:48.504016",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bitRate": 1000,
+        "duration": 3082956000
+      },
+      "id": 587,
+      "metadata": {},
+      "name": "Downlink",
+      "start_offset": "21:14:51.699102",
+      "tags": [],
+      "type": "Downlink"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 588,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "19:28:38.63448",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 589,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "11:17:05.586689",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13397836
+      },
+      "id": 590,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "08:49:57.710645",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13257240
+      },
+      "id": 591,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "20:23:04.299527",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 592,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "20:36:02.33705",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 593,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "03:53:26.146823",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 594,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "00:51:25.60985",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 595,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "11:52:36.122108",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 596,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "16:40:14.95777",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 597,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "09:46:05.078194",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2175881659
+      },
+      "id": 598,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "09:44:54.351926",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 599,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "22:05:34.064922",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13304135
+      },
+      "id": 600,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "15:49:28.582004",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 601,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "20:59:51.133676",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13476270
+      },
+      "id": 602,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "01:13:55.072502",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 603,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "13:37:50.4793",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 604,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "14:30:29.404129",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 605,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "19:04:50.021706",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2178425490
+      },
+      "id": 606,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "15:49:41.88614",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 607,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "17:32:30.982322",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13241768
+      },
+      "id": 608,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "21:54:16.209229",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 609,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "06:01:49.294099",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13261513
+      },
+      "id": 610,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "22:30:50.370392",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 611,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "05:47:46.089223",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 612,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "22:31:03.631906",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2177159870
+      },
+      "id": 613,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "12:47:18.115369",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 614,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "12:59:28.739345",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13449161
+      },
+      "id": 615,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "02:08:41.523981",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 616,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "03:52:47.008492",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 617,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "02:21:34.702121",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 618,
+      "metadata": {},
+      "name": "SpacecraftExitEclipse_VENUS",
+      "start_offset": "24:00:00",
+      "tags": [],
+      "type": "SpacecraftExitEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 619,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "22:51:04.690422",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 620,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "22:07:14.6556",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2173940487
+      },
+      "id": 621,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "05:11:18.719759",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 622,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "20:34:32.93179",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 623,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "06:55:26.791657",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13335800
+      },
+      "id": 624,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "12:47:04.779569",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13319927
+      },
+      "id": 625,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "14:18:16.679889",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 626,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "03:53:26.146823",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13321342
+      },
+      "id": 627,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "16:26:00.31163",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 628,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "07:40:56.987657",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 629,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "22:45:03.950635",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 630,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "04:38:56.298323",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2172630305
+      },
+      "id": 631,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "02:08:54.973143",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 632,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "05:24:26.449648",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13465679
+      },
+      "id": 633,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "00:37:29.636474",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS"
+      },
+      "id": 634,
+      "metadata": {},
+      "name": "Periapsis_VENUS",
+      "start_offset": "05:24:26.449648",
+      "tags": [],
+      "type": "Periapsis"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "HI_RES"
+      },
+      "id": 635,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "23:25:12.659547",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 636,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "10:35:26.008499",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bitRate": 1000,
+        "duration": 3082888000
+      },
+      "id": 637,
+      "metadata": {},
+      "name": "Downlink",
+      "start_offset": "19:43:39.449153",
+      "tags": [],
+      "type": "Downlink"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "MED_RES"
+      },
+      "id": 638,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "13:44:59.071845",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 639,
+      "metadata": {},
+      "name": "ExitOccultation_VENUS",
+      "start_offset": "19:42:39.449153",
+      "tags": [],
+      "type": "ExitOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2171970348
+      },
+      "id": 640,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "00:37:43.102154",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "FULL",
+        "duration": 2179053612
+      },
+      "id": 641,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "17:20:53.774378",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "type": "PARTIAL",
+        "duration": 13416368
+      },
+      "id": 642,
+      "metadata": {},
+      "name": "SpacecraftEnterEclipse_VENUS",
+      "start_offset": "05:11:05.30339",
+      "tags": [],
+      "type": "SpacecraftEnterEclipse"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 643,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "08:26:23.91123",
+      "tags": [],
+      "type": "EnterOccultation"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "body": "VENUS",
+        "station": "DSS-24"
+      },
+      "id": 644,
+      "metadata": {},
+      "name": "EnterOccultation_VENUS",
+      "start_offset": "09:57:36.207846",
+      "tags": [],
+      "type": "EnterOccultation"
+    }
+  ],
+  "duration": "24:00:00",
+  "id": 2,
+  "model_id": 2,
+  "name": "VERITAS Plan",
+  "simulation_arguments": {},
+  "start_time": "2033-09-16T00:00:00+00:00",
+  "tags": [],
+  "version": "2"
+}

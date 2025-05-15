@@ -14,7 +14,7 @@ public record SolarArraySimConfig(ArrayDeploymentStates deploymentState,
 
     // Mechanical area of the arrays (m^2)
     // See VERITAS CSR Table F.2-9
-    public static final Double DEFAULT_ARRAY_MECH_AREA = 16.0;
+    public static final Double DEFAULT_ARRAY_MECH_AREA = 6.0;
 
     // Ratio between active cell and mechanical area on the
     // arrays (how dense are the arrays packed)
