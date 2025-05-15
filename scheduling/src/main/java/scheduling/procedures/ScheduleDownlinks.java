@@ -84,7 +84,7 @@ public record ScheduleDownlinks() implements Goal {
       // Create orbit windows based on periapsis times
       // Note we are ignoring any partial orbit before first periapsis
       ArrayList<Pair<Instant,Instant>> periapsisWindows= new ArrayList<>();
-      for (int i = 0; i < periapsisActs.size(); i=i+2) {
+      for (int i = 0; i < periapsisActs.size(); i=i+1) {
         Instant start = plan.toAbsolute(periapsisActs.get(i).getStartTime());
         Instant end;
         if (i + 1 < periapsisActs.size()) {
