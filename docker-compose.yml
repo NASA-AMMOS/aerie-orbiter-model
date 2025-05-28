@@ -135,7 +135,8 @@ services:
       SEQUENCING_WORKER_NUM: 8
       SEQUENCING_MAX_WORKER_HEAP_MB: 1000
       TRANSPILER_ENABLED: "true"
-    image: "${REPOSITORY_DOCKER_URL}/aerie-sequencing:${DOCKER_TAG}"
+    # image: "${REPOSITORY_DOCKER_URL}/aerie-sequencing:${DOCKER_TAG}"
+    image: aerie-sequencing:demo
     ports: ["27184:27184"]
     restart: always
     volumes:
@@ -153,6 +154,7 @@ services:
       PUBLIC_HASURA_CLIENT_URL: http://localhost:8080/v1/graphql
       PUBLIC_HASURA_SERVER_URL: http://hasura:8080/v1/graphql
       PUBLIC_HASURA_WEB_SOCKET_URL: ws://localhost:8080/v1/graphql
+      PUBLIC_COMMAND_EXPANSION_MODE: "templating"
     image: "${REPOSITORY_DOCKER_URL}/aerie-ui:${DOCKER_TAG}"
     ports: ["80:80"]
     restart: always
