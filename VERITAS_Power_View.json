@@ -1,0 +1,1137 @@
+{
+  "plan": {
+    "grid": {
+      "leftSplit": false,
+      "leftHidden": true,
+      "rightSplit": false,
+      "columnSizes": "2.95315fr 3px 1.41612fr",
+      "middleSplit": false,
+      "rightHidden": false,
+      "leftRowSizes": "1fr",
+      "rightRowSizes": "1fr",
+      "middleRowSizes": "1fr",
+      "leftComponentTop": "ActivityTypesPanel",
+      "rightComponentTop": "IFramePanel",
+      "leftComponentBottom": "SimulationPanel",
+      "rightComponentBottom": "TimelineEditorPanel",
+      "middleComponentBottom": "ActivityDirectivesTablePanel"
+    },
+    "iFrames": [
+      {
+        "id": 0,
+        "src": "https://eyes.nasa.gov/apps/solar-system/#/venus",
+        "title": "Venus View"
+      }
+    ],
+    "timelines": [
+      {
+        "id": 0,
+        "rows": [
+          {
+            "id": 28,
+            "name": "Instrument Activities",
+            "yAxes": [],
+            "height": 80,
+            "layers": [
+              {
+                "id": 22,
+                "name": "",
+                "filter": {
+                  "activity": {
+                    "types": [
+                      "Radar_On",
+                      "Radar_Off",
+                      "ChangeRadarDataMode"
+                    ]
+                  }
+                },
+                "yAxisId": null,
+                "chartType": "activity",
+                "activityColor": "#fcdd8f",
+                "activityHeight": 16
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 29,
+            "name": "Telecom Activities",
+            "yAxes": [],
+            "height": 80,
+            "layers": [
+              {
+                "id": 23,
+                "name": "",
+                "filter": {
+                  "activity": {
+                    "types": [
+                      "Downlink"
+                    ]
+                  }
+                },
+                "yAxisId": null,
+                "chartType": "activity",
+                "activityColor": "#C9E4F5",
+                "activityHeight": 16
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 6,
+            "name": "Power Prod and Demand",
+            "yAxes": [
+              {
+                "id": 5,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "array.powerProduction"
+                },
+                "tickCount": 5,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 100,
+            "layers": [
+              {
+                "id": 6,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "array.powerProduction"
+                    ]
+                  }
+                },
+                "yAxisId": 5,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 15,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "spacecraft.cbeLoad"
+                    ]
+                  }
+                },
+                "yAxisId": 5,
+                "chartType": "line",
+                "lineColor": "#e31a1c",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 18,
+            "name": "Battery SOC",
+            "yAxes": [
+              {
+                "id": 17,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "cbebattery.batteryCharge"
+                },
+                "tickCount": 5,
+                "scaleDomain": [
+                  0,
+                  100
+                ],
+                "domainFitMode": "manual",
+                "renderTickLines": true
+              }
+            ],
+            "height": 100,
+            "layers": [
+              {
+                "id": 11,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "cbebattery.batterySOC"
+                    ]
+                  }
+                },
+                "yAxisId": 17,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "autoAdjustHeight": false,
+            "horizontalGuides": [
+              {
+                "y": 40,
+                "id": 0,
+                "label": {
+                  "text": "Min SOC Limit",
+                  "color": "#ff2600"
+                },
+                "yAxisId": 17
+              }
+            ]
+          },
+          {
+            "id": 25,
+            "name": "Radar State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 19,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "radarState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 24,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 39,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "radar_heatersState"
+                    ]
+                  }
+                },
+                "id": 33,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "Radar Heaters",
+            "yAxes": []
+          },
+          {
+            "id": 27,
+            "name": "KA-Band TWTA State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 21,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "ka_twtaState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 30,
+            "name": "EPS State",
+            "yAxes": [],
+            "height": 80,
+            "layers": [
+              {
+                "id": 24,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "epsState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 31,
+            "name": "CDH State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 25,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "cdhState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 32,
+            "name": "SSR State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 26,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "ssrState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 33,
+            "name": "Heaters State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 27,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "heatersState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 34,
+            "name": "ADCS State",
+            "yAxes": [],
+            "height": 160,
+            "layers": [
+              {
+                "id": 28,
+                "name": "",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "adcsState"
+                    ]
+                  }
+                },
+                "opacity": 0.8,
+                "yAxisId": 25,
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "showAsLinePlot": false
+              }
+            ],
+            "expanded": false,
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 35,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "harnesslossState"
+                    ]
+                  }
+                },
+                "id": 29,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "Harness Loss",
+            "yAxes": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 36,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "propState"
+                    ]
+                  }
+                },
+                "id": 30,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "Prop State",
+            "yAxes": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 37,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "idstState"
+                    ]
+                  }
+                },
+                "id": 31,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "IDST State",
+            "yAxes": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 38,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "imagerState"
+                    ]
+                  }
+                },
+                "id": 32,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "Imager State",
+            "yAxes": []
+          },
+          {
+            "autoAdjustHeight": false,
+            "expanded": false,
+            "height": 160,
+            "horizontalGuides": [],
+            "id": 40,
+            "layers": [
+              {
+                "chartType": "x-range",
+                "colorScheme": "schemeTableau10",
+                "filter": {
+                  "resource": {
+                    "names": [
+                      "imager_heatersState"
+                    ]
+                  }
+                },
+                "id": 34,
+                "name": "",
+                "opacity": 0.8,
+                "showAsLinePlot": false,
+                "yAxisId": 18
+              }
+            ],
+            "name": "Imager Heaters",
+            "yAxes": []
+          }
+        ],
+        "marginLeft": 190,
+        "marginRight": 30,
+        "verticalGuides": []
+      }
+    ],
+    "activitySpansTable": {
+      "columnDefs": [
+        {
+          "field": "id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "ID"
+        },
+        {
+          "field": "dataset_id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Dataset ID"
+        },
+        {
+          "field": "parent_id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Parent ID"
+        },
+        {
+          "field": "type",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Type"
+        },
+        {
+          "field": "start_offset",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Start Offset"
+        },
+        {
+          "hide": false,
+          "field": "derived_start_time",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Absolute Start Time (UTC)"
+        },
+        {
+          "hide": false,
+          "field": "derived_end_time",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Absolute End Time (UTC)"
+        },
+        {
+          "field": "duration",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Duration"
+        }
+      ],
+      "columnStates": [
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "dataset_id",
+          "pivot": false,
+          "width": 215.93000000000006,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "0",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "1",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "duration",
+          "pivot": false,
+          "width": 179,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "id",
+          "pivot": false,
+          "width": 214,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "parent_id",
+          "pivot": false,
+          "width": 214,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "start_offset",
+          "pivot": false,
+          "width": 214,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "type",
+          "pivot": false,
+          "width": 214,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        }
+      ],
+      "autoSizeColumns": "fill"
+    },
+    "activityDirectivesTable": {
+      "columnDefs": [
+        {
+          "sort": null,
+          "colId": "arguments",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "id",
+          "width": 80,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "ID"
+        },
+        {
+          "sort": null,
+          "colId": "last_modified_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "metadata",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "name",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Name"
+        },
+        {
+          "field": "type",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Type"
+        },
+        {
+          "sort": null,
+          "colId": "source_scheduling_goal_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "start_offset",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Start Offset"
+        },
+        {
+          "sort": null,
+          "colId": "tags",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "type",
+          "pivot": false,
+          "width": 280,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "anchor_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "applied_preset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "anchored_to_start",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "derived_start_time",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Absolute Start Time (UTC)"
+        },
+        {
+          "sort": null,
+          "colId": "start_offset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "hide": true,
+          "field": "created_at",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Created At (UTC)"
+        }
+      ],
+      "columnStates": [
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "errorCounts",
+          "pivot": false,
+          "width": 70,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "anchor_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "anchored_to_start",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "applied_preset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "arguments",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "created_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "created_by",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "id",
+          "pivot": false,
+          "width": 40.58299999999997,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "last_modified_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "last_modified_by",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "metadata",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "name",
+          "pivot": false,
+          "width": 97,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "source_scheduling_goal_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "start_offset",
+          "pivot": false,
+          "width": 97,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "tags",
+          "pivot": false,
+          "width": 220,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "type",
+          "pivot": false,
+          "width": 97,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "arguments_1",
+          "pivot": false,
+          "width": 97,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        }
+      ],
+      "autoSizeColumns": "fill"
+    }
+  }
+}
