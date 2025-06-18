@@ -11,10 +11,12 @@ public class Spice {
   private static boolean spiceImported = false;
 
   public static void initialize(String metaKernelPath) throws SpiceErrorException {
-    SpiceLoader.loadSpice();
+    if (!spiceImported) {
+      SpiceLoader.loadSpice();
+      spiceImported = true;
+    }
     CSPICE.kclear();
     CSPICE.furnsh(metaKernelPath);
-    spiceImported = true;
   }
 
 }
