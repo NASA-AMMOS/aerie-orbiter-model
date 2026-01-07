@@ -1,4 +1,4 @@
-# Aerie Multi-Mission Models - Blackbird
+# Aerie Multi-Mission Models - Orbiter Model
 
 This repository houses a collection of spacecraft subsystem models that can be configured, customized, and then run
 within Aerie by a mission. By combining these models together with other models, such as the
