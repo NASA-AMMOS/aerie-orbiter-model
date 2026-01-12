@@ -11,6 +11,7 @@ at NASA's Jet Propulsion Lab (JPL). There is also code included here for you to 
 free 3D visualization software [Cosmographia](https://cosmoguide.org/).
 
 The following models are included in this repository:
+
 - Geometry
 - DSN (in work)
 - Guidance Navigation and Control (in work)
@@ -18,6 +19,20 @@ The following models are included in this repository:
 Below you'll find short descriptions of each model and brief instructions on how to configure and run them. For general
 instructions on how to compile models, see the instructions in the README of [mission model template repo](https://github.com/NASA-AMMOS/aerie-mission-model-template?tab=readme-ov-file#aerie-mission-model-template).
 If you'd like to learn how to write PlanDev models, please see our [modeling tutorial](https://nasa-ammos.github.io/plandev-docs/tutorials/mission-modeling/introduction/).
+
+## Aerie -> PlanDev Rebrand
+
+This product was **formerly known as Aerie and is now named PlanDev**. While we've updated most documentation and external references, some legacy mentions of the old product name may remain as we complete the transition.
+
+What to know:
+
+- The planning product, including modeling, simulation, scheduling and constraint-checking, is now named PlanDev
+- The sequencing product, including the sequence editor, workspaces, and actions, is now named SeqDev
+- All features and functionality remain the same
+- Currently, repository names, package names and other internal code references will retain their existing names, and deployment/migration procedures have not changed
+- In a future release, our repository and/or package names may change. If so, this will be communicated to users via release notes and normal communication channels
+
+For the latest documentation, visit: [PlanDev Documentation](https://nasa-ammos.github.io/plandev-docs/)
 
 ## Geometry Model
 
@@ -47,4 +62,3 @@ the default value in the [Configuration](src/main/java/missionmodel/Configuratio
 ## Acknowledgements
 
 A special thanks to Chris Lawler and Flora Ridenhour, the original developers of the Blackbird planner, who have graciously provided the Blackbird multi-mission models to the PlanDev team as a starting point for the models in this repository.
-
