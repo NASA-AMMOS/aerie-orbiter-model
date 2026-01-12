@@ -1,8 +1,8 @@
-# Aerie Multi-Mission Models - Blackbird
+# PlanDev Multi-Mission Models - Blackbird
 
 This repository houses a collection of spacecraft subsystem models that can be configured, customized, and then run
-within Aerie by a mission. By combining these models together with other models, such as the
-[Aerie Simple Power Model](https://github.com/NASA-AMMOS/aerie-simple-model-power) and [Aerie Simple Data Model](https://github.com/NASA-AMMOS/aerie-simple-model-data),
+within PlanDev by a mission. By combining these models together with other models, such as the
+[PlanDev Simple Power Model](https://github.com/NASA-AMMOS/aerie-simple-model-power) and [PlanDev Simple Data Model](https://github.com/NASA-AMMOS/aerie-simple-model-data),
 a mission can build up an integrated spacecraft model quickly to perform mission trades and analyses.
 
 The models in this
@@ -17,7 +17,7 @@ The following models are included in this repository:
 
 Below you'll find short descriptions of each model and brief instructions on how to configure and run them. For general
 instructions on how to compile models, see the instructions in the README of [mission model template repo](https://github.com/NASA-AMMOS/aerie-mission-model-template?tab=readme-ov-file#aerie-mission-model-template).
-If you'd like to learn how to write Aerie models, please see our [modeling tutorial](https://nasa-ammos.github.io/aerie-docs/tutorials/mission-modeling/introduction/).
+If you'd like to learn how to write PlanDev models, please see our [modeling tutorial](https://nasa-ammos.github.io/plandev-docs/tutorials/mission-modeling/introduction/).
 
 ## Geometry Model
 
@@ -32,9 +32,9 @@ any other bodies to which you are computing relative geometry. There are some [e
 in this repository for the Juno mission you can use to try out the model. When you are ready to use your own kernels,
 you will want to update the [latest_meta_kernel.tm](spice/kernels/latest_meta_kernel.tm) file to point to your kernels.
 
-Note: In order for Aerie to read SPICE files, you must mount a folder on your filesystem so that it’s shared with the
-Docker containers in which Aerie runs. The [`docker-compose.yml`]() file in this repo already does this for you, so if you
-start Aerie from that file and store your kernels in the [spice/kernels](spice/kernels) directory, you shouldn't have
+Note: In order for PlanDev to read SPICE files, you must mount a folder on your filesystem so that it’s shared with the
+Docker containers in which PlanDev runs. The [`docker-compose.yml`]() file in this repo already does this for you, so if you
+start PlanDev from that file and store your kernels in the [spice/kernels](spice/kernels) directory, you shouldn't have
 to do anything special.
 
 Bodies and geometric quantities you want to calculate are all configured in the [`default_geometry_config.json`](src/main/resources/missionmodel/default_geometry_config.json),
@@ -46,5 +46,5 @@ the default value in the [Configuration](src/main/java/missionmodel/Configuratio
 
 ## Acknowledgements
 
-A special thanks to Chris Lawler and Flora Ridenhour, the original developers of the Blackbird planner, who have graciously provided the Blackbird multi-mission models to the Aerie team as a starting point for the models in this repository.
+A special thanks to Chris Lawler and Flora Ridenhour, the original developers of the Blackbird planner, who have graciously provided the Blackbird multi-mission models to the PlanDev team as a starting point for the models in this repository.
 
