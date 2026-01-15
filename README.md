@@ -17,7 +17,21 @@ The following models are included in this repository:
 
 Below you'll find short descriptions of each model and brief instructions on how to configure and run them. For general
 instructions on how to compile models, see the instructions in the README of [mission model template repo](https://github.com/NASA-AMMOS/aerie-mission-model-template?tab=readme-ov-file#aerie-mission-model-template).
-If you'd like to learn how to write Aerie models, please see our [modeling tutorial](https://nasa-ammos.github.io/aerie-docs/tutorials/mission-modeling/introduction/).
+If you'd like to learn how to write PlanDev models, please see our [modeling tutorial](https://nasa-ammos.github.io/plandev-docs/tutorials/mission-modeling/introduction/).
+
+## Aerie -> PlanDev Rebrand
+
+This product was **formerly known as Aerie and is now named PlanDev**. While we've updated most documentation and external references, some legacy mentions of the old product name may remain as we complete the transition.
+
+What to know:
+
+- The planning product, including modeling, simulation, scheduling and constraint-checking, is now named PlanDev
+- The sequencing product, including the sequence editor, workspaces, and actions, is now named SeqDev
+- All features and functionality remain the same
+- Currently, repository names, package names and other internal code references will retain their existing names, and deployment/migration procedures have not changed
+- In a future release, our repository and/or package names may change. If so, this will be communicated to users via release notes and normal communication channels
+
+For the latest documentation, visit: [PlanDev Documentation](https://nasa-ammos.github.io/plandev-docs/)
 
 ## Getting Started
 
@@ -33,7 +47,7 @@ If you'd like to learn how to write Aerie models, please see our [modeling tutor
   brew install git-lfs
   ```
   If you have never run LFS before, you must run the command `git lfs install` once after running the installer. 
-- You need to create a **[personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) in your GitHub account** that includes the `read-packages` scope, so that you can download the Aerie Maven packages from the [GitHub Maven package registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry). Keep track of the username and token after you generate it.
+- You need to create a **[personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) in your GitHub account** that includes the `read-packages` scope, so that you can download the PlanDev Maven packages from the [GitHub Maven package registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry). Keep track of the username and token after you generate it.
 
 
 ### Quick Start
@@ -52,9 +66,9 @@ To start working with this model:
    GITHUB_TOKEN="your_personal_access_token"
    ```
 4. Run `git lfs pull` to download large files in the repo, like the SPICE kernel.
-5. Run `docker compose up -d` to run Aerie locally - after it starts up, it should be accessible on [http://localhost:80](http://localhost:80)
+5. Run `docker compose up -d` to run PlanDev locally - after it starts up, it should be accessible on [http://localhost:80](http://localhost:80)
 
-Once Aerie is up and running with an empty database, you can use the following steps to populate it with a working mission model, constraints, and scheduling procedures:
+Once PlanDev is up and running with an empty database, you can use the following steps to populate it with a working mission model, constraints, and scheduling procedures:
 
 #### Mission Model
 The main mission model code is in the `missionmodel` folder. To build the mission model JAR (initially or after any changes to it), run:
@@ -63,15 +77,15 @@ The main mission model code is in the `missionmodel` folder. To build the missio
 ./gradlew :missionmodel:build --refresh-dependencies
 ```
 
-This will create the file `'missionmodel/build/libs/missionmodel.jar`, which you can upload to Aerie using the UI or API.
+This will create the file `'missionmodel/build/libs/missionmodel.jar`, which you can upload to PlanDev using the UI or API.
 
 #### Example Plan
-Once you have built the mission model and uploaded it to Aerie (via the "Models" page), you can use it to create Plans.
+Once you have built the mission model and uploaded it to PlanDev (via the "Models" page), you can use it to create Plans.
 This repo contains an example Plan to demonstrate the model's capabilities: `Example_MarsSat_Plan.json`. To use it, 
-go to the "Plans" page on Aerie and use the Import button to select & import this JSON file. Set the "Model" to your
+go to the "Plans" page on PlanDev and use the Import button to select & import this JSON file. Set the "Model" to your
 uploaded model, and create the plan.
 
-A custom view for this plan is also included - access the view menu in the top right of the Aerie and import the file
+A custom view for this plan is also included - access the view menu in the top right of the PlanDev and import the file
 `MarsSat_Overview_View.json`
 
 #### Scheduling Procedures and Constraints
@@ -104,9 +118,9 @@ any other bodies to which you are computing relative geometry. There are some [e
 in this repository for the Juno mission you can use to try out the model. When you are ready to use your own kernels,
 you will want to update the [latest_meta_kernel.tm](spice/kernels/latest_meta_kernel.tm) file to point to your kernels.
 
-Note: In order for Aerie to read SPICE files, you must mount a folder on your filesystem so that it’s shared with the
-Docker containers in which Aerie runs. The [`docker-compose.yml`]() file in this repo already does this for you, so if you
-start Aerie from that file and store your kernels in the [spice/kernels](spice/kernels) directory, you shouldn't have
+Note: In order for PlanDev to read SPICE files, you must mount a folder on your filesystem so that it’s shared with the
+Docker containers in which PlanDev runs. The [`docker-compose.yml`]() file in this repo already does this for you, so if you
+start PlanDev from that file and store your kernels in the [spice/kernels](spice/kernels) directory, you shouldn't have
 to do anything special.
 
 Bodies and geometric quantities you want to calculate are all configured in the [`default_geometry_config.json`](src/main/resources/missionmodel/default_geometry_config.json),
@@ -118,5 +132,5 @@ the default value in the [Configuration](src/main/java/missionmodel/Configuratio
 
 ## Acknowledgements
 
-A special thanks to Chris Lawler and Flora Ridenhour, the original developers of the Blackbird planner, who have graciously provided the Blackbird multi-mission models to the Aerie team as a starting point for the models in this repository.
+A special thanks to Chris Lawler and Flora Ridenhour, the original developers of the Blackbird planner, who have graciously provided the Blackbird multi-mission models to the PlanDev team as a starting point for the models in this repository.
 
