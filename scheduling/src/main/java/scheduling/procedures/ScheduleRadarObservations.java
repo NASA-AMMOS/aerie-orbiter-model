@@ -9,6 +9,7 @@ import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.DirectiveSta
 import gov.nasa.jpl.aerie.contrib.serialization.mappers.DurationValueMapper;
 import gov.nasa.jpl.aerie.contrib.serialization.mappers.EnumValueMapper;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
+import gov.nasa.ammos.aerie.procedural.timeline.Interval;
 import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
 import gov.nasa.jpl.time.Time;
 import missionmodel.JPLTimeConvertUtility;
@@ -35,8 +36,9 @@ public record ScheduleRadarObservations() implements Goal {
 
     @Override
     public void run(EditablePlan plan) {
-
-      Instant planEnd = plan.toAbsolute(plan.totalBounds().end);
+      Interval planBounds = plan.totalBounds();
+      Instant planStart = plan.toAbsolute(planBounds.start);
+      Instant planEnd = plan.toAbsolute(planBounds.end);
 
       // Find Periapsis Activities
       var periapsisActs = plan.directives("Periapsis").collect();
@@ -72,6 +74,7 @@ public record ScheduleRadarObservations() implements Goal {
           if (firstObs) {
             firstObs = false;
             Instant warmupTime = instantMinusDuration(orbStartTime, RADAR_WARMUP_DUR);
+            if(warmupTime.isBefore(planStart)) warmupTime = planStart;
 
             // Create new activity
             var newDirective = new NewDirective(
@@ -136,7 +139,7 @@ public record ScheduleRadarObservations() implements Goal {
                 "Radar_Off",
                 "Radar_Off",
                 new DirectiveStart.Absolute(plan.toRelative( nextRadarActTime )));
-
+              plan.create(newDirective);
             }
           }
 

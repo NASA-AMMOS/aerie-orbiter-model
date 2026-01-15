@@ -1,5 +1,27 @@
-version: "3.7"
 services:
+  aerie_action:
+    container_name: aerie_action
+    depends_on: [ "postgres" ]
+    environment:
+      HASURA_GRAPHQL_JWT_SECRET: "${HASURA_GRAPHQL_JWT_SECRET}"
+      LOG_FILE: console
+      LOG_LEVEL: debug
+      MERLIN_GRAPHQL_URL: http://hasura:8080/v1/graphql
+      AERIE_DB_HOST: aerie_postgres
+      AERIE_DB_PORT: 5432
+      ACTION_DB_USER: "${SEQUENCING_USERNAME}"
+      ACTION_DB_PASSWORD: "${SEQUENCING_PASSWORD}"
+      ACTION_LOCAL_STORE: /usr/src/app/action_file_store
+      ACTION_WORKER_NUM: 1
+      ACTION_MAX_WORKER_NUM: 1
+      SEQUENCING_LOCAL_STORE: /usr/src/app/sequencing_file_store
+    image: "${REPOSITORY_DOCKER_URL}/aerie-action:${DOCKER_TAG}"
+    ports: [ "27186:27186" ]
+    restart: always
+    volumes:
+      - aerie_file_store:/usr/src/app/action_file_store
+    networks:
+      - aerie_net
   aerie_gateway:
     container_name: aerie_gateway
     depends_on: ["postgres"]
@@ -14,6 +36,7 @@ services:
       AERIE_DB_PORT: 5432
       GATEWAY_DB_USER: "${GATEWAY_USERNAME}"
       GATEWAY_DB_PASSWORD: "${GATEWAY_PASSWORD}"
+      HASURA_API_URL: http://hasura:8080/
     image: "${REPOSITORY_DOCKER_URL}/aerie-gateway:${DOCKER_TAG}"
     ports: ["9000:9000"]
     restart: always
@@ -131,8 +154,10 @@ services:
       AERIE_DB_PORT: 5432
       SEQUENCING_DB_USER: "${SEQUENCING_USERNAME}"
       SEQUENCING_DB_PASSWORD: "${SEQUENCING_PASSWORD}"
+      SEQUENCING_LANGUAGE: "SEQN"
       SEQUENCING_LOCAL_STORE: /usr/src/app/sequencing_file_store
       SEQUENCING_WORKER_NUM: 8
+      SEQUENCING_MAX_WORKER_NUM : 8
       SEQUENCING_MAX_WORKER_HEAP_MB: 1000
       TRANSPILER_ENABLED: "true"
     image: "${REPOSITORY_DOCKER_URL}/aerie-sequencing:${DOCKER_TAG}"
@@ -148,21 +173,48 @@ services:
     environment:
       ORIGIN: http://localhost
       PUBLIC_AERIE_FILE_STORE_PREFIX: "/usr/src/app/merlin_file_store/"
+      PUBLIC_ACTION_CLIENT_URL: http://localhost:27186
       PUBLIC_GATEWAY_CLIENT_URL: http://localhost:9000
       PUBLIC_GATEWAY_SERVER_URL: http://aerie_gateway:9000
       PUBLIC_HASURA_CLIENT_URL: http://localhost:8080/v1/graphql
       PUBLIC_HASURA_SERVER_URL: http://hasura:8080/v1/graphql
       PUBLIC_HASURA_WEB_SOCKET_URL: ws://localhost:8080/v1/graphql
+      PUBLIC_WORKSPACE_CLIENT_URL: http://localhost:28000
+      PUBLIC_COMMAND_EXPANSION_MODE: "typescript"
     image: "${REPOSITORY_DOCKER_URL}/aerie-ui:${DOCKER_TAG}"
     ports: ["80:80"]
     restart: always
     networks:
       - aerie_net
+  aerie_workspace:
+    container_name: aerie_workspace
+    depends_on: [ "postgres" ]
+    environment:
+      AERIE_DB_HOST: postgres
+      AERIE_DB_PORT: 5432
+      SEQUENCING_DB_USER: "${SEQUENCING_USERNAME}"
+      SEQUENCING_DB_PASSWORD: "${SEQUENCING_PASSWORD}"
+      WORKSPACE_STORE: /usr/src/ws
+      WORKSPACE_PORT: 28000
+      HASURA_GRAPHQL_JWT_SECRET: "${HASURA_GRAPHQL_JWT_SECRET}"
+      HASURA_GRAPHQL_ADMIN_SECRET: "${HASURA_GRAPHQL_ADMIN_SECRET}"
+      HASURA_GRAPHQL_URL: http://hasura:8080/v1/graphql
+      JAVA_OPTS: >
+        -Dorg.slf4j.simpleLogger.defaultLogLevel=INFO
+        -Dorg.slf4j.simpleLogger.log.com.zaxxer.hikari=INFO
+        -Dorg.slf4j.simpleLogger.logFile=System.err
+    image: "${REPOSITORY_DOCKER_URL}/aerie-workspace:${DOCKER_TAG}"
+    ports: [ "28000:28000"]
+    restart: always
+    networks:
+      - aerie_net
+    volumes:
+      - workspace_file_store:/usr/src/ws
   hasura:
     container_name: aerie_hasura
     depends_on: ["postgres"]
     environment:
-      AERIE_DATABASE_URL: "postgres://${AERIE_USERNAME}:${AERIE_PASSWORD}@aerie_postgres:5432/aerie?options=-c%20search_path%3Dutil_functions%2Chasura%2Cpermissions%2Ctags%2Cmerlin%2Cscheduler%2Csequencing%2Cpublic"
+      AERIE_DATABASE_URL: "postgres://${AERIE_USERNAME}:${AERIE_PASSWORD}@aerie_postgres:5432/aerie?options=-c%20search_path%3Dutil_functions%2Chasura%2Cpermissions%2Ctags%2Cmerlin%2Cscheduler%2Csequencing%2Cactions%2Cui%2Cpublic"
       AERIE_MERLIN_URL: "http://aerie_merlin:27183"
       AERIE_SCHEDULER_URL: "http://aerie_scheduler:27185"
       AERIE_SEQUENCING_URL: "http://aerie_sequencing:27184"
@@ -206,6 +258,7 @@ services:
 volumes:
   aerie_file_store:
   postgres_data:
+  workspace_file_store:
 
 networks:
   aerie_net:
