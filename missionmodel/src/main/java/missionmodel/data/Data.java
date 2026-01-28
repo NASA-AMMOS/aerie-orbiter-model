@@ -6,7 +6,6 @@ import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.LinearBoundaryConsistencySolver;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.Polynomial;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.PolynomialResources;
-import missionmodel.data.Bucket;
 
 import java.util.*;
 
@@ -29,9 +28,15 @@ public class Data {
   public static LinearBoundaryConsistencySolver rateSolver = new LinearBoundaryConsistencySolver("DataModel Rate Solver");
 
   /**
-   * The onboard storage device of the spacecraft, a parent of the bins, {@link #onboardBuckets}.
+   * The unfiltered onboard storage device of the spacecraft.
    */
-  public Bucket onboard;
+  public Bucket unfilteredOnboard;
+
+
+  /**
+   * The filtered onboard storage device of the spacecraft, a parent of the bins, {@link #filteredOnboardBuckets}.
+   */
+  public Bucket filteredOnboard;
 
   /**
    * The parent container for ground storage, representing the data that has been played back/downlinked overall
@@ -58,9 +63,14 @@ public class Data {
   public MutableResource<Polynomial> durationRequestedToDownlink = polynomialResource(0.0);
 
   /**
-   * The storage bins/categories, which are children of {@link #onboard}.  Lower indices in the array are higher priority
+   * The unfiltered storage bins/categories, which are children of {@link #filteredOnboard}.  Lower indices in the array are higher priority
    */
-  public ArrayList<Bucket> onboardBuckets = new ArrayList<>();
+  public ArrayList<Bucket> unfilteredOnboardBuckets = new ArrayList<>();
+
+  /**
+   * The filtered storage bins/categories, which are children of {@link #filteredOnboard}.  Lower indices in the array are higher priority
+   */
+  public ArrayList<Bucket> filteredOnboardBuckets = new ArrayList<>();
 
   /**
    * The ground storage bins corresponding to the onboard bins, tracking how much data has been downlinked for each bin
@@ -68,10 +78,17 @@ public class Data {
   public ArrayList<Bucket> groundBuckets = new ArrayList<>();
 
   /**
-   * Get the onboard bin by index, starting from 0
+   * Get the unfiltered bin by index, starting from 0
    */
-  public Bucket getOnboardBin(int bin) {
-    return onboardBuckets.get(bin);
+  public Bucket getUnfilteredBin(int bin) {
+    return unfilteredOnboardBuckets.get(bin);
+  }
+
+  /**
+   * Get the filtered bin by index, starting from 0
+   */
+  public Bucket getFilteredBin(int bin) {
+    return filteredOnboardBuckets.get(bin);
   }
 
   /**
@@ -91,13 +108,17 @@ public class Data {
   public Data(Optional<Resource<Polynomial>> dataRate, int numBuckets, Resource<Polynomial> maxVolume) {
 
     for (int i = 0; i < numBuckets; ++i) {
+      Bucket unfilteredBin = new Bucket("rawBin" + i, true, Collections.emptyList());
+      unfilteredOnboardBuckets.add(unfilteredBin);
       Bucket scBin = new Bucket("scBin" + i, true, Collections.emptyList());
-      onboardBuckets.add(scBin);
+      filteredOnboardBuckets.add(scBin);
       Bucket gBin = new Bucket("gndBin" + i, true, Collections.emptyList());
       groundBuckets.add(gBin);
     }
 
-    onboard = new Bucket("onboard", false, onboardBuckets, maxVolume); // 10Gb
+    unfilteredOnboard = new Bucket("unfiltered", false, unfilteredOnboardBuckets, maxVolume);
+
+    filteredOnboard = new Bucket("onboard", false, filteredOnboardBuckets, maxVolume); // 10Gb
 
     ground = new Bucket("ground", false, groundBuckets);
 
@@ -110,8 +131,9 @@ public class Data {
       lessThanOrEquals(durationRequestedToDownlink, 0));
     Resource<Polynomial> downlinkRateLeft = choose(done, constant(0), this.dataRate);
     ArrayList<Resource<Polynomial>> actualDownlinkRates = new ArrayList<>();//(model.getData().onboard.children.size());
-    for (int i = 0; i < onboard.children.size(); ++i) {
-      Bucket scBin = onboard.children.get(i);
+
+    for (int i = 0; i < filteredOnboard.children.size(); ++i) {
+      Bucket scBin = filteredOnboard.children.get(i);
       Bucket gBin = ground.children.get(i);
       var availableVolumeToDownlink = subtract(scBin.received, gBin.received);
       var isEmpty = or(lessThanOrEquals(scBin.volume, 0),
@@ -130,8 +152,7 @@ public class Data {
         set(volumeRequestedToDownlink, Polynomial.polynomial(currentValue(volumeRequestedToDownlink), -data(r).extract()));
     });
     spawn(() -> {
-      for (int i = 0; i < onboard.children.size(); ++i) {
-        Bucket scBin = onboard.children.get(i);
+      for (int i = 0; i < ground.children.size(); ++i) {
         Bucket gBin = ground.children.get(i);
         set((MutableResource<Polynomial>) gBin.desiredReceiveRate, actualDownlinkRates.get(i).getDynamics().getOrThrow().data());
       }
@@ -143,7 +164,8 @@ public class Data {
    * @param registrar the built-in Registrar object used to register resources
    */
   public void registerStates(Registrar registrar) {
-    onboard.registerStates(registrar);
+    filteredOnboard.registerStates(registrar);
+    unfilteredOnboard.registerStates(registrar);
     ground.registerStates(registrar);
     registrar.real("volumeRequestedToDownlink", assumeLinear(volumeRequestedToDownlink));
     registrar.real("durationRequestedToDownlink", assumeLinear(durationRequestedToDownlink));

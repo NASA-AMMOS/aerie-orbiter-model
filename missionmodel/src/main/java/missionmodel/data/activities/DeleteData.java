@@ -40,7 +40,7 @@ public class DeleteData {
   @ActivityType.EffectModel
   public void run(DataMissionModel model) {
     Data data = model.getData();
-    var binToChange = data.getOnboardBin(bin);
+    var binToChange = data.getFilteredBin(bin);
     var groundBin = data.getGroundBin(bin);
 
     double currentVolume = currentValue(binToChange.volume);

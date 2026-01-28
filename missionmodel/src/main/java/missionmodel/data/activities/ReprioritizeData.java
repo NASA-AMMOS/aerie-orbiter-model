@@ -33,8 +33,8 @@ public class ReprioritizeData {
   @ActivityType.EffectModel
   public void run(DataMissionModel model) {
     Data data = model.getData();
-    var fromBin = data.getOnboardBin(bin);
-    var toBin = data.getOnboardBin(newBin);
+    var fromBin = data.getFilteredBin(bin);
+    var toBin = data.getFilteredBin(newBin);
 
     double currentVolume = currentValue(fromBin.volume);
     double receivableVolume = currentValue(toBin.volume_ub) - currentValue(toBin.volume);

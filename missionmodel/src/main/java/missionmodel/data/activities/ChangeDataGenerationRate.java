@@ -7,7 +7,6 @@ import gov.nasa.jpl.aerie.merlin.framework.annotations.ActivityType;
 import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
 import missionmodel.data.Data;
 import missionmodel.data.DataMissionModel;
-import missionmodel.radar.RadarDataCollectionMode;
 
 import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.set;
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.Polynomial.polynomial;
@@ -41,7 +40,7 @@ public class ChangeDataGenerationRate {
   public void run(DataMissionModel model) {
     Data data = model.getData();
     if (rate == 0.0) return;
-    var binToChange = data.getOnboardBin(bin);
+    var binToChange = data.getUnfilteredBin(bin);
 
     System.out.println("ChangeDataGenerationRate(" + Resources.currentTime() + "): rate = " + rate);
 
