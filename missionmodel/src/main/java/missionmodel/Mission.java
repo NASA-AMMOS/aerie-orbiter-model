@@ -148,7 +148,7 @@ public final class Mission implements DataMissionModel {
     this.dataRate = discreteResource(config.dataConfig().initialDatarate()); // bps
     this.maxVolune = discreteResource(config.dataConfig().initialMaxVolume()); // bits
 
-    this.data = new Data(Optional.of(asPolynomial(dataRate)), 2, asPolynomial(maxVolune));
+    this.data = new Data(Optional.of(asPolynomial(dataRate)), config.dataConfig().binCount(), asPolynomial(maxVolune));
     data.registerStates(errorRegistrar);
 
     //
