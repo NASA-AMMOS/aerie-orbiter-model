@@ -7,16 +7,8 @@ import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
 import missionmodel.data.Data;
 import missionmodel.data.DataMissionModel;
 
-import java.util.Random;
-
 @ActivityType("FilterData")
 public class FilterData {
-    /**
-     * Seeded random number generator to determine how much of the unfiltered data goes into each filtered bin.
-     * Is static so that different instances on the same plan behave differently, but in a deterministic way.
-     */
-    private static final Random seededRandom = new Random(100);
-
     /**
      * The percent of data to be kept after filtering
      */
@@ -33,6 +25,7 @@ public class FilterData {
     public void run(DataMissionModel model) {
         // Get Data model
         Data data = model.getData();
+        var random = model.getRandom();
         var unfilteredBins = data.unfilteredOnboardBuckets;
         var filteredBins = data.filteredOnboardBuckets;
 
@@ -57,7 +50,7 @@ public class FilterData {
                 double splitPercent;
                 int splitAmnt;
                 do {
-                    splitPercent = Math.floor(seededRandom.nextDouble(percentLeftToFilter) * 100) / 100;
+                    splitPercent = Math.floor(random.nextDouble(percentLeftToFilter) * 100) / 100;
                     splitAmnt = (int)(filteredVolume * splitPercent);
                 } while (splitAmnt > volumeLeftOnBin);
 

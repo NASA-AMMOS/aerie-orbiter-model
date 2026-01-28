@@ -25,6 +25,7 @@ import spice.basic.SpiceErrorException;
 import java.nio.file.Path;
 import java.time.Instant;
 import java.util.Optional;
+import java.util.Random;
 
 import static gov.nasa.jpl.aerie.contrib.metadata.UnitRegistrar.withUnit;
 import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.resource;
@@ -32,8 +33,6 @@ import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete.d
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteResources.discreteResource;
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteResources.divide;
 import static gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.PolynomialResources.asPolynomial;
-import static gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.PolynomialResources.multiply;
-import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.spawn;
 // import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
 
 // import static gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource.resource;
@@ -46,6 +45,13 @@ import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.spawn;
  * Spawn daemon tasks using spawn(objectName::nameOfMethod) within the class constructor
  */
 public final class Mission implements DataMissionModel {
+
+  /**
+   * Seeded random number generator to determine how much of the unfiltered data goes into each filtered bin.
+   * Is static so that different instances on the same plan behave differently, but in a deterministic way.
+   */
+  public static final Random seededRandom = new Random(100);
+
 
   // Special registrar class that handles simulation errors via auto-generated resources
   public final Registrar errorRegistrar;
@@ -167,5 +173,8 @@ public final class Mission implements DataMissionModel {
   public Data getData() {
     return data;
   }
+
+  @Override
+  public Random getRandom() {return seededRandom;}
 
 }

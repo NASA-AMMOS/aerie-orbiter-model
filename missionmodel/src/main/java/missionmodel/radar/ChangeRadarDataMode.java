@@ -23,10 +23,10 @@ public class ChangeRadarDataMode {
 
   @ActivityType.EffectModel
   public void run(Mission model) {
-    double currentRate = currentValue(model.radarModel.RadarDataRate);
+    // Spawn an activity to playback -- put it in a random bin
     double newRate = mode.getDataRate();
-    // Spawn an activity to playback
-    spawn(model, new ChangeDataGenerationRate(0, newRate*1e6));
+    int bin = model.getRandom().nextInt(model.data.unfilteredOnboardBuckets.size());
+    spawn(model, new ChangeDataGenerationRate(bin, newRate*1e6));
 
     DiscreteEffects.set(model.radarModel.RadarDataMode, mode);
   }
