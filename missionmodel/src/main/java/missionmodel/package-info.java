@@ -31,6 +31,7 @@
 @WithActivityType(Radar_Off.class)
 @WithActivityType(Radar_On.class)
 @WithActivityType(ChangeRadarDataMode.class)
+@WithActivityType(TakeRadarObservation.class)
 
 // @WithMetadata(name = "unit", annotation = gov.nasa.jpl.aerie.contrib.metadata.Unit.class) // for unit support
 package missionmodel;
@@ -49,6 +50,7 @@ import missionmodel.geometry.activities.spawner.AddPeriapsis;
 import missionmodel.geometry.activities.spawner.AddSpacecraftEclipses;
 import missionmodel.power.activities.SolarArrayDeployment;
 import missionmodel.radar.ChangeRadarDataMode;
+import missionmodel.radar.TakeRadarObservation;
 import missionmodel.telecom.Downlink;
 import missionmodel.radar.Radar_Off;
 import missionmodel.radar.Radar_On;
