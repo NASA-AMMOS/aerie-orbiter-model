@@ -1,10 +1,13 @@
 package missionmodel.data;
 
+import gov.nasa.jpl.aerie.contrib.serialization.mappers.BooleanValueMapper;
 import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
 import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
+import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.LinearBoundaryConsistencySolver;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.Polynomial;
+import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.PolynomialResources;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
 
 import java.util.List;
@@ -99,6 +102,8 @@ public class Bucket {
    */
   public Resource<Polynomial> removeRate;
 
+  public Resource<Discrete<Boolean>> isEmpty;
+
   private static Resource<Polynomial> max_bound = constant(Double.MAX_VALUE);
 
   /**
@@ -126,6 +131,7 @@ public class Bucket {
     this.removed = polynomialResource(0.0);
     this.volume = polynomialResource(0.0);
     this.volume_ub = upperBound;
+    this.isEmpty = PolynomialResources.lessThanOrEquals(volume, 0);
 
     this.correctedVolume = null;
 
@@ -205,6 +211,7 @@ public class Bucket {
     registrar.real(name + ".receivedVolume", assumeLinear(received));
     registrar.real(name + ".removedVolume", assumeLinear(removed));
     registrar.real(name + ".volume", assumeLinear(volume));
+    registrar.discrete(name+".isEmpty", isEmpty, new BooleanValueMapper());
     if (clampedVolume != null) registrar.real(name + ".clampedVolume", assumeLinear(clampedVolume));
     if (correctedVolume != null) registrar.real(name + ".correctedVolume", assumeLinear(correctedVolume));
     registrar.real(name + ".maxVolume", assumeLinear(volume_ub));
@@ -212,7 +219,6 @@ public class Bucket {
       child.registerStates(registrar);
     }
   }
-
 
   /**
    * Add an incoming rate of volume over a duration to the existing {@link #desiredReceiveRate}.

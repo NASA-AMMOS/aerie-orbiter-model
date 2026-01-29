@@ -1,11 +1,15 @@
 package missionmodel.data;
 
+import gov.nasa.jpl.aerie.contrib.serialization.mappers.IntegerValueMapper;
 import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
 import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
+import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
+import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.monads.DiscreteResourceMonad;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.LinearBoundaryConsistencySolver;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.Polynomial;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.PolynomialResources;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.*;
 
@@ -170,6 +174,54 @@ public class Data {
     registrar.real("volumeRequestedToDownlink", assumeLinear(volumeRequestedToDownlink));
     registrar.real("durationRequestedToDownlink", assumeLinear(durationRequestedToDownlink));
     registrar.real("playbackDataRate", assumeLinear(dataRate));
+    registerEmptyPrio(registrar);
+    registerDownlinkedPrio(registrar);
   }
 
+
+  private void registerEmptyPrio(Registrar registrar) {
+    // Build downlink prio info state
+    List<Resource<Discrete<Boolean>>> childrenIsEmptyResources = filteredOnboard.children.stream().map(c -> c.isEmpty).toList();
+    List<Resource<Discrete<Pair<Boolean, Integer>>>> indexedChildrenIsEmptyResources = new ArrayList<>();
+
+    // build list from lowest prio bin -> highest
+    for (int i = childrenIsEmptyResources.size() - 1; i >= 0; --i) {
+      final int fixedI = i;
+      final var child = childrenIsEmptyResources.get(i);
+      indexedChildrenIsEmptyResources.add(DiscreteResourceMonad.map(child, $ -> Pair.of($, fixedI)));
+    }
+
+    // what is the highest prio non-empty bin?
+    Resource<Discrete<Pair<Boolean, Integer>>> indexedFirstEmptyChild = DiscreteResourceMonad.reduce(
+            indexedChildrenIsEmptyResources,
+            Pair.of(false, -1),
+            (Pair<Boolean, Integer> first, Pair<Boolean, Integer> second) -> !second.getKey() ? second : first);
+    Resource<Discrete<Integer>> indexOfFirstEmptyChild = DiscreteResourceMonad.map(indexedFirstEmptyChild, Pair::getValue);
+
+    registrar.discrete(filteredOnboard.name + ".highestDownlinkPriority", indexOfFirstEmptyChild, new IntegerValueMapper());
+  }
+
+  private void registerDownlinkedPrio(Registrar registrar) {
+    // Build downlink prio info state
+    List<Resource<Discrete<Boolean>>> childrenIsEmptyResources = ground.children
+            .stream()
+            .map(c -> PolynomialResources.greaterThan(c.actualRate, 0)).toList();
+    List<Resource<Discrete<Pair<Boolean, Integer>>>> indexedChildrenIsEmptyResources = new ArrayList<>();
+
+    // build list from lowest prio bin -> highest
+    for (int i = childrenIsEmptyResources.size() - 1; i >= 0; --i) {
+      final int fixedI = i;
+      final var child = childrenIsEmptyResources.get(i);
+      indexedChildrenIsEmptyResources.add(DiscreteResourceMonad.map(child, $ -> Pair.of($, fixedI)));
+    }
+
+    // what is the highest prio non-empty bin?
+    Resource<Discrete<Pair<Boolean, Integer>>> indexedFirstEmptyChild = DiscreteResourceMonad.reduce(
+            indexedChildrenIsEmptyResources,
+            Pair.of(false, -1),
+            (Pair<Boolean, Integer> first, Pair<Boolean, Integer> second) -> second.getKey() ? second : first);
+    Resource<Discrete<Integer>> indexOfFirstEmptyChild = DiscreteResourceMonad.map(indexedFirstEmptyChild, Pair::getValue);
+
+    registrar.discrete(ground.name+".currentDownlinkPriority", indexOfFirstEmptyChild, new IntegerValueMapper());
+  }
 }
