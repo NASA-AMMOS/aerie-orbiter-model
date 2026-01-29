@@ -2,6 +2,7 @@ package scheduling.procedures;
 
 import gov.nasa.ammos.aerie.procedural.scheduling.Goal;
 import gov.nasa.ammos.aerie.procedural.scheduling.annotations.SchedulingProcedure;
+import gov.nasa.ammos.aerie.procedural.scheduling.annotations.WithDefaults;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.EditablePlan;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.NewDirective;
 import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.AnyDirective;
@@ -37,6 +38,15 @@ public record AddSpacecraftEclipses(
     public static final Path VERSIONED_KERNELS_ROOT_DIRECTORY = Path.of(System.getenv().getOrDefault("SPICE_DIRECTORY", "spice/kernels"));
 
     public static final String NAIF_META_KERNEL_PATH = VERSIONED_KERNELS_ROOT_DIRECTORY.toString() + "/latest_meta_kernel.tm";
+
+    @WithDefaults
+    public static class Template {
+        public String observer = "mro";
+        public String target = "SUN";
+        public String occultingBody = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public Boolean useDSK = false;
+    }
 
     @Override
     public void run(EditablePlan plan) {

@@ -3,6 +3,7 @@ package scheduling.procedures;
 import gov.nasa.ammos.aerie.procedural.scheduling.ActivityAutoDelete;
 import gov.nasa.ammos.aerie.procedural.scheduling.Goal;
 import gov.nasa.ammos.aerie.procedural.scheduling.annotations.SchedulingProcedure;
+import gov.nasa.ammos.aerie.procedural.scheduling.annotations.WithDefaults;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.DeletedAnchorStrategy;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.EditablePlan;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.NewDirective;
@@ -40,6 +41,14 @@ public record AddPeriapses(
 
     public static final String NAIF_META_KERNEL_PATH = VERSIONED_KERNELS_ROOT_DIRECTORY.toString() + "/latest_meta_kernel.tm";
 
+    @WithDefaults
+    public static class Template {
+        public String body = "mro";
+        public String target = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public double maxDistanceFilter = 1000000000.0;
+    }
+    
     @NotNull
     @Override
     public ActivityAutoDelete shouldDeletePastCreations(

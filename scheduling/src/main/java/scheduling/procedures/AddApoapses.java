@@ -2,6 +2,7 @@ package scheduling.procedures;
 
 import gov.nasa.ammos.aerie.procedural.scheduling.Goal;
 import gov.nasa.ammos.aerie.procedural.scheduling.annotations.SchedulingProcedure;
+import gov.nasa.ammos.aerie.procedural.scheduling.annotations.WithDefaults;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.EditablePlan;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.NewDirective;
 import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.AnyDirective;
@@ -37,6 +38,14 @@ public record AddApoapses(
     public static final Path VERSIONED_KERNELS_ROOT_DIRECTORY = Path.of(System.getenv().getOrDefault("SPICE_DIRECTORY", "spice/kernels"));
 
     public static final String NAIF_META_KERNEL_PATH = VERSIONED_KERNELS_ROOT_DIRECTORY.toString() + "/latest_meta_kernel.tm";
+
+    @WithDefaults
+    public static class Template {
+        public String body = "mro";
+        public String target = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public double minDistanceFilter = 1.0;
+    }
 
     @Override
     public void run(EditablePlan plan) {
