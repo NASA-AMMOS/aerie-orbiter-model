@@ -33,38 +33,24 @@ public class FilterData {
         for(var bin : unfilteredBins) {
             // get the % of data we're filtering (dropping fractional bytes)
             final var volume = Resources.currentValue(bin.volume);
-            final int filteredVolume = (int)(volume * percent);
-
-            double percentLeftToFilter = 1;
-            // assign it randomly to the filtered bins -- note that the last bin is excluded
-            for(int i = 0; i < filteredBins.size()-1 && percentLeftToFilter > 0; ++i) {
+            int volumeLeftToFilter = (int)(volume * percent);
+            // assign it to the filtered bins, filling each one up as much as possible
+            for(int i = 0; i < filteredBins.size() && volumeLeftToFilter > 0; ++i) {
                 final var fbin = filteredBins.get(i);
                 final var fbinVolume = Resources.currentValue(fbin.volume);
                 final var fbinMaxVolume = Resources.currentValue(fbin.volume_ub);
-                final var volumeLeftOnBin = (fbinMaxVolume-fbinVolume);
+                final int volumeLeftOnBin = (int) (fbinMaxVolume-fbinVolume);
 
                 // skip this bin if it's full:
                 if(volumeLeftOnBin == 0) continue;
 
-                // else, determine an appropriate amnt of data on this bin
-                double splitPercent;
-                int splitAmnt;
-                do {
-                    splitPercent = Math.floor(random.nextDouble(percentLeftToFilter) * 100) / 100;
-                    splitAmnt = (int)(filteredVolume * splitPercent);
-                } while (splitAmnt > volumeLeftOnBin);
-
-                // add that data to the bin
-                final var fSplitAmnt = splitAmnt;
-                ModelActions.spawn(() -> fbin.receive(fSplitAmnt));
+                // else, fill up this bin as much as possible
+                final var splitAmnt = Math.min(volumeLeftOnBin, volumeLeftToFilter);
+                ModelActions.spawn(() -> fbin.receive(splitAmnt));
 
                 // mark that that percent's been applied
-                percentLeftToFilter -= splitPercent;
+                volumeLeftToFilter -= splitAmnt;
             }
-            // last bin catches whatever still needs to be applied -- even if that's more than it has space for
-            final var finalFBin = filteredBins.getLast();
-            final var finalSplitAmnt = (int)(filteredVolume * percentLeftToFilter);
-            ModelActions.spawn(() -> finalFBin.receive(finalSplitAmnt));
 
             // empty the unfiltered bin
             ModelActions.spawn(() -> bin.remove(volume));
