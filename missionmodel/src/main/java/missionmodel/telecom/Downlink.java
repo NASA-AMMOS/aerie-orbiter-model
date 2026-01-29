@@ -64,7 +64,9 @@ public class Downlink {
     delay(duration);
 
     // Spawn an activity to delete data
-    spawn(model, new DeleteData(Double.MAX_VALUE, true, 0));
+    for(int i = 0; i < model.data.filteredOnboard.children.size(); ++i){
+      spawn(model, new DeleteData(Double.MAX_VALUE, true, i));
+    }
 
     //set(model.telecomModel.downlinkBitRate, 0.0);
     set(model.pel.x_twtaState, X_TWTA_State.OFF);
