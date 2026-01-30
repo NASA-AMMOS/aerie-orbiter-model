@@ -83,7 +83,7 @@ public class TakeRadarObservation {
     // from Mbps -> bps
     // @todo Temporary injection of Data Model Code - remove
     Data data = model.getData();
-    var binToChange = data.getOnboardBin(bin);
+    var binToChange = data.getFilteredBin(bin);
 
     if (newRate > 0) {
       set((MutableResource<Polynomial>) binToChange.desiredReceiveRate, polynomial(newRate * 1e6));
