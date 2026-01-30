@@ -77,6 +77,29 @@ public record SchedulePriorityActivitiesAfterDownlink(
   public void run(EditablePlan plan) {
     System.out.println("[PriorityScheduler] Mode: " + (useVirtualBattery ? "VIRTUAL BATTERY" : "RE-SIMULATION"));
 
+    // Step 0: Schedule a Downlink during the first DSS comm pass from external events
+    var commPasses = plan.events().filterByType("DSS_Pass").collect();
+    if (commPasses.isEmpty()) {
+      System.out.println("[PriorityScheduler] No DSS comm passes found in external events");
+      plan.commit();
+      return;
+    }
+    var firstCommPass = commPasses.get(0);
+    Duration commPassStart = firstCommPass.getInterval().start;
+    Duration commPassDuration = firstCommPass.getInterval().end.minus(commPassStart);
+    
+    System.out.println("[PriorityScheduler] Found comm pass: " + firstCommPass.key +
+        " from " + commPassStart + " to " + firstCommPass.getInterval().end +
+        " (duration: " + commPassDuration + ")");
+        
+    plan.create(new NewDirective(
+        new AnyDirective(Map.of(
+            "duration", SerializedValue.of(commPassDuration.in(Duration.MICROSECONDS)),
+            "bitRate", SerializedValue.of(1000))),
+        "Downlink_" + firstCommPass.key,
+        "Downlink",
+        new DirectiveStart.Absolute(commPassStart)));
+
     // Step 1: Simulate to get baseline resource profiles
     SimulationResults sim = plan.latestResults();
     if (sim == null) {
@@ -113,21 +136,8 @@ public record SchedulePriorityActivitiesAfterDownlink(
     System.out.println("[PriorityScheduler] Found " + altitudeWindows.size() + " altitude windows below "
         + altitudeThresholdKm + " km");
 
-    // Step 2b: Find the first Downlink activity - observations must be scheduled
-    // after it ends
-    var downlinkActivities = sim.instances("Downlink").collect();
-    Duration earliestAllowedStart = Duration.ZERO;
-    if (!downlinkActivities.isEmpty()) {
-      var firstDownlink = downlinkActivities.get(0);
-      earliestAllowedStart = firstDownlink.getInterval().end.plus(Duration.MICROSECOND);
-      System.out.println("[PriorityScheduler] Scheduling observations after Downlink ends at " + earliestAllowedStart);
-    } else {
-      System.out.println("[PriorityScheduler] No downlinks found");
-      plan.commit();
-      return;
-    }
-
     // Filter altitude windows to only include times after downlink ends
+    Duration earliestAllowedStart = commPassStart.plus(commPassDuration).plus(Duration.MICROSECOND);
     final Duration minStartTime = earliestAllowedStart;
     altitudeWindows = altitudeWindows.stream()
         .filter(w -> w.getRight().longerThan(minStartTime))
@@ -242,7 +252,8 @@ public record SchedulePriorityActivitiesAfterDownlink(
           break;
         }
 
-        // Track the earliest available time in this window (advances as we place activities)
+        // Track the earliest available time in this window (advances as we place
+        // activities)
         Duration currentStart = windowStart;
 
         // Keep trying to pack activities into this window until none fit
@@ -251,7 +262,8 @@ public record SchedulePriorityActivitiesAfterDownlink(
           placedSomethingInWindow = false;
           Duration remainingLength = windowEnd.minus(currentStart);
 
-          // Find the highest-priority unplaced activity that fits in remaining window time
+          // Find the highest-priority unplaced activity that fits in remaining window
+          // time
           Directive<AnyDirective> bestCandidate = null;
           Duration bestCandidateStart = null;
 
@@ -413,8 +425,8 @@ public record SchedulePriorityActivitiesAfterDownlink(
       boolean overlaps = false;
       for (var scheduledRange : scheduledRanges) {
         // If our candidate window does overlap with a scheduled range,
-        // we will break and move our candidateStart to the right of the 
-        // overlapping scheduledRange + one microsecond to avoid competing 
+        // we will break and move our candidateStart to the right of the
+        // overlapping scheduledRange + one microsecond to avoid competing
         // resource mutation during simulation between two adjoining activities
         boolean noOverlap = candidateEnd.shorterThan(scheduledRange.getLeft()) ||
             candidateStart.longerThan(scheduledRange.getRight());
@@ -446,9 +458,12 @@ public record SchedulePriorityActivitiesAfterDownlink(
         continue;
       }
 
-      // TODO - question, what if you have battery curve where in the middle of your candidate window there is a dip near 0 
-      // and then ends up at some satisfactory SOC where you think it's fine to schedule so you do, but then in reality,
-      // you end up below min SOC in the middle of that window. Do you need to mock that profile over the duration of the candidate
+      // TODO - question, what if you have battery curve where in the middle of your
+      // candidate window there is a dip near 0
+      // and then ends up at some satisfactory SOC where you think it's fine to
+      // schedule so you do, but then in reality,
+      // you end up below min SOC in the middle of that window. Do you need to mock
+      // that profile over the duration of the candidate
       // window and verify that it does not fall below min SOC?
 
       // All constraints satisfied
@@ -564,7 +579,8 @@ public record SchedulePriorityActivitiesAfterDownlink(
       for (var existingPlacement : placedActivities) {
         if (existingPlacement.start.noShorterThan(candidateEnd)) {
           // Create a list that excludes the existing activity we're checking
-          // (its power will be added via activityPowerWatts in computeMinVirtualBatteryDuring)
+          // (its power will be added via activityPowerWatts in
+          // computeMinVirtualBatteryDuring)
           List<PlacedActivity> otherPlacements = new ArrayList<>();
           for (var p : hypotheticalPlacements) {
             if (p != existingPlacement) {
@@ -604,8 +620,10 @@ public record SchedulePriorityActivitiesAfterDownlink(
   /**
    * Compute the MINIMUM virtual battery SOC during a proposed activity.
    *
-   * Uses direct physics integration: start from baseline SOC at earliest activity,
-   * then integrate forward using power balance equations with clamping at 0% and 100%.
+   * Uses direct physics integration: start from baseline SOC at earliest
+   * activity,
+   * then integrate forward using power balance equations with clamping at 0% and
+   * 100%.
    *
    * This is simpler and more accurate than deficit tracking because:
    * - It naturally handles charging, discharging, and clamping
