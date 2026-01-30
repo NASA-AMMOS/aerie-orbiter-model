@@ -28,7 +28,6 @@ import static gov.nasa.jpl.aerie.merlin.framework.ModelActions.spawn;
  * registers resources for the bins.
  */
 public class Data {
-
   /**
    * The unfiltered onboard storage device of the spacecraft.
    */
@@ -129,36 +128,54 @@ public class Data {
     } else {
       this.dataRate = polynomialResource(1.0);
     }
-    var done = and(lessThanOrEquals(volumeRequestedToDownlink, 0),
-      lessThanOrEquals(durationRequestedToDownlink, 0));
-    Resource<Polynomial> downlinkRateLeft = choose(done, constant(0), this.dataRate);
-    ArrayList<Resource<Polynomial>> actualDownlinkRates = new ArrayList<>();//(model.getData().onboard.children.size());
+    // Compute downlink rates imperatively (avoids O(N²) reactive chain)
+    // This callback fires when any relevant input changes and recomputes all bin rates
+    Runnable computeDownlinkRates = () -> {
+      boolean done = currentValue(volumeRequestedToDownlink) <= 0 &&
+                     currentValue(durationRequestedToDownlink) <= 0;
+      double rateLeft = done ? 0.0 : currentValue(this.dataRate);
 
+      for (int i = 0; i < filteredOnboard.children.size(); ++i) {
+        Bucket scBin = filteredOnboard.children.get(i);
+        Bucket gBin = ground.children.get(i);
+
+        double availableVolume = currentValue(scBin.received) - currentValue(gBin.received);
+        boolean binIsEmpty = currentValue(scBin.volume) <= 0 || availableVolume <= 0 || done;
+
+        double binRate;
+        if (binIsEmpty) {
+          binRate = Math.max(0, Math.min(currentValue(scBin.actualRate), rateLeft));
+        } else {
+          binRate = rateLeft;
+        }
+
+        set((MutableResource<Polynomial>) gBin.desiredReceiveRate, Polynomial.polynomial(binRate));
+        rateLeft -= binRate;
+      }
+    };
+
+    // Trigger recomputation when data rate or request changes
+    wheneverDynamicsChange(this.dataRate, r -> computeDownlinkRates.run());
+    wheneverDynamicsChange(volumeRequestedToDownlink, r -> computeDownlinkRates.run());
+    wheneverDynamicsChange(durationRequestedToDownlink, r -> computeDownlinkRates.run());
+
+    // Also trigger when any bin's volume, received, or actualRate changes
     for (int i = 0; i < filteredOnboard.children.size(); ++i) {
       Bucket scBin = filteredOnboard.children.get(i);
       Bucket gBin = ground.children.get(i);
-      var availableVolumeToDownlink = subtract(scBin.received, gBin.received);
-      var isEmpty = or(lessThanOrEquals(scBin.volume, 0),
-        or(lessThanOrEquals(availableVolumeToDownlink, 0),
-          and(lessThanOrEquals(volumeRequestedToDownlink, 0),
-            lessThanOrEquals(durationRequestedToDownlink, 0))));
-      var actualDownlinkRate =
-        choose(isEmpty, max(constant(0), min(scBin.actualRate, downlinkRateLeft)),
-          downlinkRateLeft);
-      actualDownlinkRates.add(actualDownlinkRate);
-      downlinkRateLeft = PolynomialResources.subtract(downlinkRateLeft, actualDownlinkRate);
-      forward(eraseExpiry(actualDownlinkRate), (MutableResource<Polynomial>)gBin.desiredReceiveRate);
+      wheneverDynamicsChange(scBin.volume, r -> computeDownlinkRates.run());
+      wheneverDynamicsChange(scBin.received, r -> computeDownlinkRates.run());
+      wheneverDynamicsChange(scBin.actualRate, r -> computeDownlinkRates.run());
+      wheneverDynamicsChange(gBin.received, r -> computeDownlinkRates.run());
     }
+
     wheneverDynamicsChange(ground.actualRate, r -> {
       if (currentValue(volumeRequestedToDownlink) > 0)
         set(volumeRequestedToDownlink, Polynomial.polynomial(currentValue(volumeRequestedToDownlink), -data(r).extract()));
     });
-    spawn(() -> {
-      for (int i = 0; i < ground.children.size(); ++i) {
-        Bucket gBin = ground.children.get(i);
-        set((MutableResource<Polynomial>) gBin.desiredReceiveRate, actualDownlinkRates.get(i).getDynamics().getOrThrow().data());
-      }
-    });
+
+    // Initial computation
+    spawn(computeDownlinkRates);
   }
 
   /**
@@ -174,6 +191,38 @@ public class Data {
     registrar.real("playbackDataRate", assumeLinear(dataRate));
     registerEmptyPrio(registrar);
     registerDownlinkedPrio(registrar);
+    registerGroupedBinVolumes(registrar);
+  }
+
+  /**
+   * Register grouped bin volume resources for visualization.
+   * Groups bins into ranges of 5 (0-4, 5-9, etc.) and sums their volumes.
+   * This provides a more compact view of bin fullness without X individual line layers.
+   */
+  private void registerGroupedBinVolumes(Registrar registrar) {
+    int groupSize = 5;
+    int numBins = filteredOnboardBuckets.size();
+    int numGroups = (numBins + groupSize - 1) / groupSize; // ceiling division
+
+    for (int g = 0; g < numGroups; g++) {
+      int startBin = g * groupSize;
+      int endBin = Math.min(startBin + groupSize, numBins);
+
+      // Collect volume resources for this group
+      List<Resource<Polynomial>> groupVolumes = new ArrayList<>();
+      for (int i = startBin; i < endBin; i++) {
+        groupVolumes.add(filteredOnboardBuckets.get(i).volume);
+      }
+
+      // Sum the volumes in this group
+      Resource<Polynomial> groupTotal = groupVolumes.stream()
+          .reduce(PolynomialResources::add)
+          .orElse(polynomialResource(0.0));
+
+      // Register with name like "onboard.binGroup_00_09.volume"
+      String groupName = String.format("onboard.binGroup_%02d_%02d.volume", startBin, endBin - 1);
+      registrar.real(groupName, assumeLinear(groupTotal));
+    }
   }
 
 

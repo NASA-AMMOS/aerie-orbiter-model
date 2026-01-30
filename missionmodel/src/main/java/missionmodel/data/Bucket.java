@@ -136,13 +136,9 @@ public class Bucket {
     for (int i = 0; i < this.children.size(); ++i) {
       Bucket child = this.children.get(i);
 
-      // Compute volume upper bound based on parent and siblings
-      if (i == 0) {
-        child.volume_ub = child.volume_ub.equals(max_bound) ? volume_ub : min(child.volume_ub, volume_ub);
-      } else {
-        var child_volume_ub = subtract(children.get(i - 1).volume_ub, children.get(i - 1).clampedVolume);
-        child.volume_ub = child.volume_ub.equals(max_bound) ? child_volume_ub : min(child.volume_ub, child_volume_ub);
-      }
+      // All children share parent's capacity limit (no cascading reservations)
+      // Total capacity is enforced by parent's volume = sum(children.volume)
+      child.volume_ub = child.volume_ub.equals(max_bound) ? volume_ub : min(child.volume_ub, volume_ub);
       child.clampedVolume = clamp(child.volume, constant(0), child.volume_ub);
 
       // Compute desired rate
@@ -188,8 +184,12 @@ public class Bucket {
     if (actualRate == null) actualRate = desiredRate;
     receiveRate = subtract(desiredReceiveRate, max(subtract(desiredRate, actualRate), constant(0.0)));
     removeRate = subtract(desiredRemoveRate, max(subtract(actualRate, desiredRate), constant(0.0)));
-    wheneverDynamicsChange(receiveRate, r -> MutableResource.set(received, polynomial(currentValue(received), data(r).extract())));
-    wheneverDynamicsChange(removeRate, r -> MutableResource.set(removed, polynomial(currentValue(removed), data(r).extract())));
+    wheneverDynamicsChange(receiveRate, r -> {
+      MutableResource.set(received, polynomial(currentValue(received), data(r).extract()));
+    });
+    wheneverDynamicsChange(removeRate, r -> {
+      MutableResource.set(removed, polynomial(currentValue(removed), data(r).extract()));
+    });
   }
 
   /**
