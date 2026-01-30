@@ -49,7 +49,7 @@ public class DeleteData {
     double volumeAlreadyDownlinked = currentValue(binToChange.volume) - volumeNotYetDownlinked;
     double actualVolumeDeleted =
       Math.min(volume, Math.min(currentVolume, limitToSentData ? volumeAlreadyDownlinked : MAX));
-    System.out.println("DeleteData(" + currentTime() + "): actualVolumeDeleted = " + actualVolumeDeleted);
+    // System.out.println("DeleteData(" + currentTime() + "): actualVolumeDeleted = " + actualVolumeDeleted);
 
     binToChange.remove(actualVolumeDeleted);
 
