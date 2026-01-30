@@ -26,6 +26,8 @@ public class TakeRadarObservation {
   public Duration duration;
   @Export.Parameter
   public RadarDataCollectionMode mode = RadarDataCollectionMode.LOW_RES;
+  @Export.Parameter
+  public int bin;
 
   public TakeRadarObservation() {
   }
@@ -35,11 +37,12 @@ public class TakeRadarObservation {
   }
 
   public TakeRadarObservation(int schedulingPriority, boolean scheduled, Duration duration,
-      RadarDataCollectionMode mode) {
+      RadarDataCollectionMode mode, int bin) {
     this.schedulingPriority = schedulingPriority;
     this.scheduled = scheduled;
     this.duration = duration;
     this.mode = mode;
+    this.bin = bin;
   }
 
   // Getters required by annotation processor
@@ -59,6 +62,10 @@ public class TakeRadarObservation {
     return mode;
   }
 
+  public int bin() {
+    return bin;
+  }
+
   @ActivityType.EffectModel
   public void run(Mission model) {
 
@@ -76,7 +83,7 @@ public class TakeRadarObservation {
     // from Mbps -> bps
     // @todo Temporary injection of Data Model Code - remove
     Data data = model.getData();
-    var binToChange = data.getOnboardBin(0);
+    var binToChange = data.getOnboardBin(bin);
 
     if (newRate > 0) {
       set((MutableResource<Polynomial>) binToChange.desiredReceiveRate, polynomial(newRate * 1e6));
@@ -116,5 +123,6 @@ public class TakeRadarObservation {
     public static int schedulingPriority = 1;
     public static boolean scheduled = true;
     public static Duration duration = Duration.of(1, Duration.MINUTES);
+    public static int bin = 0;
   }
 }
