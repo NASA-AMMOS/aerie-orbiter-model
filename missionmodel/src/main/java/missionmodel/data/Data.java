@@ -2,9 +2,12 @@ package missionmodel.data;
 
 import gov.nasa.jpl.aerie.contrib.serialization.mappers.IntegerValueMapper;
 import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
+import gov.nasa.jpl.aerie.contrib.streamline.core.Reactions;
 import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
+import gov.nasa.jpl.aerie.contrib.streamline.core.Resources;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
+import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.DiscreteEffects;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.monads.DiscreteResourceMonad;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.LinearBoundaryConsistencySolver;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.polynomial.Polynomial;
@@ -220,8 +223,17 @@ public class Data {
             indexedChildrenIsEmptyResources,
             Pair.of(false, -1),
             (Pair<Boolean, Integer> first, Pair<Boolean, Integer> second) -> second.getKey() ? second : first);
-    Resource<Discrete<Integer>> indexOfFirstEmptyChild = DiscreteResourceMonad.map(indexedFirstEmptyChild, Pair::getValue);
+    Resource<Discrete<Integer>> currentDownlinkPriority = DiscreteResourceMonad.map(indexedFirstEmptyChild, Pair::getValue);
 
-    registrar.discrete(ground.name+".currentDownlinkPriority", indexOfFirstEmptyChild, new IntegerValueMapper());
+    MutableResource<Discrete<Integer>> lastDownlinkedPriority = discreteResource(-1);
+    Reactions.whenever(
+            DiscreteResourceMonad.map(
+                    currentDownlinkPriority,
+                    lastDownlinkedPriority,
+                    (current, last) -> current != -1 && current - 1 != last),
+            () -> DiscreteEffects.set(lastDownlinkedPriority, Resources.currentValue(currentDownlinkPriority)-1));
+
+    registrar.discrete(ground.name+".currentDownlinkPriority", currentDownlinkPriority, new IntegerValueMapper());
+    registrar.discrete(ground.name+".lastDownlinkedBin", lastDownlinkedPriority, new IntegerValueMapper());
   }
 }
