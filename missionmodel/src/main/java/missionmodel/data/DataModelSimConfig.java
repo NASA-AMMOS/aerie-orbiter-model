@@ -13,7 +13,7 @@ public record DataModelSimConfig(double initialMaxVolume,
 
   public static final double DEFAULT_INIT_PLAYBACK_RATE = 1e6; // 1 Mbps
 
-  public static final int DEFAULT_BIN_COUNT = 5;
+  public static final int DEFAULT_BIN_COUNT = 20;
 
   public static @Template DataModelSimConfig defaultConfiguration() {
     return new DataModelSimConfig(DEFAULT_INIT_MAX_VOLUME, DEFAULT_INIT_PLAYBACK_RATE, DEFAULT_BIN_COUNT);

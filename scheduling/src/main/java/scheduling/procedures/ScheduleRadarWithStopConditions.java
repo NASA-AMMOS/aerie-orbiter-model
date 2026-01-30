@@ -211,7 +211,7 @@ public record ScheduleRadarWithStopConditions(
   private void scheduleRadarObservation(EditablePlan plan, Duration startTime, RadarDataCollectionMode mode,
       Duration duration, int windowIndex) {
         var minBin = 0;
-        var maxBin = 1;
+        var maxBin = 19;
     Map<String, SerializedValue> actArgs = Map.of(
         "mode", new EnumValueMapper<>(RadarDataCollectionMode.class).serializeValue(mode),
         "duration", SerializedValue.of(duration.in(Duration.MICROSECONDS)),

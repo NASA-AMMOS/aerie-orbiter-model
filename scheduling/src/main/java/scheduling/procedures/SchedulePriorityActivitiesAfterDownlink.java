@@ -196,6 +196,7 @@ public record SchedulePriorityActivitiesAfterDownlink(
         var mode = getMode(request.inner);
         var priority = getPriority(request.inner);
         var observationDuration = getDuration(request.inner);
+        var bin = getBin(request.inner);
 
         // Try each altitude window to find a valid placement
         Duration bestStart = null;
@@ -226,7 +227,7 @@ public record SchedulePriorityActivitiesAfterDownlink(
           System.out.println("[PriorityScheduler] Priority " + priority + " " + mode +
               ": PLACED at " + bestStart + " for " + observationDuration.in(Duration.MINUTES) + " min");
 
-          createRadarObservation(plan, mode, observationDuration, priority, bestStart);
+          createRadarObservation(plan, mode, observationDuration, priority, bestStart, bin);
 
           // Track this placement
           placedRequestIds.add(request.id);
@@ -298,12 +299,13 @@ public record SchedulePriorityActivitiesAfterDownlink(
             var mode = getMode(bestCandidate.inner);
             var priority = getPriority(bestCandidate.inner);
             var observationDuration = getDuration(bestCandidate.inner);
+            var bin = getBin(bestCandidate.inner);
             Duration candidateEnd = bestCandidateStart.plus(observationDuration);
 
             System.out.println("[PriorityScheduler] Priority " + priority + " " + mode +
                 ": PLACED at " + bestCandidateStart + " for " + observationDuration.in(Duration.MINUTES) + " min");
 
-            createRadarObservation(plan, mode, observationDuration, priority, bestCandidateStart);
+            createRadarObservation(plan, mode, observationDuration, priority, bestCandidateStart, bin);
 
             // Track this placement
             placedRequestIds.add(bestCandidate.id);
@@ -392,11 +394,12 @@ public record SchedulePriorityActivitiesAfterDownlink(
    * Create a TakeRadarObservation activity with the given parameters.
    */
   private void createRadarObservation(EditablePlan plan, RadarDataCollectionMode mode,
-      Duration duration, int priority, Duration startTime) {
+      Duration duration, int priority, Duration startTime, int bin) {
     var directive = new NewDirective(
         new AnyDirective(Map.of(
             "mode", new EnumValueMapper<>(RadarDataCollectionMode.class).serializeValue(mode),
             "duration", SerializedValue.of(duration.in(Duration.MICROSECONDS)),
+            "bin", SerializedValue.of(bin),
             "scheduled", SerializedValue.of(true),
             "schedulingPriority", SerializedValue.of(priority))),
         "Scheduled_P" + priority + "_" + mode,
@@ -481,6 +484,11 @@ public record SchedulePriorityActivitiesAfterDownlink(
   private int getPriority(AnyDirective directive) {
     var arg = directive.arguments.get("schedulingPriority");
     return arg != null ? arg.asInt().orElse(1L).intValue() : 1;
+  }
+
+  private int getBin(AnyDirective directive) {
+    var arg = directive.arguments.get("bin");
+    return arg != null ? arg.asInt().orElse(1L).intValue() : 0;
   }
 
   private RadarDataCollectionMode getMode(AnyDirective directive) {
