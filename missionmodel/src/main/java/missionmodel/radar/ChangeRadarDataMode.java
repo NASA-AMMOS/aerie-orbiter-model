@@ -6,8 +6,7 @@ import gov.nasa.jpl.aerie.merlin.framework.annotations.Export;
 import missionmodel.Mission;
 import missionmodel.data.activities.ChangeDataGenerationRate;
 
-import static gov.nasa.jpl.aerie.contrib.streamline.core.Resources.currentValue;
-import static missionmodel.generated.ActivityActions.spawn;
+import static missionmodel.generated.ActivityActions.call;
 
 @ActivityType("ChangeRadarDataMode")
 public class ChangeRadarDataMode {
@@ -26,7 +25,7 @@ public class ChangeRadarDataMode {
     // Spawn an activity to playback -- put it in a random bin
     double newRate = mode.getDataRate();
     int bin = model.getRandom().nextInt(model.data.unfilteredOnboardBuckets.size());
-    spawn(model, new ChangeDataGenerationRate(bin, newRate*1e6));
+    call(model, new ChangeDataGenerationRate(bin, newRate*1e6));
 
     DiscreteEffects.set(model.radarModel.RadarDataMode, mode);
   }
