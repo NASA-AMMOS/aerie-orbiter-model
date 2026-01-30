@@ -20,6 +20,7 @@ import missionmodel.radar.RadarDataCollectionMode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * UC4: Operator Interaction with Stop Conditions
@@ -209,9 +210,12 @@ public record ScheduleRadarWithStopConditions(
    */
   private void scheduleRadarObservation(EditablePlan plan, Duration startTime, RadarDataCollectionMode mode,
       Duration duration, int windowIndex) {
+        var minBin = 0;
+        var maxBin = 1;
     Map<String, SerializedValue> actArgs = Map.of(
         "mode", new EnumValueMapper<>(RadarDataCollectionMode.class).serializeValue(mode),
         "duration", SerializedValue.of(duration.in(Duration.MICROSECONDS)),
+        "bin", SerializedValue.of(new Random().nextInt(maxBin - minBin + 1) + minBin),
         "scheduled", SerializedValue.of(true),
         "schedulingPriority", SerializedValue.of(windowIndex));
 
