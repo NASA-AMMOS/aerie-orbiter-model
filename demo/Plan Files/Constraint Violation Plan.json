@@ -1,0 +1,111 @@
+{
+  "activities": [
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 731,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "02:55:56.175",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 4,
+        "duration": {
+          "present": true,
+          "value": 1000000
+        },
+        "rate": {
+          "value": 500,
+          "present": true
+        },
+        "volume": {
+          "value": 1000,
+          "present": true
+        }
+      },
+      "id": 732,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "11:53:18.405",
+      "tags": [],
+      "type": "GenerateData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 0,
+        "duration": {
+          "present": true,
+          "value": 1000000
+        },
+        "rate": {
+          "value": 100,
+          "present": true
+        },
+        "volume": {
+          "value": 10000,
+          "present": true
+        }
+      },
+      "id": 733,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "07:35:08.366",
+      "tags": [],
+      "type": "GenerateData"
+    },
+    {
+      "anchor_id": 731,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 0,
+        "limitToSentData": true,
+        "volume": 0
+      },
+      "id": 734,
+      "metadata": {},
+      "name": "DeleteData",
+      "start_offset": "00:00:00",
+      "tags": [],
+      "type": "DeleteData"
+    },
+    {
+      "anchor_id": 733,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 0,
+        "limitToSentData": true,
+        "volume": 0
+      },
+      "id": 735,
+      "metadata": {},
+      "name": "DeleteData",
+      "start_offset": "00:00:00",
+      "tags": [],
+      "type": "DeleteData"
+    }
+  ],
+  "duration": "24:00:00",
+  "id": 7,
+  "model_id": 10,
+  "name": "Constraint Violation Plan",
+  "simulation_arguments": {
+    "dataConfig": {
+      "binCount": 5,
+      "initialDatarate": 1000000,
+      "initialMaxVolume": 50000000000
+    }
+  },
+  "start_time": "2024-01-02T00:00:00+00:00",
+  "tags": [],
+  "version": "2"
+}

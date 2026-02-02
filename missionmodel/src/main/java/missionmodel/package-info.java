@@ -21,6 +21,7 @@
 // Data
 @MissionModel.WithActivityType(ChangeDataGenerationRate.class)
 @MissionModel.WithActivityType(DeleteData.class)
+@MissionModel.WithActivityType(FilterData.class)
 @MissionModel.WithActivityType(GenerateData.class)
 @MissionModel.WithActivityType(PlaybackData.class)
 @MissionModel.WithActivityType(ReprioritizeData.class)

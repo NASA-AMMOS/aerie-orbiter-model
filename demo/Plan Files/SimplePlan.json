@@ -1,0 +1,240 @@
+{
+  "activities": [
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bitRate": 600,
+        "duration": 43200000000
+      },
+      "id": 730,
+      "metadata": {},
+      "name": "Downlink",
+      "start_offset": "120:05:44.223",
+      "tags": [],
+      "type": "Downlink"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "percent": 0.5
+      },
+      "id": 828,
+      "metadata": {},
+      "name": "FilterData",
+      "start_offset": "107:05:29.88",
+      "tags": [],
+      "type": "FilterData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "percent": 0.75
+      },
+      "id": 837,
+      "metadata": {},
+      "name": "FilterData",
+      "start_offset": "52:23:54.262",
+      "tags": [],
+      "type": "FilterData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "percent": 0.75
+      },
+      "id": 838,
+      "metadata": {},
+      "name": "FilterData",
+      "start_offset": "80:30:35.856",
+      "tags": [],
+      "type": "FilterData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 3,
+        "duration": {
+          "value": 36001000000,
+          "present": true
+        },
+        "rate": {
+          "value": 100000,
+          "present": true
+        },
+        "volume": {
+          "value": 0,
+          "present": false
+        }
+      },
+      "id": 845,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "48:00:00",
+      "tags": [],
+      "type": "GenerateData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 2,
+        "duration": {
+          "value": 18001000000,
+          "present": true
+        },
+        "rate": {
+          "value": 200000,
+          "present": true
+        },
+        "volume": {
+          "value": 0,
+          "present": false
+        }
+      },
+      "id": 846,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "34:25:20.318",
+      "tags": [],
+      "type": "GenerateData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 4,
+        "duration": {
+          "value": 10801000000,
+          "present": true
+        },
+        "rate": {
+          "value": 50000,
+          "present": true
+        },
+        "volume": {
+          "value": 0,
+          "present": false
+        }
+      },
+      "id": 847,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "63:52:21.035",
+      "tags": [],
+      "type": "GenerateData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 0,
+        "duration": {
+          "value": 21601000000,
+          "present": true
+        },
+        "rate": {
+          "value": 100000,
+          "present": true
+        },
+        "volume": {
+          "value": 0,
+          "present": false
+        }
+      },
+      "id": 848,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "82:59:45.657",
+      "tags": [],
+      "type": "GenerateData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 1,
+        "duration": {
+          "value": 7200000000,
+          "present": true
+        },
+        "rate": {
+          "value": 10000,
+          "present": true
+        },
+        "volume": {
+          "value": 0,
+          "present": false
+        }
+      },
+      "id": 849,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "16:03:49.482",
+      "tags": [],
+      "type": "GenerateData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 0,
+        "duration": {
+          "value": 3601000000,
+          "present": true
+        },
+        "rate": {
+          "value": 100000,
+          "present": true
+        },
+        "volume": {
+          "value": 0,
+          "present": false
+        }
+      },
+      "id": 850,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "03:49:28.924",
+      "tags": [],
+      "type": "GenerateData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bin": 3,
+        "duration": {
+          "value": 28801000000,
+          "present": true
+        },
+        "rate": {
+          "value": 40000,
+          "present": true
+        },
+        "volume": {
+          "value": 0,
+          "present": false
+        }
+      },
+      "id": 851,
+      "metadata": {},
+      "name": "GenerateData",
+      "start_offset": "98:52:06.693",
+      "tags": [],
+      "type": "GenerateData"
+    }
+  ],
+  "duration": "144:00:00",
+  "id": 6,
+  "model_id": 23,
+  "name": "One Week Plan",
+  "simulation_arguments": {},
+  "start_time": "2024-01-02T00:00:00+00:00",
+  "tags": [],
+  "version": "2"
+}
