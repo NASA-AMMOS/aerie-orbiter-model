@@ -1,32 +1,32 @@
 package missionmodel;
 
+import gov.nasa.jpl.aerie.contrib.streamline.debugging.Logging;
 import gov.nasa.jpl.aerie.merlin.driver.*;
 import gov.nasa.jpl.aerie.types.ActivityDirective;
 import gov.nasa.jpl.aerie.types.ActivityDirectiveId;
-import org.junit.jupiter.api.Test;
 
-import java.nio.file.Path;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
 import missionmodel.generated.GeneratedModelType;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
-import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.Map;
 
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.HOURS;
 
 public class SimulateResourcesTest {
 
+  @BeforeEach
+  void beforeEach(){
+    Logging.LOGGER = null;
+  }
+
   @Test
   void testSimulation() {
-    final var simulationStartTime = Instant.parse("2024-02-15T00:00:00Z");;
+    final var simulationStartTime = Instant.parse("2024-02-15T00:00:00Z");
     final var simulationDuration = Duration.of(24, HOURS);
 
     // Input configuration
@@ -44,7 +44,7 @@ public class SimulateResourcesTest {
 //                true
 //        ));
 
-    final var results = simulate(geomConfig, simulationStartTime, simulationDuration, schedule);
+    simulate(geomConfig, simulationStartTime, simulationDuration, schedule);
   }
 
   public SimulationResults simulate(
@@ -60,7 +60,7 @@ public class SimulateResourcesTest {
       simulationDuration,
       simulationStartTime,
       simulationDuration,
-      () -> { return false; }
+      () -> false
     );
   }
 
