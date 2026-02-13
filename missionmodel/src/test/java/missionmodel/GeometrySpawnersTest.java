@@ -26,6 +26,8 @@ public class GeometrySpawnersTest {
 
   @BeforeEach
   void beforeEach(){
+    // Resetting this value in case LOGGER had been initialized with a previous model's registrar
+    //  LOGGER is otherwise not tolerant of multiple model instances per test suite
     Logging.LOGGER = null;
   }
 
