@@ -1,8 +1,8 @@
-# PlanDev Multi-Mission Models - Blackbird
+# PlanDev Multi-Mission Models - Orbiter Model
 
-This repository houses a collection of spacecraft subsystem models that can be configured, customized, and then run
-within PlanDev by a mission. By combining these models together with other models, such as the
-[PlanDev Simple Power Model](https://github.com/NASA-AMMOS/aerie-simple-model-power) and [PlanDev Simple Data Model](https://github.com/NASA-AMMOS/aerie-simple-model-data),
+This repository houses an example PlanDev orbiter mission model, built from a collection of spacecraft subsystem models that can 
+be configured, customized, and then run within PlanDev by a mission. By combining these models together with other models,
+such as the [PlanDev Simple Power Model](https://github.com/NASA-AMMOS/aerie-simple-model-power) and [PlanDev Simple Data Model](https://github.com/NASA-AMMOS/aerie-simple-model-data),
 a mission can build up an integrated spacecraft model quickly to perform mission trades and analyses.
 
 The models in this
@@ -20,19 +20,91 @@ Below you'll find short descriptions of each model and brief instructions on how
 instructions on how to compile models, see the instructions in the README of [mission model template repo](https://github.com/NASA-AMMOS/aerie-mission-model-template?tab=readme-ov-file#aerie-mission-model-template).
 If you'd like to learn how to write PlanDev models, please see our [modeling tutorial](https://nasa-ammos.github.io/plandev-docs/tutorials/mission-modeling/introduction/).
 
-## Aerie -> PlanDev Rebrand
+## PlanDev & SeqDev Naming
 
-This product was **formerly known as Aerie and is now named PlanDev**. While we've updated most documentation and external references, some legacy mentions of the old product name may remain as we complete the transition.
+As new mission communities have joined PlanDev, we've evolved our product focus and naming. What you need to know:
 
 What to know:
 
-- The planning product, including modeling, simulation, scheduling and constraint-checking, is now named PlanDev
-- The sequencing product, including the sequence editor, workspaces, and actions, is now named SeqDev
-- All features and functionality remain the same
-- Currently, repository names, package names and other internal code references will retain their existing names, and deployment/migration procedures have not changed
-- In a future release, our repository and/or package names may change. If so, this will be communicated to users via release notes and normal communication channels
+* The planning tool is now named **PlanDev** and the sequencing tool is now named **SeqDev**
+* Most repositories have been renamed, and the rest will be renamed soon. The repository code structure has not changed
+* This repository will soon be renamed `plandev-orbiter-model`
+* Published code packages (NPM, Java, and Docker images) still retain their **old** names but will be renamed in a future version
+* Changes affecting your code will be announced in advance with upgrade guidance
 
-For the latest documentation, visit: [PlanDev Documentation](https://nasa-ammos.github.io/plandev-docs/)
+Our latest docs page is https://nasa-ammos.github.io/plandev-docs/. Links to pages in the old docs site will be redirected to their new equivalent, but it is a good idea to update any links in your documents when possible.
+
+## Getting Started
+
+### Prerequisites
+
+- Install **[OpenJDK Temurin LTS](https://adoptium.net/temurin/releases/?version=21)**, if you don't already have it. If you're on macOS, you can install [brew](https://brew.sh/) instead and then use the following command to install JDK 21:
+
+  ```sh
+  brew install --cask temurin@21
+  ```
+- Install **Git Large File Storage**. This repository uses Git LFS to manage large files, which you can install from [git-lfs.com](https://git-lfs.com/) or with `brew`:
+  ```sh
+  brew install git-lfs
+  ```
+  If you have never run LFS before, you must run the command `git lfs install` once after running the installer. 
+- You need to create a **[personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) in your GitHub account** that includes the `read-packages` scope, so that you can download the PlanDev Maven packages from the [GitHub Maven package registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry). Keep track of the username and token after you generate it.
+
+
+### Quick Start
+
+To start working with this model:
+
+1. Clone this repository and `cd` to it
+2. Generate a `.env` file from the template by running:
+
+   ```cp .env.template .env```
+3. Fill in the missing variables in the `.env` file with your Github username and access token from the Prerequisites section above:
+
+   ```sh
+   # in .env file
+   GITHUB_USER="your_github_username_here"
+   GITHUB_TOKEN="your_personal_access_token"
+   ```
+4. Run `git lfs pull` to download large files in the repo, like the SPICE kernel.
+5. Run `docker compose up -d` to run PlanDev locally - after it starts up, it should be accessible on [http://localhost:80](http://localhost:80)
+
+Once PlanDev is up and running with an empty database, you can use the following steps to populate it with a working mission model, constraints, and scheduling procedures:
+
+#### Mission Model
+The main mission model code is in the `missionmodel` folder. To build the mission model JAR (initially or after any changes to it), run:
+
+```sh
+./gradlew :missionmodel:build --refresh-dependencies
+```
+
+This will create the file `'missionmodel/build/libs/missionmodel.jar`, which you can upload to PlanDev using the UI or API.
+
+#### Example Plan
+Once you have built the mission model and uploaded it to PlanDev (via the "Models" page), you can use it to create Plans.
+This repo contains an example Plan to demonstrate the model's capabilities: `Example_MarsSat_Plan.json`. To use it, 
+go to the "Plans" page on PlanDev and use the Import button to select & import this JSON file. Set the "Model" to your
+uploaded model, and create the plan.
+
+A custom view for this plan is also included - access the view menu in the top right of the PlanDev and import the file
+`MarsSat_Overview_View.json`
+
+#### Scheduling Procedures and Constraints
+To build scheduling procedures or procedural constraints, the following will be your process every time you iterate on these procedures
+
+```sh
+./gradlew scheduling:build
+./gradlew scheduling:buildAllProcedureJars
+```
+or
+
+```sh
+./gradlew constraints:build
+./gradlew constraints:buildAllProcedureJars
+```
+
+Your procedure jars will then be in `build/libs/OriginalSourceCodeFileName.jar` of either the `scheduling` or `constraints` directories.
+
 
 ## Geometry Model
 
