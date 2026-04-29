@@ -1,8 +1,7 @@
 package missionmodel;
 
-import org.junit.jupiter.api.Test;
+import gov.nasa.jpl.aerie.contrib.streamline.debugging.Logging;
 
-import java.nio.file.Path;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,19 +17,23 @@ import gov.nasa.jpl.aerie.merlin.driver.SimulationResults;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
 import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.Map;
 
 import static gov.nasa.jpl.aerie.merlin.protocol.types.Duration.HOURS;
 
 public class GeometrySpawnersTest {
 
+  @BeforeEach
+  void beforeEach(){
+    // Resetting this value in case LOGGER had been initialized with a previous model's registrar
+    //  LOGGER is otherwise not tolerant of multiple model instances per test suite
+    Logging.LOGGER = null;
+  }
+
   @Test
   void testGeometrySpawners() {
-    final var simulationStartTime = Instant.parse("2024-01-02T00:00:00Z");;
+    final var simulationStartTime = Instant.parse("2024-01-02T00:00:00Z");
     final var simulationDuration = Duration.of(48, HOURS);
 
     // Input configuration
@@ -81,7 +84,7 @@ public class GeometrySpawnersTest {
       true
     ));
 
-    final var results = simulate(geomConfig, simulationStartTime, simulationDuration, schedule);
+    simulate(geomConfig, simulationStartTime, simulationDuration, schedule);
   }
 
   public SimulationResults simulate(
@@ -97,7 +100,7 @@ public class GeometrySpawnersTest {
       simulationDuration,
       simulationStartTime,
       simulationDuration,
-      () -> { return false; }
+      () -> false
     );
   }
 

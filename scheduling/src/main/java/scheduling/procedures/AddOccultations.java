@@ -143,4 +143,12 @@ public record AddOccultations(
       plan.commit();
     }
 
+    @WithDefaults
+    public static class Template {
+        public String observer = "DSS-24";
+        public String target = "mro";
+        public String occultingBody = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public Boolean useDSK = false;
+    }
 }

@@ -89,4 +89,12 @@ public record AddApoapses(
       plan.commit();
 
     }
+
+    @WithDefaults
+    public static class Template {
+        public String body = "mro";
+        public String target = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public double minDistanceFilter = 1.0;
+    }
 }

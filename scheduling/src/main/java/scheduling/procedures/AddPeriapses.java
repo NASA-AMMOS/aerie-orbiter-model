@@ -48,7 +48,7 @@ public record AddPeriapses(
         public Duration stepSize = Duration.MINUTE;
         public double maxDistanceFilter = 1000000000.0;
     }
-    
+
     @NotNull
     @Override
     public ActivityAutoDelete shouldDeletePastCreations(
