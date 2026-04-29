@@ -2,6 +2,7 @@ package scheduling.procedures;
 
 import gov.nasa.ammos.aerie.procedural.scheduling.Goal;
 import gov.nasa.ammos.aerie.procedural.scheduling.annotations.SchedulingProcedure;
+import gov.nasa.ammos.aerie.procedural.scheduling.annotations.WithDefaults;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.EditablePlan;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.NewDirective;
 import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.AnyDirective;
@@ -131,5 +132,12 @@ public record AddSpacecraftEclipses(
       // Actually add activities to the plan
       plan.commit();
     }
-
+    @WithDefaults
+    public static class Template {
+        public String observer = "mro";
+        public String target = "SUN";
+        public String occultingBody = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public Boolean useDSK = false;
+    }
 }

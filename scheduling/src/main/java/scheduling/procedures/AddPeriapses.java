@@ -2,6 +2,7 @@ package scheduling.procedures;
 
 import gov.nasa.ammos.aerie.procedural.scheduling.Goal;
 import gov.nasa.ammos.aerie.procedural.scheduling.annotations.SchedulingProcedure;
+import gov.nasa.ammos.aerie.procedural.scheduling.annotations.WithDefaults;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.EditablePlan;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.NewDirective;
 import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.AnyDirective;
@@ -77,5 +78,13 @@ public record AddPeriapses(
       // Actually add activities to the plan
       plan.commit();
 
+    }
+
+    @WithDefaults
+    public static class Template {
+        public String body = "mro";
+        public String target = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public double maxDistanceFilter = 1000000000.0;
     }
 }
