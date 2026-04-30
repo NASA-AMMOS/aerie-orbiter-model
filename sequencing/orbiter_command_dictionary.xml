@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<command_dictionary>
+  <header mission_name="ORBITER" version="1.0.0.0" schema_version="1.0">
+    <spacecraft_ids>
+      <spacecraft_id value="42"/>
+    </spacecraft_ids>
+  </header>
+
+  <enum_definitions>
+    <enum_table name="RadarDataCollectionMode">
+      <values>
+        <enum symbol="OFF"     numeric="0"/>
+        <enum symbol="LOW_RES" numeric="1"/>
+        <enum symbol="MED_RES" numeric="2"/>
+        <enum symbol="HI_RES"  numeric="3"/>
+      </values>
+    </enum_table>
+
+    <enum_table name="OnOff">
+      <values>
+        <enum symbol="OFF" numeric="0"/>
+        <enum symbol="ON"  numeric="1"/>
+      </values>
+    </enum_table>
+
+    <enum_table name="DataBin">
+      <values>
+        <enum symbol="BIN_0" numeric="0"/>
+        <enum symbol="BIN_1" numeric="1"/>
+        <enum symbol="BIN_2" numeric="2"/>
+        <enum symbol="BIN_3" numeric="3"/>
+      </values>
+    </enum_table>
+
+    <enum_table name="boolean">
+      <values>
+        <enum symbol="FALSE" numeric="0"/>
+        <enum symbol="TRUE"  numeric="1"/>
+      </values>
+    </enum_table>
+  </enum_definitions>
+
+  <command_definitions>
+
+    <fsw_command opcode="0x0100" stem="SEQ_ECHO" class="FSW">
+      <arguments>
+        <var_string_arg name="str">
+          <description>String to echo</description>
+        </var_string_arg>
+      </arguments>
+      <categories>
+        <module>system</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Echo a string for debugging.</description>
+    </fsw_command>
+
+    <!-- =========================================================== -->
+    <!-- Power / Solar Array                                          -->
+    <!-- =========================================================== -->
+    <fsw_command opcode="0x0101" stem="PWR_DEPLOY_SOLAR_ARRAY" class="FSW">
+      <arguments>
+        <unsigned_arg name="deploy_duration_sec" bit_length="32" units="seconds">
+          <range_of_values>
+            <include min="1" max="86400"/>
+          </range_of_values>
+          <description>Time to drive the solar array from STOWED to DEPLOYED</description>
+        </unsigned_arg>
+      </arguments>
+      <categories>
+        <module>power</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Initiate solar array deployment sequence.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0102" stem="PWR_HEATERS" class="FSW">
+      <arguments>
+        <enum_arg name="state" bit_length="8" enum_name="OnOff">
+          <description>Heater bus power state</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>power</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Turn the spacecraft heater bus on or off.</description>
+    </fsw_command>
+
+    <!-- =========================================================== -->
+    <!-- Radar / Payload                                              -->
+    <!-- =========================================================== -->
+    <fsw_command opcode="0x0201" stem="RADAR_ON" class="FSW">
+      <categories>
+        <module>radar</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Power on the radar instrument and place it in standby.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0202" stem="RADAR_OFF" class="FSW">
+      <categories>
+        <module>radar</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Power off the radar instrument.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0203" stem="RADAR_SET_MODE" class="FSW">
+      <arguments>
+        <enum_arg name="mode" bit_length="8" enum_name="RadarDataCollectionMode">
+          <description>Radar data collection resolution</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>radar</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Change radar data collection mode (drives instrument data rate).</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0204" stem="RADAR_TAKE_OBS" class="FSW">
+      <arguments>
+        <unsigned_arg name="duration_sec" bit_length="32" units="seconds">
+          <range_of_values>
+            <include min="1" max="7200"/>
+          </range_of_values>
+          <description>Observation duration</description>
+        </unsigned_arg>
+        <enum_arg name="mode" bit_length="8" enum_name="RadarDataCollectionMode">
+          <description>Resolution mode for this observation</description>
+        </enum_arg>
+        <enum_arg name="bin" bit_length="8" enum_name="DataBin">
+          <description>Data bin to store observation products</description>
+        </enum_arg>
+        <unsigned_arg name="priority" bit_length="8" units="none">
+          <range_of_values>
+            <include min="0" max="255"/>
+          </range_of_values>
+          <description>Scheduling priority (0 = highest)</description>
+        </unsigned_arg>
+      </arguments>
+      <categories>
+        <module>radar</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Schedule a single radar observation of given duration and mode.</description>
+    </fsw_command>
+
+    <!-- =========================================================== -->
+    <!-- Telecom                                                      -->
+    <!-- =========================================================== -->
+    <fsw_command opcode="0x0301" stem="TLM_DOWNLINK_START" class="FSW">
+      <arguments>
+        <unsigned_arg name="duration_sec" bit_length="32" units="seconds">
+          <range_of_values>
+            <include min="60" max="86400"/>
+          </range_of_values>
+          <description>Downlink contact duration</description>
+        </unsigned_arg>
+        <unsigned_arg name="bit_rate_kbps" bit_length="32" units="kbps">
+          <range_of_values>
+            <include min="1" max="2000"/>
+          </range_of_values>
+          <description>Negotiated downlink bit rate</description>
+        </unsigned_arg>
+      </arguments>
+      <categories>
+        <module>telecom</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Begin a downlink pass at the specified rate and duration.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0302" stem="TLM_DOWNLINK_STOP" class="FSW">
+      <categories>
+        <module>telecom</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Terminate the active downlink pass.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0303" stem="TLM_X_TWTA" class="FSW">
+      <arguments>
+        <enum_arg name="state" bit_length="8" enum_name="OnOff">
+          <description>X-band TWTA power state</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>telecom</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Toggle the X-band traveling-wave tube amplifier.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0304" stem="TLM_KA_TWTA" class="FSW">
+      <arguments>
+        <enum_arg name="state" bit_length="8" enum_name="OnOff">
+          <description>Ka-band TWTA power state</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>telecom</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Toggle the Ka-band traveling-wave tube amplifier.</description>
+    </fsw_command>
+
+    <!-- =========================================================== -->
+    <!-- Data Management                                              -->
+    <!-- =========================================================== -->
+    <fsw_command opcode="0x0401" stem="DATA_GEN_SET_RATE" class="FSW">
+      <arguments>
+        <enum_arg name="bin" bit_length="8" enum_name="DataBin">
+          <description>Target data bin</description>
+        </enum_arg>
+        <unsigned_arg name="rate_bps" bit_length="32" units="bps">
+          <range_of_values>
+            <include min="0" max="100000000"/>
+          </range_of_values>
+          <description>New generation rate</description>
+        </unsigned_arg>
+      </arguments>
+      <categories>
+        <module>data</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Change the data generation rate for a specific bin.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0402" stem="DATA_PLAYBACK" class="FSW">
+      <arguments>
+        <unsigned_arg name="volume_bits" bit_length="64" units="bits">
+          <description>Volume to play back; 0 means use duration only</description>
+        </unsigned_arg>
+        <unsigned_arg name="duration_sec" bit_length="32" units="seconds">
+          <range_of_values>
+            <include min="0" max="86400"/>
+          </range_of_values>
+          <description>Maximum playback duration</description>
+        </unsigned_arg>
+      </arguments>
+      <categories>
+        <module>data</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Play back stored data from onboard storage to ground.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0403" stem="DATA_DELETE" class="FSW">
+      <arguments>
+        <enum_arg name="bin" bit_length="8" enum_name="DataBin">
+          <description>Bin to delete from</description>
+        </enum_arg>
+        <unsigned_arg name="volume_bits" bit_length="64" units="bits">
+          <description>Volume to delete</description>
+        </unsigned_arg>
+        <enum_arg name="limit_to_sent" bit_length="8" enum_name="boolean">
+          <description>If TRUE, delete only data already downlinked</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>data</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Delete stored data products from a bin.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0404" stem="DATA_FILTER" class="FSW">
+      <arguments>
+        <unsigned_arg name="percent_x1000" bit_length="16" units="permil">
+          <range_of_values>
+            <include min="0" max="1000"/>
+          </range_of_values>
+          <description>Fraction of unfiltered data to retain, scaled x1000 (e.g. 750 = 0.75)</description>
+        </unsigned_arg>
+      </arguments>
+      <categories>
+        <module>data</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Move a fraction of unfiltered onboard data into the filtered bucket.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0405" stem="DATA_REPRIORITIZE" class="FSW">
+      <arguments>
+        <enum_arg name="bin" bit_length="8" enum_name="DataBin">
+          <description>Target bin</description>
+        </enum_arg>
+        <unsigned_arg name="priority" bit_length="8" units="none">
+          <range_of_values>
+            <include min="0" max="255"/>
+          </range_of_values>
+          <description>New downlink priority</description>
+        </unsigned_arg>
+      </arguments>
+      <categories>
+        <module>data</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Change downlink priority of a data bin.</description>
+    </fsw_command>
+
+    <!-- =========================================================== -->
+    <!-- Spacecraft / Bus components                                  -->
+    <!-- =========================================================== -->
+    <fsw_command opcode="0x0501" stem="SC_CDH" class="FSW">
+      <arguments>
+        <enum_arg name="state" bit_length="8" enum_name="OnOff">
+          <description>CDH power state</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>cdh</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Toggle the command and data handling subsystem.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0502" stem="SC_ADCS" class="FSW">
+      <arguments>
+        <enum_arg name="state" bit_length="8" enum_name="OnOff">
+          <description>ADCS power state</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>adcs</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Toggle the attitude determination and control subsystem.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0503" stem="SC_PROP" class="FSW">
+      <arguments>
+        <enum_arg name="state" bit_length="8" enum_name="OnOff">
+          <description>PROP power state</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>prop</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Toggle the propulsion subsystem heater/valves.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0504" stem="SC_SSR" class="FSW">
+      <arguments>
+        <enum_arg name="state" bit_length="8" enum_name="OnOff">
+          <description>SSR power state</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>cdh</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Toggle the solid-state recorder.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x0505" stem="SC_IMAGER" class="FSW">
+      <arguments>
+        <enum_arg name="state" bit_length="8" enum_name="OnOff">
+          <description>Imager power state</description>
+        </enum_arg>
+      </arguments>
+      <categories>
+        <module>payload</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>Toggle the imager instrument.</description>
+    </fsw_command>
+
+    <fsw_command opcode="0x05FF" stem="SC_NOOP" class="FSW">
+      <categories>
+        <module>cdh</module>
+        <ops_category>FSW</ops_category>
+      </categories>
+      <description>No-op command for sequence padding and round-trip light-time tests.</description>
+    </fsw_command>
+
+  </command_definitions>
+</command_dictionary>
