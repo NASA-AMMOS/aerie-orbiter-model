@@ -1,12 +1,16 @@
 package scheduling.procedures;
 
+import gov.nasa.ammos.aerie.procedural.scheduling.ActivityAutoDelete;
 import gov.nasa.ammos.aerie.procedural.scheduling.Goal;
 import gov.nasa.ammos.aerie.procedural.scheduling.annotations.SchedulingProcedure;
 import gov.nasa.ammos.aerie.procedural.scheduling.annotations.WithDefaults;
+import gov.nasa.ammos.aerie.procedural.scheduling.plan.DeletedAnchorStrategy;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.EditablePlan;
 import gov.nasa.ammos.aerie.procedural.scheduling.plan.NewDirective;
 import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.AnyDirective;
 import gov.nasa.ammos.aerie.procedural.timeline.payloads.activities.DirectiveStart;
+import gov.nasa.ammos.aerie.procedural.timeline.plan.Plan;
+import gov.nasa.ammos.aerie.procedural.timeline.plan.SimulationResults;
 import gov.nasa.jpl.aerie.merlin.protocol.types.Duration;
 import gov.nasa.jpl.aerie.merlin.protocol.types.SerializedValue;
 import missionmodel.JPLTimeConvertUtility;
@@ -14,6 +18,8 @@ import missionmodel.geometry.directspicecalls.SpiceDirectEventGenerator;
 import missionmodel.geometry.interfaces.GeometryInformationNotAvailableException;
 import missionmodel.geometry.spiceinterpolation.Bodies;
 import missionmodel.spice.Spice;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import spice.basic.SpiceErrorException;
 
 import gov.nasa.jpl.time.Time;
@@ -34,6 +40,23 @@ public record AddPeriapses(
     public static final Path VERSIONED_KERNELS_ROOT_DIRECTORY = Path.of(System.getenv().getOrDefault("SPICE_DIRECTORY", "spice/kernels"));
 
     public static final String NAIF_META_KERNEL_PATH = VERSIONED_KERNELS_ROOT_DIRECTORY.toString() + "/latest_meta_kernel.tm";
+
+    @WithDefaults
+    public static class Template {
+        public String body = "mro";
+        public String target = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public double maxDistanceFilter = 1000000000.0;
+    }
+
+    @NotNull
+    @Override
+    public ActivityAutoDelete shouldDeletePastCreations(
+        @NotNull final Plan plan,
+        @Nullable final SimulationResults simResults) {
+      // Delete Periapsis activities created by previous runs of this goal
+      return new ActivityAutoDelete.AtBeginning(DeletedAnchorStrategy.Cascade, false);
+    }
 
     @Override
     public void run(EditablePlan plan) {
@@ -78,13 +101,5 @@ public record AddPeriapses(
       // Actually add activities to the plan
       plan.commit();
 
-    }
-
-    @WithDefaults
-    public static class Template {
-        public String body = "mro";
-        public String target = "MARS";
-        public Duration stepSize = Duration.MINUTE;
-        public double maxDistanceFilter = 1000000000.0;
     }
 }

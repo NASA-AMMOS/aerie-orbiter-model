@@ -1,6 +1,8 @@
 package missionmodel.power;
 
 import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
+
+import static gov.nasa.jpl.aerie.contrib.metadata.UnitRegistrar.withUnit;
 import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
 import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
@@ -86,8 +88,8 @@ public class GenericSolarArray {
      * @param registrar how Aerie knows what the resources are
      */
     public void registerStates(Registrar registrar) {
-        registrar.discrete("array.powerProduction", powerProduction, new DoubleValueMapper());
-        registrar.discrete("spacecraft.solarDistance", solarDistance, new DoubleValueMapper());
-        registrar.discrete("spacecraft.arrayToSunAngle", arrayToSunAngle, new DoubleValueMapper());
+        registrar.discrete("array.powerProduction", powerProduction, withUnit("W", new DoubleValueMapper()));
+        registrar.discrete("spacecraft.solarDistance", solarDistance, withUnit("AU", new DoubleValueMapper()));
+        registrar.discrete("spacecraft.arrayToSunAngle", arrayToSunAngle, withUnit("deg", new DoubleValueMapper()));
     }
 }

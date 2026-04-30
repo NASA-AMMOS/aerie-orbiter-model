@@ -1,0 +1,1121 @@
+{
+  "plan": {
+    "grid": {
+      "leftSplit": false,
+      "leftHidden": false,
+      "rightSplit": false,
+      "columnSizes": "1fr 3px 3fr 3px 1fr",
+      "middleSplit": true,
+      "rightHidden": false,
+      "leftRowSizes": "1fr",
+      "rightRowSizes": "1fr",
+      "middleRowSizes": "2fr 3px 1fr",
+      "leftComponentTop": "SimulationPanel",
+      "rightComponentTop": "ActivityFormPanel",
+      "leftComponentBottom": "SimulationPanel",
+      "rightComponentBottom": "TimelineEditorPanel",
+      "middleComponentBottom": "ActivityDirectivesTablePanel"
+    },
+    "iFrames": [
+      {
+        "id": 0,
+        "src": "https://eyes.nasa.gov/apps/mars2020/#/home",
+        "title": "Mars-2020-EDL"
+      }
+    ],
+    "timelines": [
+      {
+        "id": 0,
+        "rows": [
+          {
+            "id": 0,
+            "name": "Activities by Type",
+            "yAxes": [],
+            "height": 119,
+            "layers": [
+              {
+                "id": 0,
+                "name": "Activity Layer",
+                "filter": {
+                  "activity": {
+                    "static_types": [],
+                    "dynamic_type_filters": []
+                  }
+                },
+                "yAxisId": null,
+                "chartType": "activity",
+                "activityColor": "#fcdd8f"
+              }
+            ],
+            "expanded": true,
+            "discreteOptions": {
+              "height": 16,
+              "displayMode": "grouped",
+              "activityOptions": {
+                "composition": "directives",
+                "hierarchyMode": "flat"
+              },
+              "labelVisibility": "auto",
+              "externalEventOptions": {
+                "groupBy": "event_type_name"
+              }
+            },
+            "autoAdjustHeight": true,
+            "horizontalGuides": []
+          },
+          {
+            "id": 24,
+            "name": "Highest Onboard Priority",
+            "yAxes": [
+              {
+                "id": 23,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (23)"
+                },
+                "tickCount": 4,
+                "scaleDomain": [
+                  -1,
+                  4
+                ],
+                "domainFitMode": "manual",
+                "renderTickLines": true
+              }
+            ],
+            "height": 160,
+            "layers": [
+              {
+                "id": 42,
+                "name": "",
+                "filter": {
+                  "resource": "onboard.highestDownlinkPriority"
+                },
+                "yAxisId": 23,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "discreteOptions": {
+              "height": 16,
+              "displayMode": "compact",
+              "activityOptions": {
+                "composition": "both",
+                "hierarchyMode": "flat"
+              },
+              "labelVisibility": "auto",
+              "externalEventOptions": {
+                "groupBy": "event_type_name"
+              }
+            },
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 25,
+            "name": "Currently Downlinking Bin",
+            "yAxes": [
+              {
+                "id": 24,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (24)"
+                },
+                "tickCount": 4,
+                "scaleDomain": [
+                  -1,
+                  4
+                ],
+                "domainFitMode": "manual",
+                "renderTickLines": true
+              }
+            ],
+            "height": 160,
+            "layers": [
+              {
+                "id": 43,
+                "name": "",
+                "filter": {
+                  "resource": "ground.currentDownlinkPriority"
+                },
+                "yAxisId": 24,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "discreteOptions": {
+              "height": 16,
+              "displayMode": "compact",
+              "activityOptions": {
+                "composition": "both",
+                "hierarchyMode": "flat"
+              },
+              "labelVisibility": "auto",
+              "externalEventOptions": {
+                "groupBy": "event_type_name"
+              }
+            },
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 21,
+            "name": "Unfiltered Bins",
+            "yAxes": [
+              {
+                "id": 20,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (20)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 160,
+            "layers": [
+              {
+                "id": 14,
+                "name": "",
+                "filter": {
+                  "resource": "rawBin0.volume"
+                },
+                "yAxisId": 20,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 22,
+                "name": "",
+                "filter": {
+                  "resource": "rawBin1.volume"
+                },
+                "yAxisId": 20,
+                "chartType": "line",
+                "lineColor": "#e31a1c",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 23,
+                "name": "",
+                "filter": {
+                  "resource": "rawBin2.volume"
+                },
+                "yAxisId": 20,
+                "chartType": "line",
+                "lineColor": "#424242",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 24,
+                "name": "",
+                "filter": {
+                  "resource": "rawBin3.volume"
+                },
+                "yAxisId": 20,
+                "chartType": "line",
+                "lineColor": "#FF47A9",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 25,
+                "name": "",
+                "filter": {
+                  "resource": "rawBin4.volume"
+                },
+                "yAxisId": 20,
+                "chartType": "line",
+                "lineColor": "#75b53b",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "discreteOptions": {
+              "height": 16,
+              "displayMode": "compact",
+              "activityOptions": {
+                "composition": "both",
+                "hierarchyMode": "flat"
+              },
+              "labelVisibility": "auto",
+              "externalEventOptions": {
+                "groupBy": "event_type_name"
+              }
+            },
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 22,
+            "name": "Onboard Bins",
+            "yAxes": [
+              {
+                "id": 21,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (21)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 160,
+            "layers": [
+              {
+                "id": 18,
+                "name": "",
+                "filter": {
+                  "resource": "scBin0.volume"
+                },
+                "yAxisId": 21,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 19,
+                "name": "",
+                "filter": {
+                  "resource": "scBin1.volume"
+                },
+                "yAxisId": 21,
+                "chartType": "line",
+                "lineColor": "#e31a1c",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 31,
+                "name": "",
+                "filter": {
+                  "resource": "scBin2.volume"
+                },
+                "yAxisId": 21,
+                "chartType": "line",
+                "lineColor": "#424242",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 32,
+                "name": "",
+                "filter": {
+                  "resource": "scBin3.volume"
+                },
+                "yAxisId": 21,
+                "chartType": "line",
+                "lineColor": "#FF47A9",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 33,
+                "name": "",
+                "filter": {
+                  "resource": "scBin4.volume"
+                },
+                "yAxisId": 21,
+                "chartType": "line",
+                "lineColor": "#75b53b",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "discreteOptions": {
+              "height": 16,
+              "displayMode": "compact",
+              "activityOptions": {
+                "composition": "both",
+                "hierarchyMode": "flat"
+              },
+              "labelVisibility": "auto",
+              "externalEventOptions": {
+                "groupBy": "event_type_name"
+              }
+            },
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          },
+          {
+            "id": 23,
+            "name": "Ground Bins",
+            "yAxes": [
+              {
+                "id": 22,
+                "color": "#1b1d1e",
+                "label": {
+                  "text": "Y Axis (22)"
+                },
+                "tickCount": 4,
+                "domainFitMode": "fitTimeWindow",
+                "renderTickLines": true
+              }
+            ],
+            "height": 160,
+            "layers": [
+              {
+                "id": 20,
+                "name": "",
+                "filter": {
+                  "resource": "gndBin0.volume"
+                },
+                "yAxisId": 22,
+                "chartType": "line",
+                "lineColor": "#283593",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 21,
+                "name": "",
+                "filter": {
+                  "resource": "gndBin1.volume"
+                },
+                "yAxisId": 22,
+                "chartType": "line",
+                "lineColor": "#e31a1c",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 39,
+                "name": "",
+                "filter": {
+                  "resource": "gndBin2.volume"
+                },
+                "yAxisId": 22,
+                "chartType": "line",
+                "lineColor": "#424242",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 40,
+                "name": "",
+                "filter": {
+                  "resource": "gndBin3.volume"
+                },
+                "yAxisId": 22,
+                "chartType": "line",
+                "lineColor": "#FF47A9",
+                "lineWidth": 1,
+                "pointRadius": 2
+              },
+              {
+                "id": 41,
+                "name": "",
+                "filter": {
+                  "resource": "gndBin4.volume"
+                },
+                "yAxisId": 22,
+                "chartType": "line",
+                "lineColor": "#75b53b",
+                "lineWidth": 1,
+                "pointRadius": 2
+              }
+            ],
+            "expanded": true,
+            "discreteOptions": {
+              "height": 16,
+              "displayMode": "compact",
+              "activityOptions": {
+                "composition": "both",
+                "hierarchyMode": "flat"
+              },
+              "labelVisibility": "auto",
+              "externalEventOptions": {
+                "groupBy": "event_type_name"
+              }
+            },
+            "autoAdjustHeight": false,
+            "horizontalGuides": []
+          }
+        ],
+        "marginLeft": 250,
+        "marginRight": 30,
+        "verticalGuides": []
+      }
+    ],
+    "activitySpansTable": {
+      "columnDefs": [
+        {
+          "field": "id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "ID"
+        },
+        {
+          "field": "dataset_id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Dataset ID"
+        },
+        {
+          "field": "parent_id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Parent ID"
+        },
+        {
+          "field": "type",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Type"
+        },
+        {
+          "field": "start_offset",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Start Offset"
+        },
+        {
+          "field": "duration",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Duration"
+        }
+      ],
+      "columnStates": [
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "dataset_id",
+          "pivot": false,
+          "width": 284.20000000000005,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "duration",
+          "pivot": false,
+          "width": 120,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "span_id",
+          "pivot": false,
+          "width": 80,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "arguments",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "computedAttributes",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "parent_id",
+          "pivot": false,
+          "width": 140,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "start_offset",
+          "pivot": false,
+          "width": 236,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "startMs",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "endMs",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "type",
+          "pivot": false,
+          "width": 236,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        }
+      ],
+      "autoSizeColumns": "fill"
+    },
+    "simulationEventsTable": {
+      "columnDefs": [
+        {
+          "field": "id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "ID"
+        },
+        {
+          "field": "dataset_id",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Dataset ID"
+        },
+        {
+          "hide": true,
+          "field": "start_offset",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Start Offset"
+        },
+        {
+          "hide": true,
+          "field": "dense_time",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Dense Time"
+        },
+        {
+          "field": "topic",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Topic"
+        },
+        {
+          "field": "value",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Value"
+        }
+      ],
+      "columnStates": [],
+      "autoSizeColumns": "fit"
+    },
+    "activityDirectivesTable": {
+      "columnDefs": [
+        {
+          "sort": null,
+          "colId": "arguments",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "id",
+          "width": 80,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "ID"
+        },
+        {
+          "sort": null,
+          "colId": "last_modified_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "metadata",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "name",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Name"
+        },
+        {
+          "field": "type",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Type"
+        },
+        {
+          "sort": null,
+          "colId": "source_scheduling_goal_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "start_offset",
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Start Offset"
+        },
+        {
+          "sort": null,
+          "colId": "tags",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "type",
+          "pivot": false,
+          "width": 280,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "anchor_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "applied_preset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "sort": null,
+          "colId": "anchored_to_start",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "field": "derived_start_time",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Absolute Start Time (UTC)"
+        },
+        {
+          "sort": null,
+          "colId": "start_offset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "hide": true,
+          "field": "created_at",
+          "width": 200,
+          "filter": "text",
+          "sortable": true,
+          "resizable": true,
+          "headerName": "Created At (UTC)"
+        }
+      ],
+      "columnStates": [
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "errorCounts",
+          "pivot": false,
+          "width": 70,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "anchor_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "anchor_name",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "anchored_to_start",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "applied_preset",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "arguments",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "created_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "created_by",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "id",
+          "pivot": false,
+          "width": 82.20000000000005,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "last_modified_at",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "last_modified_by",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "metadata",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "name",
+          "pivot": false,
+          "width": 208,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "source_scheduling_goal_id",
+          "pivot": false,
+          "width": 200,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "start_offset",
+          "pivot": false,
+          "width": 208,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "start_time_ms",
+          "pivot": false,
+          "width": 208,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": true,
+          "sort": null,
+          "colId": "tags",
+          "pivot": false,
+          "width": 220,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        },
+        {
+          "flex": null,
+          "hide": false,
+          "sort": null,
+          "colId": "type",
+          "pivot": false,
+          "width": 208,
+          "pinned": null,
+          "aggFunc": null,
+          "rowGroup": false,
+          "sortIndex": null,
+          "pivotIndex": null,
+          "rowGroupIndex": null
+        }
+      ],
+      "autoSizeColumns": "fill"
+    }
+  },
+  "version": 2
+}

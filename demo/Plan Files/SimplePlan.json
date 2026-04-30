@@ -1,0 +1,156 @@
+{
+  "activities": [
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 728,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "16:03:49.482",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 729,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "34:25:20.318",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "bitRate": 500,
+        "duration": 43200000000
+      },
+      "id": 730,
+      "metadata": {},
+      "name": "Downlink",
+      "start_offset": "120:05:44.223",
+      "tags": [],
+      "type": "Downlink"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "percent": 0.5
+      },
+      "id": 828,
+      "metadata": {},
+      "name": "FilterData",
+      "start_offset": "107:05:29.88",
+      "tags": [],
+      "type": "FilterData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 832,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "48:00:00",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 833,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "63:52:21.035",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 834,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "82:59:45.657",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "OFF"
+      },
+      "id": 835,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "98:40:38.247",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "mode": "LOW_RES"
+      },
+      "id": 836,
+      "metadata": {},
+      "name": "ChangeRadarDataMode",
+      "start_offset": "03:38:00.478",
+      "tags": [],
+      "type": "ChangeRadarDataMode"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "percent": 0.75
+      },
+      "id": 837,
+      "metadata": {},
+      "name": "FilterData",
+      "start_offset": "52:23:54.262",
+      "tags": [],
+      "type": "FilterData"
+    },
+    {
+      "anchor_id": null,
+      "anchored_to_start": true,
+      "arguments": {
+        "percent": 0.75
+      },
+      "id": 838,
+      "metadata": {},
+      "name": "FilterData",
+      "start_offset": "80:30:35.856",
+      "tags": [],
+      "type": "FilterData"
+    }
+  ],
+  "duration": "144:00:00",
+  "id": 6,
+  "model_id": 16,
+  "name": "One Week Plan",
+  "simulation_arguments": {},
+  "start_time": "2024-01-02T00:00:00+00:00",
+  "tags": [],
+  "version": "2"
+}

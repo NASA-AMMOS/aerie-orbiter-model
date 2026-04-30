@@ -6,7 +6,10 @@ package missionmodel.power.pel;
 public enum Radar_State {
 	OFF(0.0, 0.0),
 	DOWNLINK(198.2, 198.2),
-	ON(543.2, 543.2);
+	ON(543.2, 543.2),
+    ON_LOW(1000, 1000),
+	ON_MED(2000, 2000),
+	ON_HI(4000, 4000);
     private final double cbeload;
     private final double mevload;
     Radar_State(double cbeload, double mevload) {

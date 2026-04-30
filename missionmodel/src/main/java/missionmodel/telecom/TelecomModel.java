@@ -1,7 +1,8 @@
 package missionmodel.telecom;
 
 import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
-import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
+
+import static gov.nasa.jpl.aerie.contrib.metadata.UnitRegistrar.withUnit;
 import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
@@ -198,7 +199,7 @@ public class TelecomModel {
 //  }
 
   public void registerResources(final Registrar registrar) {
-    registrar.discrete("downlinkBitRate", downlinkBitRate, new DoubleValueMapper()); // actually occurring
+    registrar.discrete("downlinkBitRate", downlinkBitRate, withUnit("bps", new DoubleValueMapper())); // actually occurring
 //    for (final var entry : this.downlinkBitRateCapability.entrySet()) {
 //      final var communicationConfig = entry.getKey();
 //      final var resource = entry.getValue();

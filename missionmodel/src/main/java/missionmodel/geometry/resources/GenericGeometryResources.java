@@ -125,19 +125,19 @@ public class GenericGeometryResources {
 
     // Non-arrayed resources
     upleg_time = resource(discrete(0.0));
-    registrar.discrete("upleg_time", upleg_time, new DoubleValueMapper());
+    registrar.discrete("upleg_time", upleg_time, withUnit("s", new DoubleValueMapper()));
 
     downleg_time = resource(discrete(0.0));
-    registrar.discrete("downleg_time", downleg_time, new DoubleValueMapper());
+    registrar.discrete("downleg_time", downleg_time, withUnit("s", new DoubleValueMapper()));
 
     spacecraftDeclination = resource(discrete(0.0));
-    registrar.discrete("spacecraftDeclination", spacecraftDeclination, new DoubleValueMapper());
+    registrar.discrete("spacecraftDeclination", spacecraftDeclination, withUnit("deg", new DoubleValueMapper()));
 
     spacecraftRightAscension = resource(discrete(0.0));
-    registrar.discrete("spacecraftRightAscension", spacecraftRightAscension, new DoubleValueMapper());
+    registrar.discrete("spacecraftRightAscension", spacecraftRightAscension, withUnit("deg", new DoubleValueMapper()));
 
     EarthSunProbeAngle = resource(discrete(0.0));
-    registrar.discrete("EarthSunProbeAngle", EarthSunProbeAngle, new DoubleValueMapper());
+    registrar.discrete("EarthSunProbeAngle", EarthSunProbeAngle, withUnit("deg", new DoubleValueMapper()));
 
     AnySpacecraftEclipse = resource(discrete(EclipseTypes.NONE));
     registrar.discrete("AnySpacecraftEclipse", AnySpacecraftEclipse, new EnumValueMapper(EclipseTypes.class));
@@ -218,10 +218,17 @@ public class GenericGeometryResources {
 
       if (subSCBodies.contains(body)) {
         Map<String, MutableResource<Discrete<Double>>> subSCMap = new HashMap<>();
+        Map<String, String> subSCUnits = Map.of(
+          "dist", "km",
+          "latitude", "deg",
+          "longitude", "deg",
+          "radius", "km",
+          "LST", "hr"
+        );
         for (String index : subSCIndices) {
           subSCMap.put(index, resource(discrete(0.0)));
           registrar.discrete("subSCBodies_" + body + "_" + index,
-            subSCMap.get(index), new DoubleValueMapper());
+            subSCMap.get(index), withUnit(subSCUnits.get(index), new DoubleValueMapper()));
         }
         BodySubSCPoint.put(body, subSCMap);
       }

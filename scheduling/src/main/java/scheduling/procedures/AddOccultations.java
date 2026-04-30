@@ -45,6 +45,15 @@ public record AddOccultations(
 
     public static final String NAIF_META_KERNEL_PATH = VERSIONED_KERNELS_ROOT_DIRECTORY.toString() + "/latest_meta_kernel.tm";
 
+    @WithDefaults
+    public static class Template {
+        public String observer = "DSS-24";
+        public String target = "mro";
+        public String occultingBody = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public Boolean useDSK = false;
+    }
+    
     @Override
     public void run(EditablePlan plan) {
 
@@ -132,14 +141,5 @@ public record AddOccultations(
       }
       // Actually add activities to the plan
       plan.commit();
-    }
-
-    @WithDefaults
-    public static class Template {
-        public String observer = "DSS-24";
-        public String target = "mro";
-        public String occultingBody = "MARS";
-        public Duration stepSize = Duration.MINUTE;
-        public Boolean useDSK = false;
     }
 }

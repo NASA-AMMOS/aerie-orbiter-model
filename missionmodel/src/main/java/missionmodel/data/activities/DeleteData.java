@@ -40,7 +40,7 @@ public class DeleteData {
   @ActivityType.EffectModel
   public void run(DataMissionModel model) {
     Data data = model.getData();
-    var binToChange = data.getOnboardBin(bin);
+    var binToChange = data.getFilteredBin(bin);
     var groundBin = data.getGroundBin(bin);
 
     double currentVolume = currentValue(binToChange.volume);
@@ -49,7 +49,7 @@ public class DeleteData {
     double volumeAlreadyDownlinked = currentValue(binToChange.volume) - volumeNotYetDownlinked;
     double actualVolumeDeleted =
       Math.min(volume, Math.min(currentVolume, limitToSentData ? volumeAlreadyDownlinked : MAX));
-    System.out.println("DeleteData(" + currentTime() + "): actualVolumeDeleted = " + actualVolumeDeleted);
+    // System.out.println("DeleteData(" + currentTime() + "): actualVolumeDeleted = " + actualVolumeDeleted);
 
     binToChange.remove(actualVolumeDeleted);
 

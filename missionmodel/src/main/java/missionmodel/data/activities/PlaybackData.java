@@ -46,7 +46,7 @@ public class PlaybackData {
     }
 
     final var targetGroundReceivedValue = volume.isEmpty() ? Double.MAX_VALUE : currentValue(ground.received) + volume.get();
-    System.out.println("PlaybackData(" + Resources.currentTime() + "): targetGroundReceivedValue = " + targetGroundReceivedValue);
+    // System.out.println("PlaybackData(" + Resources.currentTime() + "): targetGroundReceivedValue = " + targetGroundReceivedValue);
     if (volume.isPresent()) {
       restore(model.getData().volumeRequestedToDownlink, volume.get());
     }

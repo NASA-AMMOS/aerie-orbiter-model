@@ -39,6 +39,14 @@ public record AddApoapses(
 
     public static final String NAIF_META_KERNEL_PATH = VERSIONED_KERNELS_ROOT_DIRECTORY.toString() + "/latest_meta_kernel.tm";
 
+    @WithDefaults
+    public static class Template {
+        public String body = "mro";
+        public String target = "MARS";
+        public Duration stepSize = Duration.MINUTE;
+        public double minDistanceFilter = 1.0;
+    }
+
     @Override
     public void run(EditablePlan plan) {
 
@@ -80,13 +88,5 @@ public record AddApoapses(
       // Actually add activities to the plan
       plan.commit();
 
-    }
-
-    @WithDefaults
-    public static class Template {
-        public String body = "mro";
-        public String target = "MARS";
-        public Duration stepSize = Duration.MINUTE;
-        public double minDistanceFilter = 1.0;
     }
 }

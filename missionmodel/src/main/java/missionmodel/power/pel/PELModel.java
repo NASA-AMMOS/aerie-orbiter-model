@@ -4,6 +4,8 @@ import gov.nasa.jpl.aerie.contrib.streamline.modeling.Registrar;
 import gov.nasa.jpl.aerie.contrib.serialization.mappers.EnumValueMapper;
 import gov.nasa.jpl.aerie.contrib.serialization.mappers.DoubleValueMapper;
 
+import static gov.nasa.jpl.aerie.contrib.metadata.UnitRegistrar.withUnit;
+
 import gov.nasa.jpl.aerie.contrib.streamline.core.Resource;
 import gov.nasa.jpl.aerie.contrib.streamline.core.MutableResource;
 import gov.nasa.jpl.aerie.contrib.streamline.modeling.discrete.Discrete;
@@ -124,7 +126,7 @@ public class PELModel {
 		registrar.discrete("imagerState",imagerState, new EnumValueMapper<>(Imager_State.class));
 		registrar.discrete("radar_heatersState",radar_heatersState, new EnumValueMapper<>(Radar_Heaters_State.class));
 		registrar.discrete("imager_heatersState",imager_heatersState, new EnumValueMapper<>(Imager_Heaters_State.class));
-		registrar.discrete("spacecraft.cbeLoad", cbeTotalLoad, new DoubleValueMapper());
-		registrar.discrete("spacecraft.mevLoad", mevTotalLoad, new DoubleValueMapper());
+		registrar.discrete("spacecraft.cbeLoad", cbeTotalLoad, withUnit("W", new DoubleValueMapper()));
+		registrar.discrete("spacecraft.mevLoad", mevTotalLoad, withUnit("W", new DoubleValueMapper()));
 	}
 }
