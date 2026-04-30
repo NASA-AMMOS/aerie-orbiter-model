@@ -134,7 +134,7 @@ services:
         -Dorg.slf4j.simpleLogger.logFile=System.err
       SPICE_DIRECTORY: /usr/src/app/spice/kernels
     # Using local image with null-ID fix (original: "${REPOSITORY_DOCKER_URL}/aerie-scheduler-worker:${DOCKER_TAG}")
-    image: "aerie-scheduler-worker:local"
+    image: "${REPOSITORY_DOCKER_URL}/aerie-scheduler-worker:${DOCKER_TAG}"
     ports: ["27189:8080"]
     restart: always
     volumes:

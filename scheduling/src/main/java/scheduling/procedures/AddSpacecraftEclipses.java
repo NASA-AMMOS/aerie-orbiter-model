@@ -141,12 +141,4 @@ public record AddSpacecraftEclipses(
       // Actually add activities to the plan
       plan.commit();
     }
-    @WithDefaults
-    public static class Template {
-        public String observer = "mro";
-        public String target = "SUN";
-        public String occultingBody = "MARS";
-        public Duration stepSize = Duration.MINUTE;
-        public Boolean useDSK = false;
-    }
 }
