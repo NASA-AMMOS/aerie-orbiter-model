@@ -1,0 +1,44 @@
+{
+  "source": {
+    "key": "DSS24_Passes_2024",
+    "source_type_name": "CommsPass",
+    "derivation_group_name": "CommsPass Default",
+    "valid_at": "2024-002T00:00:00Z",
+    "period": {
+      "start_time": "2024-001T00:00:00Z",
+      "end_time": "2024-010T00:00:00Z"
+    },
+    "attributes": {
+      "description": "DSS-24 scheduled communication passes"
+    }
+  },
+  "events": [
+    {
+      "key": "DSS24_Pass_001",
+      "event_type_name": "DSS_Pass",
+      "start_time": "2024-002T06:00:00Z",
+      "duration": "03:00:00",
+      "attributes": {
+        "station": "DSS-24"
+      }
+    },
+    {
+      "key": "DSS24_Pass_002",
+      "event_type_name": "DSS_Pass",
+      "start_time": "2024-002T13:00:00Z",
+      "duration": "06:00:00",
+      "attributes": {
+        "station": "DSS-24"
+      }
+    },
+    {
+      "key": "DSS24_Pass_003",
+      "event_type_name": "DSS_Pass",
+      "start_time": "2024-003T09:40:00Z",
+      "duration": "12:00:00",
+      "attributes": {
+        "station": "DSS-24"
+      }
+    }
+  ]
+}

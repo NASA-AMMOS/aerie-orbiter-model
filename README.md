@@ -86,6 +86,9 @@ This repo contains an example Plan to demonstrate the model's capabilities: `Exa
 go to the "Plans" page on PlanDev and use the Import button to select & import this JSON file. Set the "Model" to your
 uploaded model, and create the plan.
 
+The example plan covers a timespan from 2024-002 to 2024-004 - if you make your own custom plan, it should use the same
+time range to ensure the simulation can run correctly with the included SPICE kernels.
+
 A custom view for this plan is also included - access the view menu in the top right of the PlanDev and import the file
 `MarsSat_Overview_View.json`
 
